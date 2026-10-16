@@ -145,9 +145,9 @@ HEAD = """<!doctype html>
 <body>
 <nav><div class="wrap">
   <a class="brand" href="../">&gt; MULDER_ITS_ME</a>
-  <a class="link" href="../#basement">The Office</a>
   <a class="link" href="../#board">Conspiracy</a>
   <a class="link" href="../#cases">Case Files</a>
+  <a class="link" href="../#basement">The Office</a>
   <a class="link here" href="./">Blog</a>
 </div></nav>
 """

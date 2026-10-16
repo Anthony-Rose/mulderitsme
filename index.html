@@ -300,10 +300,10 @@
 <nav id="nav">
   <div class="wrap">
     <a class="brand" href="#top">&gt; MULDER_ITS_ME</a>
-    <a class="link" href="#basement">The Office</a>
     <a class="link" href="#agents">Agents</a>
     <a class="link" href="#board">Conspiracy</a>
     <a class="link" href="#cases">Case Files</a>
+    <a class="link" href="#basement">The Office</a>
     <a class="link" href="#believe">Believe</a>
     <a class="link" href="blog/">Blog</a>
   </div>
@@ -320,53 +320,6 @@
 </header>
 
 <main>
-  <!-- ============ BASEMENT ============ -->
-  <section id="basement">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="kicker">// FBI HQ, SUB-BASEMENT</div>
-        <h2>The office nobody visits</h2>
-        <p class="lede">The lights are out again. Use your flashlight (move your mouse, or drag a finger) and find all five pieces of evidence in Mulder's office.</p>
-      </div>
-
-      <div class="room reveal" id="room">
-        <div class="ceiling"></div>
-        <div class="pencils" data-evidence="Pencils in the ceiling" aria-hidden="true"></div>
-
-        <div class="poster" data-evidence="The poster">
-          <svg viewBox="0 0 200 220" aria-hidden="true">
-            <defs><linearGradient id="pb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfffd0" stop-opacity=".55"/><stop offset="1" stop-color="#bfffd0" stop-opacity="0"/></linearGradient></defs>
-            <polygon points="88,52 112,52 160,200 40,200" fill="url(#pb)"/>
-            <ellipse cx="100" cy="46" rx="44" ry="9" fill="#1d241f" stroke="#cfd8cc" stroke-width="1"/>
-            <ellipse cx="100" cy="39" rx="17" ry="8" fill="#2d3830" stroke="#cfd8cc" stroke-width="1"/>
-            <path d="M0 200 L14 186 L24 196 L40 176 L55 198 L145 198 L160 180 L175 194 L188 182 L200 190 L200 220 L0 220 Z" fill="#000"/>
-          </svg>
-          <span>I WANT TO<br>BELIEVE</span>
-        </div>
-
-        <div class="sticky" data-evidence="A password">
-          trustno1
-          <small>(don't tell anyone. type it somewhere on this site.)</small>
-        </div>
-
-        <div class="desk">
-          <div class="nameplate" data-evidence="The nameplate">FOX MULDER</div>
-          <div class="seeds" data-evidence="Sunflower seeds">SEEDS</div>
-        </div>
-
-        <div class="cabinet" aria-hidden="true">
-          <div><div class="label">X</div></div><div><div class="label">X-1</div></div><div><div class="label">X-2</div></div><div><div class="label">?</div></div>
-        </div>
-
-        <div class="dark" id="dark"></div>
-      </div>
-      <div class="evidence-hud">
-        <span id="evCount">EVIDENCE 0/5</span>
-        <ul id="evList"></ul>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ AGENTS ============ -->
   <section id="agents">
     <div class="wrap">
@@ -465,6 +418,53 @@
       </div>
 
       <div class="cases" id="caseList"></div>
+    </div>
+  </section>
+
+  <!-- ============ BASEMENT ============ -->
+  <section id="basement">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// FBI HQ, SUB-BASEMENT</div>
+        <h2>The office nobody visits</h2>
+        <p class="lede">The lights are out again. Use your flashlight (move your mouse, or drag a finger) and find all five pieces of evidence in Mulder's office.</p>
+      </div>
+
+      <div class="room reveal" id="room">
+        <div class="ceiling"></div>
+        <div class="pencils" data-evidence="Pencils in the ceiling" aria-hidden="true"></div>
+
+        <div class="poster" data-evidence="The poster">
+          <svg viewBox="0 0 200 220" aria-hidden="true">
+            <defs><linearGradient id="pb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfffd0" stop-opacity=".55"/><stop offset="1" stop-color="#bfffd0" stop-opacity="0"/></linearGradient></defs>
+            <polygon points="88,52 112,52 160,200 40,200" fill="url(#pb)"/>
+            <ellipse cx="100" cy="46" rx="44" ry="9" fill="#1d241f" stroke="#cfd8cc" stroke-width="1"/>
+            <ellipse cx="100" cy="39" rx="17" ry="8" fill="#2d3830" stroke="#cfd8cc" stroke-width="1"/>
+            <path d="M0 200 L14 186 L24 196 L40 176 L55 198 L145 198 L160 180 L175 194 L188 182 L200 190 L200 220 L0 220 Z" fill="#000"/>
+          </svg>
+          <span>I WANT TO<br>BELIEVE</span>
+        </div>
+
+        <div class="sticky" data-evidence="A password">
+          trustno1
+          <small>(don't tell anyone. type it somewhere on this site.)</small>
+        </div>
+
+        <div class="desk">
+          <div class="nameplate" data-evidence="The nameplate">FOX MULDER</div>
+          <div class="seeds" data-evidence="Sunflower seeds">SEEDS</div>
+        </div>
+
+        <div class="cabinet" aria-hidden="true">
+          <div><div class="label">X</div></div><div><div class="label">X-1</div></div><div><div class="label">X-2</div></div><div><div class="label">?</div></div>
+        </div>
+
+        <div class="dark" id="dark"></div>
+      </div>
+      <div class="evidence-hud">
+        <span id="evCount">EVIDENCE 0/5</span>
+        <ul id="evList"></ul>
+      </div>
     </div>
   </section>
 
