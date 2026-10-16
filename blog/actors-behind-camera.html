@@ -12,14 +12,14 @@
 <meta property="og:title" content="The Actors Behind the Camera · Mulder, It&#x27;s Me">
 <meta property="og:description" content="David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show&#x27;s two leads chose to make when they took control.">
 <meta property="og:url" content="https://mulderitsme.net/blog/actors-behind-camera.html">
-<meta property="og:image" content="https://mulderitsme.net/images/og.jpg">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image" content="https://mulderitsme.net/images/frames/actors-behind-camera.jpg">
+<meta property="og:image:width" content="1600"><meta property="og:image:height" content="669">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Actors Behind the Camera · Mulder, It&#x27;s Me"><meta name="twitter:description" content="David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show&#x27;s two leads chose to make when they took control."><meta name="twitter:image" content="https://mulderitsme.net/images/og.jpg">
+<meta name="twitter:title" content="The Actors Behind the Camera · Mulder, It&#x27;s Me"><meta name="twitter:description" content="David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show&#x27;s two leads chose to make when they took control."><meta name="twitter:image" content="https://mulderitsme.net/images/frames/actors-behind-camera.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="alternate" type="application/rss+xml" title="Mulder, It&#x27;s Me journal" href="/feed.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Actors Behind the Camera", "description": "David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show's two leads chose to make when they took control.", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "articleSection": "Directors", "wordCount": 540, "image": "https://mulderitsme.net/images/og.jpg", "inLanguage": "en", "author": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "publisher": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "mainEntityOfPage": "https://mulderitsme.net/blog/actors-behind-camera.html", "about": {"@type": "TVSeries", "name": "The X-Files"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Actors Behind the Camera", "description": "David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show's two leads chose to make when they took control.", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "articleSection": "Directors", "wordCount": 540, "image": "https://mulderitsme.net/images/frames/actors-behind-camera.jpg", "inLanguage": "en", "author": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "publisher": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "mainEntityOfPage": "https://mulderitsme.net/blog/actors-behind-camera.html", "about": {"@type": "TVSeries", "name": "The X-Files"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Mulder, It's Me", "item": "https://mulderitsme.net/"}, {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://mulderitsme.net/blog/"}, {"@type": "ListItem", "position": 3, "name": "The Actors Behind the Camera", "item": "https://mulderitsme.net/blog/actors-behind-camera.html"}]}</script>
 <meta property="article:published_time" content="2026-10-16"><meta property="article:section" content="Directors">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,11 @@
 
   .masthead { position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
   .masthead canvas { position:absolute; inset:0; width:100%; height:100%; opacity:.8; }
+  .masthead .plate { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.3) brightness(.5); transform:scale(1.04); animation:drift 30s ease-in-out infinite alternate; }
+  .masthead.has-plate canvas { opacity:.35; }
+  .masthead.has-plate::before { content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg, rgba(6,9,10,.35), rgba(6,9,10,.55) 55%, var(--bg)); }
+  @keyframes drift { from { transform:scale(1.04) translate(0,0); } to { transform:scale(1.1) translate(-1.5%, 1%); } }
+  .masthead.has-plate .wrap { padding-top:180px; padding-bottom:90px; }
   .masthead::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 140%, hsla(var(--h,140),70%,45%,.28), transparent 65%); pointer-events:none; }
   .masthead .wrap { position:relative; z-index:1; padding-top:110px; padding-bottom:80px; max-width:920px; }
   .eyebrow { font:500 12px var(--mono); letter-spacing:.28em; text-transform:uppercase; color:var(--green); }
@@ -64,6 +69,7 @@
   .sources { max-width:700px; margin:0 auto 40px; padding:28px 16px 0; border-top:1px solid var(--line); font:14px/1.6 var(--sans); color:var(--muted); }
   .sources h3 { font:500 11px var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--soft); margin:0 0 10px; }
   .sources ul { margin:0; padding-left:18px; } .sources a { color:var(--soft); }
+  .sources.imgcredit { border-top:0; padding-top:0; margin-top:-12px; } .sources.imgcredit p { margin:0; }
   .pager { max-width:900px; margin:30px auto 110px; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   .pager a { display:block; text-decoration:none; color:var(--text); padding:22px 0; border-top:1px solid var(--line-2); transition:border-color .2s; }
   .pager a:hover { border-color:var(--green); }
@@ -83,9 +89,11 @@
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
   .card:hover .frame::before { transform:scale(1.08); }
-  .card .frame .n { position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
+  .card .frame .ph { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.35) contrast(1.05) brightness(.7); transform:scale(1.01); transition:transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
+  .card:hover .frame .ph { transform:scale(1.07); filter:grayscale(0) contrast(1.05) brightness(.85); }
+  .card .frame .n { z-index:1; text-shadow:0 4px 30px rgba(0,0,0,.6); position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
   .card:hover .frame .n { transform:translateX(6px); }
-  .card .frame .tc { position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
+  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
   .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
   .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
   .card:hover h3 { color:var(--green); }
@@ -109,7 +117,7 @@
   <a class="link here" href="./">Journal</a>
 </div></nav>
 <div id="progress"></div>
-<header class="masthead" style="--h:330"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
+<header class="masthead has-plate" style="--h:330"><div class="plate" style="background-image:url(../images/frames/actors-behind-camera.jpg)"></div><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Essay No. 10 · Directors</div>
   <h1>The Actors Behind the Camera</h1>
   <p class="dek">David Duchovny wrote and directed The Unnatural and Hollywood A.D. Gillian Anderson wrote and directed all things. What the show's two leads chose to make when they took control.</p>
@@ -131,12 +139,12 @@
 <p>Put side by side, the three episodes show two different instincts. Duchovny's work is playful and fond of genre: period films, Hollywood satire, stories about performance. Anderson's is inward and contemplative, more concerned with the private experience of her character than with the show's machinery.</p>
 <p>Both of them, notably, chose to make episodes that step away from the mythology and even from the standard case structure. When the people who knew the characters best were handed the camera, neither of them used it to tell a conventional X-File. They used it to show what else the format could hold.</p>
 </article>
-<aside class="sources"><h3>Sources and further reading</h3><ul><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_6" rel="noopener">The X-Files, season 6 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_7" rel="noopener">The X-Files, season 7 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/List_of_accolades_received_by_The_X-Files" rel="noopener">List of accolades received by The X-Files (Wikipedia)</a></li></ul></aside>
+<aside class="sources"><h3>Sources and further reading</h3><ul><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_6" rel="noopener">The X-Files, season 6 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_7" rel="noopener">The X-Files, season 7 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/List_of_accolades_received_by_The_X-Files" rel="noopener">List of accolades received by The X-Files (Wikipedia)</a></li></ul></aside><aside class="sources imgcredit"><h3>Header image</h3><p><a href="https://commons.wikimedia.org/wiki/File:Gillian_Anderson,_David_Duchovny_%26_Chris_Carter.jpg" rel="noopener">Gillian Anderson, David Duchovny &amp; Chris Carter.jpg</a> by Gage Skidmore from Peoria, AZ, United States of America, <a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="noopener">CC BY-SA 2.0</a>, via Wikimedia Commons.</p></aside>
 <nav class="pager" aria-label="More essays"><a class="prev" href="mark-snow.html"><small>Previous essay</small><b>Scoring the Unseen: Mark Snow&#x27;s Electronic Dread</b></a><a class="next" href="i-want-to-believe.html"><small>Next essay</small><b>I Want to Believe, Reconsidered</b></a></nav>
 <footer><div class="wrap">
   <div class="sig">The truth is out there.</div>
   <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
-  The X-Files and all related names are trademarks of their respective owners.</p>
+  The X-Files and all related names are trademarks of their respective owners. <a href="../credits.html" style="color:var(--soft)">Image credits</a>.</p>
 </div></footer>
 <script>
 (() => {

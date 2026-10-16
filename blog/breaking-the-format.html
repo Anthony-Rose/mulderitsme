@@ -12,14 +12,14 @@
 <meta property="og:title" content="The Show That Kept Breaking Its Own Format · Mulder, It&#x27;s Me">
 <meta property="og:description" content="Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode.">
 <meta property="og:url" content="https://mulderitsme.net/blog/breaking-the-format.html">
-<meta property="og:image" content="https://mulderitsme.net/images/og.jpg">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image" content="https://mulderitsme.net/images/frames/breaking-the-format.jpg">
+<meta property="og:image:width" content="1600"><meta property="og:image:height" content="669">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Show That Kept Breaking Its Own Format · Mulder, It&#x27;s Me"><meta name="twitter:description" content="Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode."><meta name="twitter:image" content="https://mulderitsme.net/images/og.jpg">
+<meta name="twitter:title" content="The Show That Kept Breaking Its Own Format · Mulder, It&#x27;s Me"><meta name="twitter:description" content="Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode."><meta name="twitter:image" content="https://mulderitsme.net/images/frames/breaking-the-format.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="alternate" type="application/rss+xml" title="Mulder, It&#x27;s Me journal" href="/feed.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Show That Kept Breaking Its Own Format", "description": "Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode.", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "articleSection": "Form", "wordCount": 696, "image": "https://mulderitsme.net/images/og.jpg", "inLanguage": "en", "author": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "publisher": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "mainEntityOfPage": "https://mulderitsme.net/blog/breaking-the-format.html", "about": {"@type": "TVSeries", "name": "The X-Files"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Show That Kept Breaking Its Own Format", "description": "Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode.", "datePublished": "2026-10-16", "dateModified": "2026-10-16", "articleSection": "Form", "wordCount": 696, "image": "https://mulderitsme.net/images/frames/breaking-the-format.jpg", "inLanguage": "en", "author": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "publisher": {"@type": "Organization", "name": "Mulder, It's Me", "url": "https://mulderitsme.net/", "logo": {"@type": "ImageObject", "url": "https://mulderitsme.net/images/og.jpg"}}, "mainEntityOfPage": "https://mulderitsme.net/blog/breaking-the-format.html", "about": {"@type": "TVSeries", "name": "The X-Files"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Mulder, It's Me", "item": "https://mulderitsme.net/"}, {"@type": "ListItem", "position": 2, "name": "Journal", "item": "https://mulderitsme.net/blog/"}, {"@type": "ListItem", "position": 3, "name": "The Show That Kept Breaking Its Own Format", "item": "https://mulderitsme.net/blog/breaking-the-format.html"}]}</script>
 <meta property="article:published_time" content="2026-10-16"><meta property="article:section" content="Form">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,11 @@
 
   .masthead { position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
   .masthead canvas { position:absolute; inset:0; width:100%; height:100%; opacity:.8; }
+  .masthead .plate { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.3) brightness(.5); transform:scale(1.04); animation:drift 30s ease-in-out infinite alternate; }
+  .masthead.has-plate canvas { opacity:.35; }
+  .masthead.has-plate::before { content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg, rgba(6,9,10,.35), rgba(6,9,10,.55) 55%, var(--bg)); }
+  @keyframes drift { from { transform:scale(1.04) translate(0,0); } to { transform:scale(1.1) translate(-1.5%, 1%); } }
+  .masthead.has-plate .wrap { padding-top:180px; padding-bottom:90px; }
   .masthead::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 140%, hsla(var(--h,140),70%,45%,.28), transparent 65%); pointer-events:none; }
   .masthead .wrap { position:relative; z-index:1; padding-top:110px; padding-bottom:80px; max-width:920px; }
   .eyebrow { font:500 12px var(--mono); letter-spacing:.28em; text-transform:uppercase; color:var(--green); }
@@ -64,6 +69,7 @@
   .sources { max-width:700px; margin:0 auto 40px; padding:28px 16px 0; border-top:1px solid var(--line); font:14px/1.6 var(--sans); color:var(--muted); }
   .sources h3 { font:500 11px var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--soft); margin:0 0 10px; }
   .sources ul { margin:0; padding-left:18px; } .sources a { color:var(--soft); }
+  .sources.imgcredit { border-top:0; padding-top:0; margin-top:-12px; } .sources.imgcredit p { margin:0; }
   .pager { max-width:900px; margin:30px auto 110px; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   .pager a { display:block; text-decoration:none; color:var(--text); padding:22px 0; border-top:1px solid var(--line-2); transition:border-color .2s; }
   .pager a:hover { border-color:var(--green); }
@@ -83,9 +89,11 @@
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
   .card:hover .frame::before { transform:scale(1.08); }
-  .card .frame .n { position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
+  .card .frame .ph { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.35) contrast(1.05) brightness(.7); transform:scale(1.01); transition:transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
+  .card:hover .frame .ph { transform:scale(1.07); filter:grayscale(0) contrast(1.05) brightness(.85); }
+  .card .frame .n { z-index:1; text-shadow:0 4px 30px rgba(0,0,0,.6); position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
   .card:hover .frame .n { transform:translateX(6px); }
-  .card .frame .tc { position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
+  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
   .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
   .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
   .card:hover h3 { color:var(--green); }
@@ -109,7 +117,7 @@
   <a class="link here" href="./">Journal</a>
 </div></nav>
 <div id="progress"></div>
-<header class="masthead" style="--h:275"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
+<header class="masthead has-plate" style="--h:275"><div class="plate" style="background-image:url(../images/frames/breaking-the-format.jpg)"></div><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Essay No. 07 · Form</div>
   <h1>The Show That Kept Breaking Its Own Format</h1>
   <p class="dek">Unreliable narrators, time loops, videotape and near silence. The X-Files spent much of its run testing how far an episode could bend before it stopped being an episode.</p>
@@ -137,12 +145,12 @@
 <p>None of these episodes abandon the show's core. They still have Mulder and Scully, a mystery, and a question about what's real. What they change is the vehicle: the narrator, the timeline, the camera, the soundtrack.</p>
 <p>That's what makes them more than stunts. Each one isolates a single element of the form and asks what happens if you change it. Taken together, they amount to an informal course in how television storytelling works, taught by a show confident enough to take itself apart and trust the audience to reassemble it.</p>
 </article>
-<aside class="sources"><h3>Sources and further reading</h3><ul><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_3" rel="noopener">The X-Files, season 3 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_5" rel="noopener">The X-Files, season 5 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/X-Cops" rel="noopener">X-Cops (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_11" rel="noopener">The X-Files, season 11 (Wikipedia)</a></li></ul></aside>
+<aside class="sources"><h3>Sources and further reading</h3><ul><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_3" rel="noopener">The X-Files, season 3 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_5" rel="noopener">The X-Files, season 5 (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/X-Cops" rel="noopener">X-Cops (Wikipedia)</a></li><li><a href="https://en.wikipedia.org/wiki/The_X-Files_season_11" rel="noopener">The X-Files, season 11 (Wikipedia)</a></li></ul></aside><aside class="sources imgcredit"><h3>Header image</h3><p><a href="https://commons.wikimedia.org/wiki/File:Betacam_SP_camera.jpg" rel="noopener">Betacam SP camera.jpg</a> by grm_wnr, <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>, via Wikimedia Commons.</p></aside>
 <nav class="pager" aria-label="More essays"><a class="prev" href="post-modern-prometheus.html"><small>Previous essay</small><b>In Black and White: The Post-Modern Prometheus</b></a><a class="next" href="paranoid-style.html"><small>Next essay</small><b>The Paranoid Style: From Pakula to the Basement</b></a></nav>
 <footer><div class="wrap">
   <div class="sig">The truth is out there.</div>
   <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
-  The X-Files and all related names are trademarks of their respective owners.</p>
+  The X-Files and all related names are trademarks of their respective owners. <a href="../credits.html" style="color:var(--soft)">Image credits</a>.</p>
 </div></footer>
 <script>
 (() => {

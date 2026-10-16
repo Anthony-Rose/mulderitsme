@@ -27,14 +27,41 @@ WPM = 230
 SITE_URL = "https://mulderitsme.net"
 SITE_NAME = "Mulder, It's Me"
 OG_IMAGE = SITE_URL + "/images/og.jpg"
+FRAMES = ROOT / "images" / "frames"
+LICENSES = {"CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/", "CC BY 4.0": "https://creativecommons.org/licenses/by/4.0/",
+            "CC BY-SA 2.0": "https://creativecommons.org/licenses/by-sa/2.0/", "CC BY-SA 3.0": "https://creativecommons.org/licenses/by-sa/3.0/",
+            "CC BY-SA 3.0 us": "https://creativecommons.org/licenses/by-sa/3.0/us/", "CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/"}
+
+
+def load_credits():
+    try:
+        return json.loads((FRAMES / "credits.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+
+
+CREDITS = load_credits()
+
+
+def frame_image(slug):
+    """Published path of an essay's frame image (images/frames/<slug>.jpg), or None."""
+    return f"images/frames/{slug}.jpg" if (FRAMES / f"{slug}.jpg").exists() else None
+
+
+def credit_html(c):
+    lic = c["license"]
+    lic_html = f'<a href="{LICENSES[lic]}" rel="noopener">{html.escape(lic)}</a>' if lic in LICENSES else html.escape(lic)
+    return (f'<a href="{html.escape(c["source"])}" rel="noopener">{html.escape(c["title"])}</a> by {html.escape(c["author"])}, '
+            f'{lic_html}, via Wikimedia Commons')
 PUBLISHER = {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/",
              "logo": {"@type": "ImageObject", "url": OG_IMAGE}}
 
 
-def seo(title, desc, path, kind="website", extra_ld=()):
+def seo(title, desc, path, kind="website", extra_ld=(), image=None):
     """Canonical, Open Graph, Twitter card and JSON-LD tags for one page."""
     url = SITE_URL + path
     t, d = html.escape(title, quote=True), html.escape(desc, quote=True)
+    img, iw, ih = (SITE_URL + "/" + image, 1600, 669) if image else (OG_IMAGE, 1200, 630)
     tags = [
         f'<link rel="canonical" href="{url}">',
         f'<meta property="og:site_name" content="{html.escape(SITE_NAME, quote=True)}">',
@@ -42,11 +69,11 @@ def seo(title, desc, path, kind="website", extra_ld=()):
         f'<meta property="og:title" content="{t}">',
         f'<meta property="og:description" content="{d}">',
         f'<meta property="og:url" content="{url}">',
-        f'<meta property="og:image" content="{OG_IMAGE}">',
-        '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">',
+        f'<meta property="og:image" content="{img}">',
+        f'<meta property="og:image:width" content="{iw}"><meta property="og:image:height" content="{ih}">',
         '<meta property="og:locale" content="en_US">',
         '<meta name="twitter:card" content="summary_large_image">',
-        f'<meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{OG_IMAGE}">',
+        f'<meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{img}">',
         '<meta name="robots" content="index, follow, max-image-preview:large">',
         '<link rel="alternate" type="application/rss+xml" title="Mulder, It&#x27;s Me journal" href="/feed.xml">',
     ]
@@ -128,6 +155,11 @@ STYLE = """
 
   .masthead { position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
   .masthead canvas { position:absolute; inset:0; width:100%; height:100%; opacity:.8; }
+  .masthead .plate { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.3) brightness(.5); transform:scale(1.04); animation:drift 30s ease-in-out infinite alternate; }
+  .masthead.has-plate canvas { opacity:.35; }
+  .masthead.has-plate::before { content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg, rgba(6,9,10,.35), rgba(6,9,10,.55) 55%, var(--bg)); }
+  @keyframes drift { from { transform:scale(1.04) translate(0,0); } to { transform:scale(1.1) translate(-1.5%, 1%); } }
+  .masthead.has-plate .wrap { padding-top:180px; padding-bottom:90px; }
   .masthead::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 140%, hsla(var(--h,140),70%,45%,.28), transparent 65%); pointer-events:none; }
   .masthead .wrap { position:relative; z-index:1; padding-top:110px; padding-bottom:80px; max-width:920px; }
   .eyebrow { font:500 12px var(--mono); letter-spacing:.28em; text-transform:uppercase; color:var(--green); }
@@ -145,6 +177,7 @@ STYLE = """
   .sources { max-width:700px; margin:0 auto 40px; padding:28px 16px 0; border-top:1px solid var(--line); font:14px/1.6 var(--sans); color:var(--muted); }
   .sources h3 { font:500 11px var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--soft); margin:0 0 10px; }
   .sources ul { margin:0; padding-left:18px; } .sources a { color:var(--soft); }
+  .sources.imgcredit { border-top:0; padding-top:0; margin-top:-12px; } .sources.imgcredit p { margin:0; }
   .pager { max-width:900px; margin:30px auto 110px; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   .pager a { display:block; text-decoration:none; color:var(--text); padding:22px 0; border-top:1px solid var(--line-2); transition:border-color .2s; }
   .pager a:hover { border-color:var(--green); }
@@ -164,9 +197,11 @@ STYLE = """
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
   .card:hover .frame::before { transform:scale(1.08); }
-  .card .frame .n { position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
+  .card .frame .ph { position:absolute; inset:0; background-size:cover; background-position:center; filter:grayscale(.35) contrast(1.05) brightness(.7); transform:scale(1.01); transition:transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
+  .card:hover .frame .ph { transform:scale(1.07); filter:grayscale(0) contrast(1.05) brightness(.85); }
+  .card .frame .n { z-index:1; text-shadow:0 4px 30px rgba(0,0,0,.6); position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
   .card:hover .frame .n { transform:translateX(6px); }
-  .card .frame .tc { position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
+  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
   .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
   .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
   .card:hover h3 { color:var(--green); }
@@ -220,7 +255,7 @@ HEAD = """<!doctype html>
 FOOT = """<footer><div class="wrap">
   <div class="sig">The truth is out there.</div>
   <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
-  The X-Files and all related names are trademarks of their respective owners.</p>
+  The X-Files and all related names are trademarks of their respective owners. <a href="../credits.html" style="color:var(--soft)">Image credits</a>.</p>
 </div></footer>
 <script>{stars}</script>
 {extra}
@@ -247,12 +282,12 @@ INDEX_JS = """<script>
 </script>"""
 
 
-def card(p, href):
+def card(p, href, prefix=""):
     text = html.escape(" ".join([p["title"], p["summary"], p["tag"], re.sub(r"\s+", " ", p["body"])]).lower(), quote=True)
     tc = f"{p['num']:02d}:{(p['words'] // 60) % 60:02d}:{p['words'] % 60:02d}:{p['num'] * 7 % 24:02d}"
     fx = 20 + (int(p["hue"]) * 7) % 60
     return f"""<a class="card" href="{href}" data-tag="{html.escape(p['tag'])}" data-text="{text}" style="--h:{p['hue']};--fx:{fx}%">
-  <div class="frame" aria-hidden="true"><span class="n">{p['num']:02d}</span><span class="tc">{tc}</span></div>
+  <div class="frame" aria-hidden="true">{f'<span class="ph" style="background-image:url({prefix}{p["img"]})"></span>' if p.get("img") else ""}<span class="n">{p['num']:02d}</span><span class="tc">{tc}</span></div>
   <div class="kick">{html.escape(p['tag'])}</div>
   <h3>{html.escape(p['title'])}</h3><p>{html.escape(p['summary'])}</p>
   <div class="foot">{p['pretty']} · {p['minutes']} min read</div>
@@ -263,6 +298,7 @@ def build():
     posts = sorted((parse(f) for f in SRC.glob("*.txt")), key=lambda p: (p["date"], p["stem"]))
     for i, p in enumerate(posts, 1):
         p["num"] = i
+        p["img"] = frame_image(p["slug"])
     OUT.mkdir(exist_ok=True)
     for old in OUT.glob("*.html"):
         old.unlink()
@@ -281,20 +317,22 @@ def build():
             items = "".join(f"<li>{inline(l.strip()[2:] if l.strip().startswith('- ') else l.strip())}</li>"
                             for l in p["sources"].splitlines() if l.strip())
             sources = f'<aside class="sources"><h3>Sources and further reading</h3><ul>{items}</ul></aside>'
+        if p["img"] and p["slug"] in CREDITS:
+            sources += f'<aside class="sources imgcredit"><h3>Header image</h3><p>{credit_html(CREDITS[p["slug"]])}.</p></aside>'
         path = f"/blog/{p['slug']}.html"
         article = {"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "description": p["summary"],
                    "datePublished": p["date"], "dateModified": p.get("updated", p["date"]), "articleSection": p["tag"],
-                   "wordCount": p["words"], "image": OG_IMAGE, "inLanguage": "en", "author": PUBLISHER, "publisher": PUBLISHER,
+                   "wordCount": p["words"], "image": SITE_URL + "/" + p["img"] if p["img"] else OG_IMAGE, "inLanguage": "en", "author": PUBLISHER, "publisher": PUBLISHER,
                    "mainEntityOfPage": SITE_URL + path, "about": {"@type": "TVSeries", "name": "The X-Files"}}
         crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": SITE_NAME, "item": SITE_URL + "/"},
             {"@type": "ListItem", "position": 2, "name": "Journal", "item": SITE_URL + "/blog/"},
             {"@type": "ListItem", "position": 3, "name": p["title"], "item": SITE_URL + path}]}
-        head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, crumbs))
+        head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, crumbs), p["img"])
         head_tags += f'\n<meta property="article:published_time" content="{p["date"]}"><meta property="article:section" content="{html.escape(p["tag"], quote=True)}">'
         page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags, fonts=FONTS, style=STYLE)
         page += f"""<div id="progress"></div>
-<header class="masthead" style="--h:{p['hue']}"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
+<header class="masthead{' has-plate' if p['img'] else ''}" style="--h:{p['hue']}">{f'<div class="plate" style="background-image:url(../{p["img"]})"></div>' if p['img'] else ''}<canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Essay No. {p['num']:02d} · {html.escape(p['tag'])}</div>
   <h1>{inline(p['title'])}</h1>
   <p class="dek">{inline(p['summary'])}</p>
@@ -326,7 +364,7 @@ def build():
 <main class="wrap">
   <div class="tools" role="group" aria-label="Filter essays">{chips}
     <input class="search" id="q" type="search" placeholder="Search the essays" aria-label="Search essays"></div>
-  <div class="grid">{"".join(card(p, p["slug"] + ".html") for p in newest)}</div>
+  <div class="grid">{"".join(card(p, p["slug"] + ".html", "../") for p in newest)}</div>
   <p class="empty" id="empty" hidden>Nothing matches. The truth is elsewhere.</p>
 </main>
 """
@@ -344,7 +382,26 @@ def build():
     home = re.sub(r"(<!--SEO-->).*?(<!--/SEO-->)", lambda m: f"{m[1]}\n{home_tags}\n{m[2]}", home, flags=re.S)
     HOME.write_text(home, encoding="utf-8")
     write_feeds(newest)
+    write_credits()
     print(f"built {len(posts)} posts, plus sitemap.xml, feed.xml and robots.txt")
+
+
+def write_credits():
+    rows = "".join(f'<li><img src="{html.escape(c["file"])}" alt="" loading="lazy"><div><b>{html.escape(k.replace("cast-", "").replace("p-", "").replace("-", " ").title())}</b>{credit_html(c)}</div></li>'
+                   for k, c in sorted(CREDITS.items()))
+    page = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image credits · {html.escape(SITE_NAME)}</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="{SITE_URL}/credits.html">
+{FONTS}
+<style>body{{margin:0;background:#06090a;color:#e6e2d8;font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}} .w{{max-width:900px;margin:0 auto;padding:60px 16px 90px}}
+h1{{font:300 48px/1.1 "Fraunces",Georgia,serif;margin:0 0 10px}} p.l{{color:#b9b5aa;margin:0 0 36px}} a{{color:#b9b5aa}} ul{{list-style:none;padding:0;margin:0;display:grid;gap:14px}}
+li{{display:flex;gap:16px;align-items:center;border-top:1px solid #1c2528;padding-top:14px}} li img{{width:120px;height:68px;object-fit:cover;flex:none;filter:grayscale(.3)}}
+li b{{display:block;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#6dff8a}} .back{{display:inline-block;margin-bottom:30px;color:#6dff8a;text-decoration:none;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase}}</style>
+</head><body><div class="w"><a class="back" href="./">&larr; Mulder, It's Me</a><h1>Image credits</h1>
+<p class="l">Every photograph on this site is freely licensed or in the public domain, from Wikimedia Commons. Images were cropped, resized and toned for the layout; adapted copies are shared under the same licenses. No stills from The X-Files are used.</p>
+<ul>{rows}</ul></div></body></html>
+"""
+    (ROOT / "credits.html").write_text(page, encoding="utf-8")
 
 
 def write_feeds(newest):

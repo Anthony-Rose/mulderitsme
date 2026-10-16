@@ -7,7 +7,7 @@ An unofficial film journal on The X-Files, served at https://mulderitsme.net fro
 - `index.html` is the homepage: the WebGL UFO hero (three.js from jsDelivr), the journal strip, visual grammar, filmmakers, the viewing syllabus and the lineage timeline.
 - `posts-src/*.txt` are the essays, one file each, named `NN-slug.txt`.
 - `build_blog.py` turns the essays into `blog/`. It also refreshes the homepage journal strip and SEO block, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
-- `images/agents/` holds the cast photos from Wikimedia Commons (credits in `images/agents/CREDITS.md`). `images/og.jpg` is the social share image.
+- `images/agents/` holds the cast photos. `images/frames/` holds the essay and filmmaker images: an essay picks up `images/frames/<slug>.jpg` (1600x669, 2.39:1) automatically, for its card, its page header and its social preview. Every image is freely licensed or public domain from Wikimedia Commons, never a show still. Each one's credit lives in `images/frames/credits.json`, which `build_blog.py` uses to generate `credits.html`. `images/og.jpg` is the default social share image.
 
 ## Writing an essay
 
