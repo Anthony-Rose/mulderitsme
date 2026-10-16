@@ -1,0 +1,41 @@
+title: Triangle and the Long Take
+date: 2026-10-16
+tag: Form
+hue: 220
+summary: Chris Carter built a sixth-season episode to play as four unbroken takes, borrowing a trick from Hitchcock's Rope. A close look at what the long take does, and how it was faked.
+---
+Most television is assembled from coverage. A scene is shot from several angles, and the editor chooses among them, cutting to shape performance and pace. The cut is the basic unit of control. *Triangle*, written and directed by Chris Carter for the show's sixth season, gives that control away, or at least pretends to.
+
+The episode is designed to look as if it were made from four long, unbroken takes, each running roughly eleven minutes, one per act. It's a stunt, and it's also an argument about what continuous time does to suspense.
+
+## The Rope precedent
+
+The obvious model is Alfred Hitchcock's *Rope* (1948), which was staged to appear as a single continuous shot. Hitchcock was limited by how much film a camera magazine could hold, so he hid his cuts: the camera would move into a dark surface, such as the back of a jacket, and the next reel would begin from the same darkness.
+
+*Triangle* faces a similar problem. The Steadicam rig used for the long moving shots could only hold about four minutes of film, so the production had to disguise cuts within each act to sustain the illusion. The craft is in making the seams disappear. The audience should feel continuous time even though the footage isn't continuous.
+
+## Why continuous time works
+
+A long take changes how you watch. With no cuts to tell you what to look at, your attention wanders the frame the way it would in a real space. You become aware of geography: where the doors are, how far the characters are from each other, how long it takes to get from one place to another.
+
+That awareness is the source of the episode's tension. Mulder is adrift on a ship that seems to belong to 1939, in a story full of mistaken identities and armed men. Back in the present, Scully races through the FBI building to get help. Because the camera never cuts away, every corridor is as long as it really is, and every delay costs real time.
+
+## Split-screen
+
+In the final acts, Carter splits the frame. The two storylines play side by side, and at one point the two halves of the screen appear to brush against each other, as though Mulder and Scully, separated by decades, nearly cross paths.
+
+Split-screen is usually a device for showing simultaneity. Here it does something stranger. It suggests that two moments in time are adjacent, separated only by a thin line, which is exactly what the episode's supernatural premise proposes.
+
+## Stunt or style
+
+It would be easy to dismiss *Triangle* as a formal stunt, a showcase for the crew rather than a story. But the technique is matched to the material. The episode is about a man stuck in a single, continuous, impossible night, and the form makes you share that condition. You can't step out of the shot any more than Mulder can step off the ship.
+
+It's also a sign of how much confidence the show had by its sixth season. A program that had once been a modest, rain-soaked procedural was now willing to rebuild its own grammar for a single hour, and trusted its audience to follow.
+
+## Watching it now
+
+*Triangle* rewards a second viewing with your eye on the edges of the frame. Watch for where the camera chooses to pass close to a wall or a dark doorway. Those are the places where the trick might be hiding. Finding them doesn't spoil the episode. It makes you appreciate how much planning goes into something that is meant to feel unplanned.
+
+Sources:
+- [Triangle (Wikipedia)](https://en.wikipedia.org/wiki/Triangle_(The_X-Files))
+- [The X-Files, season 6 (Wikipedia)](https://en.wikipedia.org/wiki/The_X-Files_season_6)
