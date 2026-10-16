@@ -12,4 +12,4 @@ python build_blog.py
 
 Preview locally with `python -m http.server` and open http://127.0.0.1:8000/.
 
-To use a custom domain, add a `CNAME` file containing the domain, then set it under the repo's Settings > Pages.
+The site is served at https://mulderitsme.net (DNS at Cloudflare, records set to "DNS only").
