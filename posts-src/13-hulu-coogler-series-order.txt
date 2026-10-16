@@ -1,0 +1,64 @@
+title: Series Order: What Hulu Actually Bought
+date: 2026-10-16
+tag: News
+hue: 18
+summary: Eight months after ordering a pilot, Hulu has picked up Ryan Coogler's X-Files to series. Sorting the confirmed from the reported from the rumored, and what the shape of the deal says about the show.
+---
+On Tuesday, October 13, Hulu announced that it had picked up Ryan Coogler's *The X-Files* to series. The pilot had been ordered in February, which means the project passed through the oldest gate in American television, a single episode judged before anyone commits to more, when streaming dramas usually go straight to series. That the show was made to earn its season is the first interesting fact about it. The rest depends on reading the announcement for what it says and declining to fill in what it does not.
+
+## What Hulu confirmed
+
+The official logline is modest. Two decorated FBI agents, temperamentally far apart, are assigned to a division that has been closed for years and that handles the cases nobody else can explain. Danielle Deadwyler and Himesh Patel star. Coogler wrote, directed and executive produced the pilot and is an executive producer on the series. Jennifer Yale is the showrunner. Zinzi Coogler and Sev Ohanian of Proximity Media are executive producers, as is Chris Carter. Simone Harris, Deadwyler and Patel are co-executive producers. The series comes from Onyx Collective and 20th Television in association with Proximity Media. There is no premiere date and no episode count; [TheWrap](https://www.thewrap.com/media-platforms/tv/ryan-coogler-x-files-ordered-to-series-hulu/) guessed fall 2027 and labeled it a guess.
+
+Coogler said, "What Chris Carter created is special," and that writing and directing the pilot "has meant a great deal to me." TheWrap also reported that Ludwig Göransson scored the pilot and that Autumn Durald Arkapaw, who won the Academy Award for photographing *Sinners*, shot it.
+
+That is the whole of the confirmed record. Everything else is reporting, rumor or interview, and the three piles should stay separate.
+
+## What is reported
+
+The most consequential report is that Deadwyler and Patel are not playing Mulder and Scully. [Variety](https://variety.com/2026/tv/news/x-files-reboot-ryan-coogler-series-hulu-1236910160/) attributed that to a source; Deadline, when Patel was cast in March, attributed it to insiders. Nothing attributed to Hulu says it either way. The closest thing to an on-record confirmation is Patel himself, who told The Direct in July that he and Deadwyler were playing "completely new characters." An actor describing his own role is worth more than an anonymous source, but it is not a studio statement.
+
+The project began under Proximity's exclusive television deal with Disney, which Variety reported had expired by the time Proximity's television arm signed with Netflix in June. Carter first mentioned a Coogler version in March 2023, so development has run more than three years. This series stays at Hulu.
+
+Vancouver production listings put the shoot in British Columbia from May 11 to June 11, 2026, and Patel said in early July that the pilot had wrapped. The city is where the original shot its first five seasons. Deadline reported in May that Amy Madigan, Steve Buscemi, Ben Foster, Devery Jacobs and Tantoo Cardinal were among the guest cast. Patel and Deadwyler previously acted together in *Station Eleven*; there is no reported prior collaboration between Patel and Coogler.
+
+## What is rumor
+
+The claims that the pilot runs about two hours and was shot on 65mm film began with a July 17 post on the blog World of Reel, which attributed the format to unnamed "reports." JoBlo, repeating the claim this week, cited only a social media account that logs what productions shoot on. The same blog said in July that Coogler had asked Disney to consider releasing the pilot as a feature, and this week it repeated the description along with an unsourced claim about who appears in the episode. None of this has been confirmed by Hulu or by any trade. Arkapaw's involvement is confirmed; what she shot on is not.
+
+## What the people involved have said
+
+Gillian Anderson, at [Awesome Con](https://www.thewrap.com/creative-content/tv-shows/gillian-anderson-ryan-coogler-x-files-reboot-promise/) in March, said she had "a few conversations" with Coogler and that "the pilot script is really good." David Duchovny told The Hollywood Reporter in April that he had spoken to Coogler but had not read the script, that there was "nothing concrete at this point," and that he did not know whether his character exists in the show.
+
+Carter's position is the most unusual. In August, promoting his R-rated director's cut of *I Want to Believe*, subtitled *Vrach Frankenshteyn* and released on Hulu and Disney+ on August 14, he told The Hollywood Reporter that his producer credit reflected no work.
+
+> My name is on it as executive producer, but I have done exactly nothing.
+
+He told [Nerdist](https://nerdist.com/article/chris-carter-thinks-scully-will-be-in-the-x-files-reboot-will-not-read-ryan-coogler-script/) he had declined to read the script because "I want to be surprised," and told Polygon he thought Anderson was going to appear and assumed Duchovny would, while saying he did not know the details. A creator who has chosen not to read the script is not a source on its contents, and his guess about the cast is a guess.
+
+## The engine
+
+Strip the logline to its parts and it is the original engine: two agents, one division, cases without explanations. The show ran on the argument between the two people in the car, one of whom needed the impossible to be true and one of whom needed it not to be, with every case a referendum on which of them was right that week. If the reports of new characters hold, Coogler and Yale have kept the engine and replaced the drivers, and the word "different" in the logline is doing more work than the word "unexplained." The logline does not say what divides these two, and it would be a mistake to assume the old axis of faith against medicine.
+
+New characters are also the most workable way to make the show. Carter's own revival seasons, which aired on Fox in 2016 and 2018 (not on Hulu, as one trade wrote this week), demonstrated that Mulder and Scully's story had been finished more than once and that each reopening cost something. A series that has to carry decades of backstory into the room before it can open a case is a series about its own continuity. Two strangers in a reopened basement can simply open the case.
+
+## Format and frame
+
+If the 65mm report is accurate, it is a counterintuitive choice for this property. The original, as the first essay on this site argued, was built on withholding: a flashlight, a dark room, a figure the lens could not resolve. Large-format film wants the opposite. It resolves everything and suits landscapes and faces at scale. Arkapaw used it on *Sinners* for a story that spread across a Delta day before collapsing into one building at night. An X-Files episode spends most of its life in the building. The interesting possibility is that Coogler wants the clarity on purpose, that the new show's fear comes from how much you can see rather than how little, and that the darkness of 1993 was a solution to constraints rather than a law. But that is speculation stacked on a rumor, and the honest position is to wait for a frame.
+
+What is not speculation is length. A streaming season of eight or ten episodes, the likely shape even though Hulu has not said, changes the show's economy. The 22-episode network model had room for the outlier episodes that made the series' reputation, the comedies and the format experiments, because the schedule had slack. A short season has none. Every hour has to advance something, and the standalone case becomes an expense rather than the default. The risk is a season that is all arc and no cases, precisely the proportion the original got wrong in its last years. The opportunity is that a short season does not need a conspiracy to hold it together. Eight good cases and one relationship would be enough, and truer to what made the show work than any long game.
+
+## The inheritance
+
+That is the trap the new show inherits. The X-Files conspiracy was never really a story. It was a promissory note, renewed every May and deferred every November, and by the end it was a debt the show could not pay. Any reboot that respects the original will be tempted to assume that debt, to plant the black oil and the Syndicate and a colonization date in episode two because that is what the brand sounds like. Carter's distance may be the best thing about this production. He is not in the room, he has not read the script, and nobody at the table is charged with defending the old continuity. Whether the show declines the note or signs for it again will be visible within a season.
+
+## What to watch for
+
+The cinematographer and composer of the pilot are confirmed; the director of episode two is not, and that hire will say whether the series intends to keep the pilot's look. The episode count, when announced, will say what kind of show Hulu thinks it bought. And the first trailer will answer the only question this journal cares about: what the new show looks like in the dark.
+
+Sources:
+- [Variety: 'X-Files' Reboot From Ryan Coogler Picked Up to Series at Hulu](https://variety.com/2026/tv/news/x-files-reboot-ryan-coogler-series-hulu-1236910160/)
+- [TheWrap: Ryan Coogler's 'X-Files' Pilot Picked Up to Series at Hulu](https://www.thewrap.com/media-platforms/tv/ryan-coogler-x-files-ordered-to-series-hulu/)
+- [Gizmodo: Chris Carter Is Anxiously Awaiting Ryan Coogler's X-Files](https://gizmodo.com/chris-carter-is-anxiously-awaiting-ryan-cooglers-x-files-2000796828)
+- [Nerdist: Chris Carter Thinks Scully Will Be in the X-Files Reboot (But Won't Read Coogler's Script)](https://nerdist.com/article/chris-carter-thinks-scully-will-be-in-the-x-files-reboot-will-not-read-ryan-coogler-script/)
+- [The Hollywood Reporter: series order](https://www.hollywoodreporter.com/tv/tv-news/x-files-ryan-coogler-hulu-series-order-1236728791/)
