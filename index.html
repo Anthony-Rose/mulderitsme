@@ -158,6 +158,16 @@
   .dossier dt { opacity: .55; }
   .dossier dd { margin: 0; }
   .dossier p { font-size: 14px; margin: 14px 0 0; }
+
+  .dossier .evidence { float: right; width: 104px; margin: -4px -4px 10px 14px; padding: 6px 6px 4px; background: #fff; box-shadow: 0 6px 14px rgba(0,0,0,.35);
+    transform: rotate(3deg) translateZ(20px); transition: transform .3s; }
+  .dossier:nth-child(even) .evidence { transform: rotate(-3deg) translateZ(20px); }
+  .dossier .evidence img { display: block; width: 100%; height: 118px; object-fit: cover; object-position: 50% 18%; filter: grayscale(1) sepia(.25) contrast(1.1); transition: filter .4s; }
+  .dossier:hover .evidence img, .dossier .evidence:focus-within img { filter: none; }
+  .dossier .evidence figcaption { font: 10px/1.2 "IBM Plex Sans", sans-serif; color: #444; text-align: center; margin-top: 4px; }
+  .dossier .clip { z-index: 2; right: 40px; }
+  .credits { max-width: 760px; margin: 18px auto 0; font-size: 12px; line-height: 1.6; }
+  .credits a { color: var(--muted); }
   .redact { background: var(--paper-ink); color: transparent; cursor: pointer; padding: 0 2px; transition: background .4s, color .4s; border-radius: 1px; }
   .redact.shown { background: rgba(179,38,30,.12); color: var(--paper-ink); }
   .stamp {
@@ -373,12 +383,13 @@
       <div class="reveal">
         <div class="kicker">// PERSONNEL FILES</div>
         <h2>The people in the basement</h2>
-        <p class="lede">Two agents, one flashlight each, and a filing cabinet nobody upstairs wants opened. Tap the black bars to declassify.</p>
+        <p class="lede">Two agents, their allies, and the man who keeps losing their files. Tap the black bars to declassify.</p>
       </div>
 
       <div class="agents">
         <article class="dossier reveal">
           <div class="tab">FILE 001</div><div class="clip"></div>
+          <figure class="evidence"><img src="images/agents/mulder.jpg" alt="David Duchovny, who plays Fox Mulder" width="640" height="800" loading="lazy"><figcaption>David Duchovny</figcaption></figure>
           <h3>Fox Mulder</h3>
           <div class="role">Special Agent, X-Files Division</div>
           <dl>
@@ -392,6 +403,7 @@
 
         <article class="dossier reveal">
           <div class="tab">FILE 002</div><div class="clip"></div>
+          <figure class="evidence"><img src="images/agents/scully.jpg" alt="Gillian Anderson, who plays Dana Scully" width="640" height="848" loading="lazy"><figcaption>Gillian Anderson</figcaption></figure>
           <h3>Dana Scully</h3>
           <div class="role">Special Agent, M.D.</div>
           <dl>
@@ -405,6 +417,7 @@
 
         <article class="dossier reveal">
           <div class="tab">FILE 003</div><div class="clip"></div>
+          <figure class="evidence"><img src="images/agents/skinner.jpg" alt="Mitch Pileggi, who plays Walter Skinner" width="640" height="904" loading="lazy"><figcaption>Mitch Pileggi</figcaption></figure>
           <h3>Walter Skinner</h3>
           <div class="role">Assistant Director</div>
           <dl>
@@ -418,6 +431,7 @@
 
         <article class="dossier reveal">
           <div class="tab">FILE 004</div><div class="clip"></div>
+          <figure class="evidence"><img src="images/agents/langly.jpg" alt="Dean Haglund, who plays Ringo Langly of the Lone Gunmen" width="640" height="822" loading="lazy"><figcaption>Dean Haglund (Langly)</figcaption></figure>
           <h3>The Lone Gunmen</h3>
           <div class="role">Byers, Frohike &amp; Langly</div>
           <dl>
@@ -427,6 +441,20 @@
           </dl>
           <p>Mulder's tech support. The original hacker friends you call when the official channels go quiet.</p>
           <div class="stamp">CLEARED</div>
+        </article>
+
+        <article class="dossier reveal">
+          <div class="tab">FILE 005</div><div class="clip"></div>
+          <figure class="evidence"><img src="images/agents/smoking-man.jpg" alt="William B. Davis, who plays the Cigarette Smoking Man" width="640" height="829" loading="lazy"><figcaption>William B. Davis</figcaption></figure>
+          <h3>Smoking Man</h3>
+          <div class="role">Person of interest, no badge</div>
+          <dl>
+            <dt>Brand</dt><dd>Morley</dd>
+            <dt>Seen</dt><dd>In the back of every room</dd>
+            <dt>Name</dt><dd><span class="redact" tabindex="0" role="button">C.G.B. Spender</span></dd>
+          </dl>
+          <p>Never raises his voice and never leaves fingerprints. Wherever a file disappears, the ashtray is still warm.</p>
+          <div class="stamp">HOSTILE</div>
         </article>
       </div>
     </div>
@@ -550,7 +578,14 @@
     </div>
     <div class="kicker flicker">THE TRUTH IS OUT THERE</div>
     <p>An unofficial, non-commercial fan page. Not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.<br>
-      The X-Files and all related names are trademarks of their respective owners. All artwork and writing on this page is original.</p>
+      The X-Files and all related names are trademarks of their respective owners. Illustrations and writing on this page are original.</p>
+    <p class="credits">Photos from Wikimedia Commons, resized and toned for this page:
+      <a href="https://commons.wikimedia.org/wiki/File:David_Duchovny_-_LATFOB_2026-02.jpg" rel="noopener">David Duchovny</a> by Kevin Paul (<a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>) ·
+      <a href="https://commons.wikimedia.org/wiki/File:Gillian_Anderson_at_Fan_Expo_Denver_2026_02.jpg" rel="noopener">Gillian Anderson</a> by SpiritedMichelle (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>) ·
+      <a href="https://commons.wikimedia.org/wiki/File:Mitch_Pileggi_Wellington_2013.jpg" rel="noopener">Mitch Pileggi</a> by DatarkNZ (<a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="noopener">CC BY-SA 2.0</a>) ·
+      <a href="https://commons.wikimedia.org/wiki/File:Dean_Haglund_by_Gage_Skidmore.jpg" rel="noopener">Dean Haglund</a> by Gage Skidmore (<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>) ·
+      <a href="https://commons.wikimedia.org/wiki/File:Toulouse_Game_Show_2011_-_William_B_Davis_-_P1280944-CROP.jpg" rel="noopener">William B. Davis</a> by Yves Tennevin (<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>).
+      The adapted copies are shared under the same licenses.</p>
   </div>
 </footer>
 
