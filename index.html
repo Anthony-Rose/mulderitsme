@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mulder, It's Me</title>
+<meta name="description" content="An unofficial X-Files fan page: agents, case files, the conspiracy board, and the truth that's out there somewhere.">
+<meta name="theme-color" content="#020604">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=IBM+Plex+Sans:wght@400;600&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #020604;
+    --panel: #0b120d;
+    --line: #18261b;
+    --text: #cfd8cc;
+    --muted: #7f8c7c;
+    --green: #6dff8a;
+    --green-dim: #2c7a3c;
+    --paper: #e9e1c8;
+    --paper-ink: #2a2418;
+    --stamp: #b3261e;
+    --yarn: #c4232c;
+    --cork: #a57a4c;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 "IBM Plex Sans", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--green); color: #000; }
+  a { color: var(--green); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+    background: linear-gradient(rgba(2,6,4,.85), rgba(2,6,4,0));
+    transition: background .3s;
+  }
+  nav.solid { background: rgba(2,6,4,.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; gap: 22px; align-items: center; height: 56px; overflow-x: auto; scrollbar-width: none; }
+  nav .brand { font-family: "VT323", monospace; font-size: 24px; color: var(--green); text-decoration: none; white-space: nowrap; text-shadow: 0 0 10px rgba(109,255,138,.5); }
+  nav a.link { color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; transition: color .2s; }
+  nav a.link:hover { color: var(--green); }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; height: 100vh; height: 100svh; min-height: 560px; overflow: hidden; }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
+  .no-webgl .hero { background: radial-gradient(ellipse at 50% 85%, #0c2a15, var(--bg) 70%); }
+  .hero-ui {
+    position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding: 0 16px 9vh; text-align: center; pointer-events: none;
+    background: linear-gradient(rgba(2,6,4,0) 45%, rgba(2,6,4,.55) 75%, rgba(2,6,4,.85));
+  }
+  .hero-kicker { font-family: "VT323", monospace; color: var(--green); font-size: clamp(18px, 3vw, 24px); letter-spacing: .25em; text-shadow: 0 0 12px rgba(109,255,138,.7); min-height: 1.3em; }
+  .hero h1 {
+    font-family: "Special Elite", cursive; font-weight: normal; margin: .1em 0 .15em; line-height: 1;
+    font-size: clamp(46px, 11vw, 132px); color: #eef7ec; letter-spacing: .02em;
+    text-shadow: 0 0 30px rgba(109,255,138,.25), 0 6px 40px rgba(0,0,0,.9);
+  }
+  .hero p { margin: 0; color: #b9c8b5; font-size: clamp(14px, 2vw, 17px); text-shadow: 0 2px 12px #000; }
+  .hint { margin-top: 26px; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+  .hint b { color: var(--green); font-weight: normal; }
+
+  /* glitch headline */
+  .glitch { position: relative; display: inline-block; }
+  .glitch::before, .glitch::after {
+    content: attr(data-text); position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  }
+  .glitch::before { color: #ff3b6b; transform: translate(-3px, 0); }
+  .glitch::after { color: #38f3ff; transform: translate(3px, 0); }
+  .glitch.on::before { opacity: .7; animation: slice 0.35s steps(2) 2; }
+  .glitch.on::after { opacity: .7; animation: slice 0.35s steps(2) reverse 2; }
+  @keyframes slice {
+    0% { clip-path: inset(10% 0 70% 0); } 25% { clip-path: inset(60% 0 15% 0); }
+    50% { clip-path: inset(30% 0 45% 0); } 75% { clip-path: inset(80% 0 2% 0); } 100% { clip-path: inset(0 0 90% 0); }
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 110px 0; position: relative; }
+  .kicker { font-family: "VT323", monospace; color: var(--green); font-size: 20px; letter-spacing: .14em; }
+  h2 { font-family: "Special Elite", cursive; font-weight: normal; font-size: clamp(32px, 6vw, 54px); margin: 0 0 10px; color: #eef7ec; line-height: 1.1; }
+  .lede { color: var(--muted); max-width: 640px; margin: 0; }
+  .js .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- basement (flashlight) ---------- */
+  #basement { padding-bottom: 60px; }
+  .room {
+    position: relative; margin-top: 36px; height: 620px; border: 1px solid #111; overflow: hidden; touch-action: pan-y;
+    background:
+      linear-gradient(#0000 0 64px, #0003 64px 68px, #0000 68px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .45 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      linear-gradient(#4a4b42, #3b3c34 64px, #575548 64px, #3f3e35);
+    cursor: none;
+  }
+  .ceiling { position: absolute; top: 0; left: 0; right: 0; height: 64px;
+    background: repeating-linear-gradient(90deg, #6d6c5f 0 118px, #3c3b33 118px 120px), #6d6c5f; }
+  .pencils { position: absolute; top: 40px; left: 54%; width: 200px; height: 60px; }
+  .pencils i { position: absolute; top: 0; width: 6px; height: 54px; border-radius: 0 0 3px 3px;
+    background: linear-gradient(#c49a3a 0 82%, #e7c08a 82% 92%, #333 92%); transform-origin: top center; }
+  .poster {
+    position: absolute; left: 7%; top: 110px; width: 230px; height: 330px; padding: 18px 16px 16px;
+    background: linear-gradient(#0c140f, #050806); box-shadow: 0 14px 30px rgba(0,0,0,.6); border: 1px solid #222;
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  }
+  .poster svg { width: 100%; flex: 1; }
+  .poster span { font-family: "Special Elite", cursive; color: #f0f0e8; font-size: 22px; letter-spacing: .12em; text-align: center; line-height: 1.15; }
+  .cabinet {
+    position: absolute; right: 7%; bottom: 0; width: 170px; height: 320px; background: linear-gradient(90deg, #4c5148, #5d6359 50%, #474b42);
+    border: 1px solid #222; padding: 16px 12px; display: grid; gap: 12px; grid-template-rows: repeat(4, 1fr);
+  }
+  .cabinet div { background: linear-gradient(#585e54, #4b5048); border: 1px solid #333; position: relative; }
+  .cabinet div::after { content: ""; position: absolute; left: 50%; top: 55%; width: 46px; height: 8px; margin-left: -23px; background: #2d302b; border-radius: 4px; }
+  .cabinet .label { font-family: "Special Elite", cursive; color: #222; background: #e6dfc8; font-size: 15px; width: 70px; margin: 8px auto 0; text-align: center; }
+  .desk { position: absolute; left: 34%; right: 26%; bottom: 0; height: 120px; background: linear-gradient(#3a2a1c, #22180f); border-top: 8px solid #4a3523; }
+  .nameplate { position: absolute; left: 10%; top: -40px; padding: 4px 14px; background: linear-gradient(#2a2a2a, #111); border: 2px solid #9c8452;
+    color: #d7bd7f; font: 14px "Special Elite", cursive; letter-spacing: .1em; }
+  .seeds { position: absolute; right: 12%; top: -62px; width: 54px; height: 62px; background: linear-gradient(#e2b23a, #c58c23); border-radius: 6px 6px 3px 3px;
+    color: #4a2a00; font: bold 9px/1.1 "IBM Plex Sans", sans-serif; text-align: center; padding-top: 12px; }
+  .seeds::before { content: "🌻"; display: block; font-size: 18px; }
+  .sticky { position: absolute; left: 42%; top: 140px; width: 130px; padding: 14px 12px; background: #f3e46b; color: #333; transform: rotate(4deg);
+    font: 18px/1.2 "Permanent Marker", cursive; box-shadow: 0 6px 14px rgba(0,0,0,.4); }
+  .sticky small { display: block; font: 11px "IBM Plex Sans", sans-serif; margin-top: 8px; opacity: .7; }
+  .dark {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at var(--lx, 50%) var(--ly, 40%), rgba(255,250,220,.08) 0, rgba(0,0,0,0) calc(var(--lr, 140px) * .55), rgba(1,2,1,.985) var(--lr, 140px));
+  }
+  [data-evidence] { transition: filter .4s; }
+  [data-evidence].found { filter: drop-shadow(0 0 12px rgba(109,255,138,.7)); }
+  .evidence-hud { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 14px; font-family: "VT323", monospace; font-size: 20px; color: var(--green); }
+  .evidence-hud ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 18px; }
+  .evidence-hud li.got { color: var(--green); }
+  .evidence-hud li.got::before { content: "✓ "; }
+
+  /* ---------- agents ---------- */
+  .agents { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; margin-top: 40px; perspective: 1200px; }
+  .dossier {
+    --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
+    background: var(--paper); color: var(--paper-ink); padding: 30px 22px 26px; position: relative;
+    font-family: "Special Elite", cursive; box-shadow: 0 20px 40px rgba(0,0,0,.55);
+    transform: rotateX(var(--rx)) rotateY(var(--ry)); transform-style: preserve-3d; transition: transform .15s ease-out;
+  }
+  .dossier::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.35), transparent 50%); mix-blend-mode: soft-light; }
+  .dossier .tab { position: absolute; top: -16px; left: 20px; background: #d4c79f; padding: 2px 14px; font-size: 13px; }
+  .dossier .clip { position: absolute; top: -12px; right: 26px; width: 18px; height: 50px; border: 3px solid #9aa0a6; border-radius: 9px; }
+  .dossier h3 { margin: 0 0 2px; font-size: 26px; font-weight: normal; }
+  .dossier .role { font-size: 13px; opacity: .7; margin-bottom: 14px; }
+  .dossier dl { margin: 0; font-size: 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+  .dossier dt { opacity: .55; }
+  .dossier dd { margin: 0; }
+  .dossier p { font-size: 14px; margin: 14px 0 0; }
+  .redact { background: var(--paper-ink); color: transparent; cursor: pointer; padding: 0 2px; transition: background .4s, color .4s; border-radius: 1px; }
+  .redact.shown { background: rgba(179,38,30,.12); color: var(--paper-ink); }
+  .stamp {
+    position: absolute; right: 16px; bottom: 16px; border: 3px double var(--stamp); color: var(--stamp);
+    padding: 2px 10px; font-size: 15px; letter-spacing: .12em; transform: rotate(-12deg) translateZ(30px); opacity: .85;
+  }
+
+  /* ---------- corkboard ---------- */
+  .board {
+    position: relative; margin-top: 36px; height: 680px; border: 14px solid #4b3220; border-radius: 4px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .15 0 0 0 0 .05 0 0 0 .7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      var(--cork);
+    box-shadow: inset 0 0 80px rgba(0,0,0,.55), 0 30px 60px rgba(0,0,0,.6); overflow: hidden;
+  }
+  .board svg.strings { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+  .note {
+    position: absolute; z-index: 1; width: 158px; padding: 22px 12px 12px; cursor: grab; touch-action: none; user-select: none;
+    background: #f5f1e3; color: #222; box-shadow: 0 8px 18px rgba(0,0,0,.45); transform: rotate(var(--r, 0deg));
+    font: 15px/1.25 "Special Elite", cursive; transition: box-shadow .2s;
+  }
+  .note.photo { background: #fff; padding: 10px 10px 12px; }
+  .note.photo .ph { height: 86px; background: linear-gradient(135deg, #2c3a33, #0e1511); margin-bottom: 8px; display: grid; place-items: center; font-size: 34px; filter: grayscale(.6) contrast(1.2); }
+  .note.yellow { background: #f3e46b; font-family: "Permanent Marker", cursive; font-size: 16px; }
+  .note.dragging { cursor: grabbing; box-shadow: 0 22px 40px rgba(0,0,0,.55); z-index: 3; }
+  .note::before { content: ""; position: absolute; top: 6px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ff6b6b, #8e0f14); box-shadow: 0 3px 4px rgba(0,0,0,.5); }
+  .note small { display: block; font: 11px "IBM Plex Sans", sans-serif; opacity: .6; margin-top: 4px; }
+  .board-hint { margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+  /* ---------- cases ---------- */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 22px; align-items: center; }
+  .chip {
+    background: transparent; border: 1px solid var(--green-dim); color: var(--text); padding: 7px 16px;
+    font: 14px "IBM Plex Sans", sans-serif; cursor: pointer; border-radius: 999px; transition: .2s;
+  }
+  .chip:hover { border-color: var(--green); }
+  .chip[aria-pressed="true"] { background: var(--green); color: #031; border-color: var(--green); font-weight: 600; }
+  .chip.ghost { margin-left: auto; border-style: dashed; }
+  .cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .case {
+    background: linear-gradient(160deg, #0f1912, #070b08); border: 1px solid var(--line); padding: 20px 22px 18px; position: relative; overflow: hidden;
+    transition: border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .case::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--green-dim); transition: .25s; }
+  .case:hover { border-color: #24402b; transform: translateY(-3px); box-shadow: 0 16px 30px rgba(0,0,0,.4); }
+  .case:hover::before { background: var(--green); box-shadow: 0 0 14px var(--green); }
+  .case.flash { animation: flash 1.2s ease-out; }
+  @keyframes flash { 0% { box-shadow: 0 0 0 2px var(--green), 0 0 40px rgba(109,255,138,.5); } 100% { box-shadow: none; } }
+  .case .meta { font-family: "VT323", monospace; color: var(--green); font-size: 19px; display: flex; justify-content: space-between; }
+  .case h3 { margin: 4px 0 6px; font-size: 18px; font-weight: 600; color: #eef7ec; }
+  .case p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+  .case[hidden] { display: none; }
+  .rate { display: flex; gap: 2px; align-items: center; }
+  .rate button { background: none; border: 0; padding: 2px 3px; cursor: pointer; font: 20px "VT323", monospace; color: #2a3a2d; transition: color .15s, transform .15s; }
+  .rate button.on { color: var(--green); text-shadow: 0 0 8px rgba(109,255,138,.6); }
+  .rate button:hover { transform: scale(1.25); }
+  .rate span { margin-left: 8px; font-size: 12px; color: var(--muted); }
+
+  /* ---------- believe ---------- */
+  .believe { text-align: center; }
+  .gauge { width: min(420px, 100%); margin: 30px auto 0; display: block; overflow: visible; }
+  #needle { transform-box: view-box; transform-origin: 210px 220px; transition: transform 1.6s cubic-bezier(.2,1.4,.3,1); }
+  .btn {
+    font: 600 15px "IBM Plex Sans", sans-serif; background: var(--green); color: #031; border: 0;
+    padding: 13px 28px; cursor: pointer; border-radius: 999px; box-shadow: 0 0 30px rgba(109,255,138,.35); transition: transform .15s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(109,255,138,.55); }
+  #verdict { display: block; margin-top: 16px; font-family: "VT323", monospace; font-size: 22px; color: var(--green); min-height: 1.4em; }
+
+
+  /* ---------- blog strip ---------- */
+  .posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; margin-top: 36px; }
+  .card { position: relative; display: flex; flex-direction: column; text-decoration: none; color: var(--text); background: linear-gradient(160deg, #0f1912, #070b08); border: 1px solid var(--line); overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s; }
+  .card:hover { transform: translateY(-4px); border-color: #2a4a31; box-shadow: 0 20px 40px rgba(0,0,0,.45), 0 0 30px rgba(109,255,138,.08); }
+  .card .art { height: 120px; display: grid; place-items: center; font-size: 44px; position: relative; border-bottom: 1px solid var(--line);
+    background: radial-gradient(circle at 50% 120%, rgba(109,255,138,.22), transparent 60%), repeating-linear-gradient(0deg, rgba(109,255,138,.04) 0 1px, transparent 1px 4px), #050906; }
+  .card .art span { filter: drop-shadow(0 0 18px rgba(109,255,138,.45)); transition: transform .4s; }
+  .card:hover .art span { transform: scale(1.15) rotate(-4deg); }
+  .card .num { position: absolute; top: 10px; left: 14px; font-family: "VT323", monospace; color: var(--green); font-size: 18px; filter: none; }
+  .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { font-family: "Special Elite", cursive; font-weight: normal; font-size: 21px; line-height: 1.2; margin: 0 0 8px; color: #eef7ec; }
+  .card p { margin: 0 0 14px; color: var(--muted); font-size: 14px; line-height: 1.55; flex: 1; }
+  .card .foot { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+  .card .foot b { color: var(--green); font-weight: normal; }
+  .more { margin-top: 28px; text-align: center; }
+  .more a { text-decoration: none; display: inline-block; }
+
+  /* ---------- footer / terminal ---------- */
+  footer { padding: 70px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; text-align: center; }
+  .term {
+    max-width: 460px; margin: 0 auto 28px; background: #010301; border: 1px solid var(--line); padding: 14px 16px; text-align: left;
+    font-family: "VT323", monospace; font-size: 20px; color: var(--green); box-shadow: inset 0 0 30px rgba(109,255,138,.06);
+  }
+  .term label { display: flex; gap: 8px; align-items: center; }
+  .term input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: var(--green); font: inherit; caret-color: var(--green); }
+  .term .out { min-height: 1.2em; color: var(--muted); font-size: 18px; }
+
+  dialog {
+    border: 1px solid var(--green-dim); background: #030805; color: var(--text); padding: 0; max-width: min(560px, calc(100% - 32px));
+    box-shadow: 0 0 80px rgba(109,255,138,.25);
+  }
+  dialog::backdrop { background: rgba(0,0,0,.75); backdrop-filter: blur(3px); }
+  dialog .dlg { padding: 26px 26px 22px; }
+  dialog h3 { font-family: "Special Elite", cursive; font-weight: normal; font-size: 28px; margin: 0 0 6px; color: #eef7ec; }
+  dialog .dk { font-family: "VT323", monospace; color: var(--green); font-size: 20px; }
+  dialog p { color: #b9c4b5; }
+  dialog button { margin-top: 6px; }
+
+  .flicker { animation: flick 6s infinite; }
+  @keyframes flick { 0%, 92%, 100% { opacity: 1; } 93% { opacity: .4; } 94% { opacity: 1; } 96% { opacity: .6; } }
+
+  @media (max-width: 720px) {
+    section { padding: 80px 0; }
+    .room { height: 560px; }
+    .poster { left: 4%; width: 150px; height: 230px; top: 96px; padding: 12px; }
+    .poster span { font-size: 15px; }
+    .cabinet { width: 110px; height: 230px; right: 3%; }
+    .desk { left: 8%; right: 36%; height: 100px; }
+    .sticky { left: auto; right: 6%; top: 96px; width: 112px; font-size: 15px; }
+    .pencils { left: 40%; width: 140px; }
+    .board { height: 900px; border-width: 10px; }
+    .note { width: 128px; font-size: 13px; }
+    .chip.ghost { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">&gt; MULDER_ITS_ME</a>
+    <a class="link" href="#basement">The Office</a>
+    <a class="link" href="#agents">Agents</a>
+    <a class="link" href="#board">Conspiracy</a>
+    <a class="link" href="#cases">Case Files</a>
+    <a class="link" href="#believe">Believe</a>
+    <a class="link" href="blog/">Blog</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="scene" aria-label="Animated night sky with a hovering UFO over a forest"></canvas>
+  <div class="hero-ui">
+    <div class="hero-kicker" data-decrypt="THE TRUTH IS OUT THERE">&nbsp;</div>
+    <h1 class="glitch" id="title" data-text="Mulder, It's Me">Mulder, It's Me</h1>
+    <p>An unofficial fan page for The X-Files</p>
+    <div class="hint">click the sky to <b>signal them</b> &nbsp;·&nbsp; scroll to descend</div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ BASEMENT ============ -->
+  <section id="basement">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// FBI HQ, SUB-BASEMENT</div>
+        <h2>The office nobody visits</h2>
+        <p class="lede">The lights are out again. Use your flashlight (move your mouse, or drag a finger) and find all five pieces of evidence in Mulder's office.</p>
+      </div>
+
+      <div class="room reveal" id="room">
+        <div class="ceiling"></div>
+        <div class="pencils" data-evidence="Pencils in the ceiling" aria-hidden="true"></div>
+
+        <div class="poster" data-evidence="The poster">
+          <svg viewBox="0 0 200 220" aria-hidden="true">
+            <defs><linearGradient id="pb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfffd0" stop-opacity=".55"/><stop offset="1" stop-color="#bfffd0" stop-opacity="0"/></linearGradient></defs>
+            <polygon points="88,52 112,52 160,200 40,200" fill="url(#pb)"/>
+            <ellipse cx="100" cy="46" rx="44" ry="9" fill="#1d241f" stroke="#cfd8cc" stroke-width="1"/>
+            <ellipse cx="100" cy="39" rx="17" ry="8" fill="#2d3830" stroke="#cfd8cc" stroke-width="1"/>
+            <path d="M0 200 L14 186 L24 196 L40 176 L55 198 L145 198 L160 180 L175 194 L188 182 L200 190 L200 220 L0 220 Z" fill="#000"/>
+          </svg>
+          <span>I WANT TO<br>BELIEVE</span>
+        </div>
+
+        <div class="sticky" data-evidence="A password">
+          trustno1
+          <small>(don't tell anyone. type it somewhere on this site.)</small>
+        </div>
+
+        <div class="desk">
+          <div class="nameplate" data-evidence="The nameplate">FOX MULDER</div>
+          <div class="seeds" data-evidence="Sunflower seeds">SEEDS</div>
+        </div>
+
+        <div class="cabinet" aria-hidden="true">
+          <div><div class="label">X</div></div><div><div class="label">X-1</div></div><div><div class="label">X-2</div></div><div><div class="label">?</div></div>
+        </div>
+
+        <div class="dark" id="dark"></div>
+      </div>
+      <div class="evidence-hud">
+        <span id="evCount">EVIDENCE 0/5</span>
+        <ul id="evList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AGENTS ============ -->
+  <section id="agents">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// PERSONNEL FILES</div>
+        <h2>The people in the basement</h2>
+        <p class="lede">Two agents, one flashlight each, and a filing cabinet nobody upstairs wants opened. Tap the black bars to declassify.</p>
+      </div>
+
+      <div class="agents">
+        <article class="dossier reveal">
+          <div class="tab">FILE 001</div><div class="clip"></div>
+          <h3>Fox Mulder</h3>
+          <div class="role">Special Agent, X-Files Division</div>
+          <dl>
+            <dt>Nickname</dt><dd>"Spooky"</dd>
+            <dt>Training</dt><dd>Oxford psychology, ace profiler</dd>
+            <dt>Weakness</dt><dd><span class="redact" tabindex="0" role="button">sunflower seeds</span></dd>
+          </dl>
+          <p>Gave up a fast-track career to chase the unexplained, driven by his sister's disappearance when he was twelve.</p>
+          <div class="stamp">BELIEVER</div>
+        </article>
+
+        <article class="dossier reveal">
+          <div class="tab">FILE 002</div><div class="clip"></div>
+          <h3>Dana Scully</h3>
+          <div class="role">Special Agent, M.D.</div>
+          <dl>
+            <dt>Assigned</dt><dd>To debunk Mulder</dd>
+            <dt>Training</dt><dd>Physics degree, medical doctor</dd>
+            <dt>Result</dt><dd><span class="redact" tabindex="0" role="button">became his partner instead</span></dd>
+          </dl>
+          <p>The science in the room. Performs the autopsy, writes the report, and keeps both of them alive more often than not.</p>
+          <div class="stamp">SKEPTIC</div>
+        </article>
+
+        <article class="dossier reveal">
+          <div class="tab">FILE 003</div><div class="clip"></div>
+          <h3>Walter Skinner</h3>
+          <div class="role">Assistant Director</div>
+          <dl>
+            <dt>Service</dt><dd>U.S. Marine, Vietnam</dd>
+            <dt>Position</dt><dd>Stuck in the middle</dd>
+            <dt>Loyalty</dt><dd><span class="redact" tabindex="0" role="button">to his agents, eventually</span></dd>
+          </dl>
+          <p>Starts as the boss who signs the reprimands. Ends up the one who takes the heat for them.</p>
+          <div class="stamp">ALLY?</div>
+        </article>
+
+        <article class="dossier reveal">
+          <div class="tab">FILE 004</div><div class="clip"></div>
+          <h3>The Lone Gunmen</h3>
+          <div class="role">Byers, Frohike &amp; Langly</div>
+          <dl>
+            <dt>Occupation</dt><dd>Conspiracy newsletter</dd>
+            <dt>Skills</dt><dd>Hacking, wiretaps, paranoia</dd>
+            <dt>Office</dt><dd><span class="redact" tabindex="0" role="button">a door with six locks</span></dd>
+          </dl>
+          <p>Mulder's tech support. The original hacker friends you call when the official channels go quiet.</p>
+          <div class="stamp">CLEARED</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORKBOARD ============ -->
+  <section id="board">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// CONNECT THE DOTS</div>
+        <h2>The conspiracy board</h2>
+        <p class="lede">Every thread leads somewhere. Drag the evidence around, then tap a card to read the file.</p>
+      </div>
+      <div class="board reveal" id="corkboard">
+        <svg class="strings" id="strings" aria-hidden="true"></svg>
+      </div>
+      <div class="board-hint">Red yarn sold separately. Paranoia included.</div>
+    </div>
+  </section>
+
+  <!-- ============ CASES ============ -->
+  <section id="cases">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// CASE FILES</div>
+        <h2>Essential episodes</h2>
+        <p class="lede">A starter list. Mythology episodes follow the big conspiracy; monster-of-the-week episodes stand on their own. Rate them like it's 1997. Your ratings stay in your browser.</p>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="Filter episodes">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="myth" aria-pressed="false">Mythology</button>
+        <button type="button" class="chip" data-filter="motw" aria-pressed="false">Monster of the week</button>
+        <button type="button" class="chip" data-filter="funny" aria-pressed="false">The funny ones</button>
+        <button type="button" class="chip ghost" id="randomCase">Pull a random file</button>
+      </div>
+
+      <div class="cases" id="caseList"></div>
+    </div>
+  </section>
+
+  <!-- ============ BELIEVE ============ -->
+  <section id="believe" class="believe">
+    <div class="wrap reveal">
+      <div class="kicker">// FIELD TEST</div>
+      <h2>Are you a believer?</h2>
+      <p class="lede" style="margin: 0 auto">Our calibrated instrument reads your belief level with total scientific rigor. Scully has concerns.</p>
+      <svg class="gauge" viewBox="0 0 420 250" aria-hidden="true">
+        <defs>
+          <linearGradient id="arc" x1="0" x2="1"><stop offset="0" stop-color="#38f3ff"/><stop offset=".5" stop-color="#6dff8a"/><stop offset="1" stop-color="#ff3b6b"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <path d="M40 220 A170 170 0 0 1 380 220" fill="none" stroke="#132017" stroke-width="22" stroke-linecap="round"/>
+        <path d="M40 220 A170 170 0 0 1 380 220" fill="none" stroke="url(#arc)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+        <g id="ticks"></g>
+        <text x="40" y="246" fill="#7f8c7c" font-family="VT323" font-size="18" text-anchor="middle">SKEPTIC</text>
+        <text x="380" y="246" fill="#7f8c7c" font-family="VT323" font-size="18" text-anchor="middle">SPOOKY</text>
+        <g id="needle" style="transform: rotate(-90deg)">
+          <line x1="210" y1="220" x2="210" y2="70" stroke="#eef7ec" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>
+        </g>
+        <circle cx="210" cy="220" r="10" fill="#6dff8a" filter="url(#glow)"/>
+      </svg>
+      <button type="button" class="btn" id="testBtn">Run the test</button>
+      <output id="verdict" aria-live="polite"></output>
+    </div>
+  </section>
+  <!-- ============ BLOG ============ -->
+  <section id="blog">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// FIELD REPORTS</div>
+        <h2>From the blog</h2>
+        <p class="lede">Essays, watch guides, and deep dives from the basement. Twelve files declassified so far.</p>
+      </div>
+      <div class="posts reveal">
+<!--BLOG-LATEST-->
+<a class="card" href="blog/mark-snow-theme.html" data-tag="Music" data-text="four notes and a whistle: the sound of the x-files mark snow&#x27;s music did as much to make the show scary as anything on screen. here&#x27;s how one strange theme became a pop hit. music you can probably hear it right now. a cold, echoing whistle over a slow electronic pulse. the x-files theme is one of the most recognizable pieces of tv music ever written, and it came from a composer working mostly alone with a room full of synthesizers. ## mark snow mark snow scored every episode of the original series and both films, and he came back for the revival. he worked fast, often composing a full episode score in a matter of days, and almost entirely with electronic instruments. that gave the show a sound that was cheaper than an orchestra and, as it turned out, far creepier. ## the theme the story snow has told over the years is that the theme came together only after several rejected attempts. chris carter wanted something different from the usual tv opening, and snow found the key sound while experimenting with an echo effect on his keyboard. the whistle melody with the long, repeating echo was the result. whatever the exact details, it sounded like nothing else on tv in 1993. ## a surprise hit in 1996 the theme was released as a single and became a hit in several countries, including the united kingdom, where it climbed high in the charts. very few tv themes have done that, and it happened mostly because people just wanted to hear it again. ## the score underneath the theme gets the attention, but the episode scores are just as important. snow&#x27;s music fills in what the low budget couldn&#x27;t show. a slow drone tells you something is wrong before anything happens on screen. long, cold pads make a parking lot feel like an alien landscape. in the quieter character episodes, he switches to soft piano that&#x27;s often more affecting than the dialogue. listen closely to &quot;paper clip,&quot; &quot;memento mori,&quot; or &quot;field trip&quot; and you can hear how much work the music is doing. ## why it still works most tv music from the early 90s sounds dated. snow&#x27;s work mostly doesn&#x27;t, because it was never trying to sound like the music of its time. it was trying to sound like the dark between the trees. put it on in a dark room tonight and see how long you last.">
+  <div class="art"><span class="num">FILE 12</span><span aria-hidden="true">🎵</span></div>
+  <div class="body"><h3>Four Notes and a Whistle: The Sound of The X-Files</h3><p>Mark Snow&#x27;s music did as much to make the show scary as anything on screen. Here&#x27;s how one strange theme became a pop hit.</p>
+  <div class="foot"><b>Music</b><span>October 9, 2026 · 2 min</span></div></div>
+</a>
+<a class="card" href="blog/trust-no-one-security.html" data-tag="Tech &amp; Paranoia" data-text="trust no one: what the show got right about security mulder&#x27;s password is now a famous example of what not to do. but the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well. tech &amp; paranoia &quot;trust no one&quot; is the most famous line in the x-files. it started as advice from an informant and became a whole philosophy. it also became mulder&#x27;s computer password, trustno1, which tells you something about the gap between having good instincts and having good security habits. ## the password problem mulder&#x27;s password is a perfect bad password: a well-known phrase, connected to the owner, with a single digit tacked on. in the real world, trustno1 has shown up for years on lists of the most commonly used passwords. if a password is famous enough to appear in a tv show, it&#x27;s in every attacker&#x27;s wordlist. the lesson is the same today: use long, random passphrases or a password manager, and turn on multi-factor authentication. any visitor who found the sticky note in the basement on this site has just proved the point. ## &quot;kill switch&quot; saw the future season five&#x27;s &quot;kill switch&quot; was co-written by william gibson, the novelist who helped invent cyberpunk, along with tom maddox. it&#x27;s about an artificial intelligence that has escaped into the internet and protects itself by any means necessary, including a military satellite. in 1998 it looked like science fiction. today, a story about software that spreads across networks and fights being shut off doesn&#x27;t seem quite so far-fetched. ## surveillance as the default the show&#x27;s paranoia was mostly about governments: wiretaps, tracking devices, implants, files kept on ordinary people. mulder assumes he&#x27;s being watched, and he&#x27;s usually right. what the show didn&#x27;t predict is how much of that surveillance we&#x27;d end up carrying around voluntarily. the revival made that point in episodes like &quot;rm9sbg93zxjz,&quot; where a smart home, a smart car, and a smart restaurant turn on the agents. ## the lone gunmen model the lone gunmen are the show&#x27;s best example of how security people actually work. they verify everyone at the door, they assume their phones are tapped, they keep their own copies of everything, and they share what they find. paranoid, yes. also mostly correct. ## the real lesson &quot;trust no one&quot; isn&#x27;t great life advice, but it&#x27;s not bad engineering advice. verify things before you rely on them. assume someone is trying to get in. and don&#x27;t put your password on a sticky note.">
+  <div class="art"><span class="num">FILE 11</span><span aria-hidden="true">🔐</span></div>
+  <div class="body"><h3>Trust No One: What the Show Got Right About Security</h3><p>Mulder&#x27;s password is now a famous example of what not to do. But the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well.</p>
+  <div class="foot"><b>Tech &amp; Paranoia</b><span>September 11, 2026 · 2 min</span></div></div>
+</a>
+<a class="card" href="blog/early-internet-fandom.html" data-tag="Fandom" data-text="x-philes and the birth of online fandom the x-files arrived just as people were getting online. its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us. fandom the x-files premiered in 1993, right as the internet was becoming something regular people used. that timing turned out to matter a lot. the show&#x27;s fans became one of the first big fandoms to organize online, and they set patterns that internet fan culture still follows. ## usenet and the x-philes before the web was everywhere, fans gathered on usenet in newsgroups like alt.tv.x-files. they traded episode theories, posted reviews within hours of an airing, and argued about every clue in the mythology. they called themselves x-philes, and fans have long believed the writers were paying attention to what was being said. ## shippers and &quot;noromos&quot; one of the biggest debates was whether mulder and scully should be romantically involved. fans who wanted them together were called &quot;relationshippers,&quot; which got shortened to &quot;shippers.&quot; the word spread far beyond the x-files and is now standard fandom vocabulary. fans who wanted the partnership to stay platonic called themselves &quot;noromos,&quot; for &quot;no romance.&quot; that one didn&#x27;t catch on as widely. ## the great fan sites as the web grew, fans built sites to hold everything. [chronicle x](https://fanlore.org/wiki/chronx), which ran from 1998 to 2001, was a popular archive of recommended fan fiction. [the x-files experience](https://fanlore.org/wiki/the_x-files_experience) focused on writing, with episode reviews, analysis, screencaps, and notes on minor characters. [x-files universe](https://www.fanlore.org/wiki/x-files_universe) offered news, chat, a fan fiction archive, contests, and a photo gallery, and its message board outlived the rest of the site. some early pages even ran interactive episode ratings so visitors could score each new episode. many of these sites are gone now. the best way to see them is through the wayback machine and the histories collected on [fanlore](https://fanlore.org/), the fan-run wiki. ## fan fiction everywhere x-files fan fiction was huge. archives held thousands of stories, organized by type: casefiles, romance, humor, and stories set after particular episodes. a lot of people who are writers today got their start there. ## why it mattered x-files fans showed that an online community could be organized, creative, and loud enough for the people making the show to notice. every fandom since has followed some version of the path they took. this site, with its ratings and its secret password, is a small tribute to those old pages.">
+  <div class="art"><span class="num">FILE 10</span><span aria-hidden="true">🌐</span></div>
+  <div class="body"><h3>X-Philes and the Birth of Online Fandom</h3><p>The X-Files arrived just as people were getting online. Its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us.</p>
+  <div class="foot"><b>Fandom</b><span>August 14, 2026 · 2 min</span></div></div>
+</a>
+<!--/BLOG-LATEST-->
+      </div>
+      <div class="more reveal"><a class="btn" href="blog/">Open all case files</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="term">
+      <label for="pass">&gt;<input id="pass" autocomplete="off" spellcheck="false" placeholder="enter passphrase" aria-label="Enter passphrase"></label>
+      <div class="out" id="passOut"></div>
+    </div>
+    <div class="kicker flicker">THE TRUTH IS OUT THERE</div>
+    <p>An unofficial, non-commercial fan page. Not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.<br>
+      The X-Files and all related names are trademarks of their respective owners. All artwork and writing on this page is original.</p>
+  </div>
+</footer>
+
+<dialog id="dlg"><div class="dlg">
+  <div class="dk" id="dlgKicker"></div>
+  <h3 id="dlgTitle"></h3>
+  <p id="dlgBody"></p>
+  <form method="dialog"><button class="btn" type="submit">Close file</button></form>
+</div></dialog>
+
+<!-- ================= WebGL hero ================= -->
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const canvas = document.getElementById('scene');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+} catch (e) {
+  document.documentElement.classList.add('no-webgl');
+  throw e;
+}
+const DPR = Math.min(devicePixelRatio, 1.75);
+renderer.setPixelRatio(DPR);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+const scene = new THREE.Scene();
+const FOG = new THREE.Color(0x041309);
+scene.fog = new THREE.FogExp2(FOG, 0.019);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1200);
+camera.position.set(0, 2.2, 16);
+const lookTarget = new THREE.Vector3(0, 5, -4);
+
+// sky dome
+scene.add(new THREE.Mesh(
+  new THREE.SphereGeometry(500, 48, 24),
+  new THREE.ShaderMaterial({
+    side: THREE.BackSide, depthWrite: false,
+    vertexShader: `varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`,
+    fragmentShader: `varying vec3 vP;
+      void main(){
+        float h = normalize(vP).y;
+        vec3 horizon = vec3(0.016, 0.075, 0.036);
+        vec3 top = vec3(0.0, 0.004, 0.006);
+        vec3 c = mix(horizon, top, smoothstep(-0.02, 0.45, h));
+        c += vec3(0.02, 0.05, 0.03) * exp(-abs(h) * 22.0);
+        gl_FragColor = vec4(c, 1.);
+      }`
+  })
+));
+
+// stars
+{
+  const N = 7000, pos = new Float32Array(N * 3), size = new Float32Array(N), seed = new Float32Array(N);
+  for (let i = 0; i < N; i++) {
+    const u = Math.random(), v = Math.random() * 0.9 + 0.1;
+    const th = u * Math.PI * 2, ph = Math.acos(1 - v);
+    const r = 420;
+    pos[i*3] = r * Math.sin(ph) * Math.cos(th);
+    pos[i*3+1] = r * Math.cos(ph);
+    pos[i*3+2] = r * Math.sin(ph) * Math.sin(th);
+    size[i] = Math.pow(Math.random(), 6) * 4.5 + 0.8;
+    seed[i] = Math.random();
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('aSize', new THREE.BufferAttribute(size, 1));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+  var starMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { uTime: { value: 0 }, uPR: { value: DPR } },
+    vertexShader: `attribute float aSize; attribute float aSeed; uniform float uTime; uniform float uPR; varying float vA; varying float vS;
+      void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); gl_Position = projectionMatrix * mv;
+        vA = 0.55 + 0.45 * sin(uTime * (0.6 + aSeed * 2.4) + aSeed * 60.0); vS = aSeed;
+        gl_PointSize = aSize * uPR; }`,
+    fragmentShader: `varying float vA; varying float vS;
+      void main(){ float d = length(gl_PointCoord - .5); float a = smoothstep(.5, 0., d);
+        vec3 c = mix(vec3(.75,.95,1.), vec3(1.,.93,.8), step(.7, vS));
+        gl_FragColor = vec4(c * a * vA * 1.4, a * vA); }`
+  });
+  scene.add(new THREE.Points(g, starMat));
+}
+
+// ground + forest
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), new THREE.MeshStandardMaterial({ color: 0x030a05, roughness: 1, metalness: 0 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+{
+  const N = 650;
+  const trees = new THREE.InstancedMesh(new THREE.ConeGeometry(1, 1, 7), new THREE.MeshStandardMaterial({ color: 0x020703, roughness: 1 }), N);
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), s = new THREE.Vector3(), p = new THREE.Vector3();
+  let k = 0;
+  while (k < N) {
+    const x = (Math.random() - 0.5) * 240, z = -8 - Math.random() * 110;
+    if (Math.abs(x) < 9 && z > -16) continue;
+    const h = 7 + Math.random() * 11, w = 1.4 + Math.random() * 1.6;
+    m.compose(p.set(x, h / 2 - 0.3, z), q, s.set(w, h, w));
+    trees.setMatrixAt(k++, m);
+  }
+  // a few trees closer at the sides for depth
+  scene.add(trees);
+  const near = new THREE.InstancedMesh(trees.geometry, trees.material, 24);
+  for (let i = 0; i < 24; i++) {
+    const side = i % 2 ? 1 : -1, h = 10 + Math.random() * 8, w = 1.8 + Math.random();
+    m.compose(p.set(side * (11 + Math.random() * 14), h / 2 - 0.3, 4 - Math.random() * 14), q, s.set(w, h, w));
+    near.setMatrixAt(i, m);
+  }
+  scene.add(near);
+}
+scene.add(new THREE.HemisphereLight(0x2a4a33, 0x000000, 0.5));
+
+// UFO
+const ufo = new THREE.Group();
+const UFO_Y = 11;
+ufo.position.set(0, UFO_Y, -5);
+scene.add(ufo);
+const hullPts = [[0,-0.6],[1.1,-0.56],[2.4,-0.32],[3.5,-0.05],[3.65,0.05],[2.7,0.34],[1.6,0.58],[0,0.64]].map(([x,y]) => new THREE.Vector2(x, y));
+const hull = new THREE.Mesh(new THREE.LatheGeometry(hullPts, 96), new THREE.MeshStandardMaterial({ color: 0x8b9a92, metalness: 0.92, roughness: 0.26, envMapIntensity: 1.4 }));
+ufo.add(hull);
+const dome = new THREE.Mesh(
+  new THREE.SphereGeometry(1.35, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2),
+  new THREE.MeshPhysicalMaterial({ color: 0x9dffb3, emissive: 0x1e7a34, emissiveIntensity: 0.9, roughness: 0.05, metalness: 0, transparent: true, opacity: 0.75, clearcoat: 1 })
+);
+dome.position.y = 0.55;
+ufo.add(dome);
+const rimLights = [];
+for (let i = 0; i < 18; i++) {
+  const a = (i / 18) * Math.PI * 2;
+  const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.4, 2, 0.8), toneMapped: false });
+  const l = new THREE.Mesh(new THREE.SphereGeometry(0.11, 12, 8), mat);
+  l.position.set(Math.cos(a) * 3.4, -0.02, Math.sin(a) * 3.4);
+  ufo.add(l); rimLights.push(mat);
+}
+const coreMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(1.5, 4, 2), toneMapped: false });
+const core = new THREE.Mesh(new THREE.TorusGeometry(1.0, 0.13, 12, 64), coreMat);
+core.rotation.x = Math.PI / 2; core.position.y = -0.58;
+ufo.add(core);
+const spot = new THREE.SpotLight(0xbfffd0, 900, 0, 0.42, 0.7, 2);
+spot.position.set(0, -0.6, 0);
+ufo.add(spot);
+spot.target.position.set(0, -20, 0);
+ufo.add(spot.target);
+
+// beam
+const BEAM_H = UFO_Y - 0.55;
+const beamMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  uniforms: { uTime: { value: 0 }, uI: { value: 1 } },
+  vertexShader: `varying vec2 vUv; varying vec3 vN; varying vec3 vV;
+    void main(){ vUv = uv; vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `uniform float uTime; uniform float uI; varying vec2 vUv; varying vec3 vN; varying vec3 vV;
+    void main(){
+      float facing = pow(abs(dot(vN, vV)), 2.0);
+      float y = vUv.y;
+      float fall = smoothstep(0.0, 0.18, y) * (0.3 + 0.7 * y);
+      float bands = 0.72 + 0.28 * sin(y * 46.0 + uTime * 4.0);
+      float swirl = 0.78 + 0.22 * sin(vUv.x * 6.2831 * 9.0 + uTime * 1.3 + y * 8.0);
+      float a = facing * fall * bands * swirl * uI * 0.42;
+      gl_FragColor = vec4(vec3(0.55, 1.0, 0.7) * a, a);
+    }`
+});
+const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 6.2, BEAM_H, 96, 1, true), beamMat);
+scene.add(beam);
+
+// ground glow
+const glowMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms: { uI: { value: 1 } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`,
+  fragmentShader: `uniform float uI; varying vec2 vUv; void main(){ float d = length(vUv - .5) * 2.; float a = pow(max(0., 1. - d), 2.2) * 0.9 * uI; gl_FragColor = vec4(vec3(.5,1.,.65) * a, a); }`
+});
+const glow = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), glowMat);
+glow.rotation.x = -Math.PI / 2; glow.position.y = 0.03;
+scene.add(glow);
+
+// motes rising in the beam
+const MOTES = 700;
+const motePos = new Float32Array(MOTES * 3), moteSeed = [];
+for (let i = 0; i < MOTES; i++) moteSeed.push({ y: Math.random() * BEAM_H, a: Math.random() * Math.PI * 2, r: Math.sqrt(Math.random()), v: 0.4 + Math.random() * 1.2, s: Math.random() });
+const moteGeo = new THREE.BufferGeometry();
+moteGeo.setAttribute('position', new THREE.BufferAttribute(motePos, 3));
+const moteMat = new THREE.PointsMaterial({ color: new THREE.Color(0.7, 1.6, 0.9), size: 0.07, transparent: true, opacity: 0.85, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false });
+scene.add(new THREE.Points(moteGeo, moteMat));
+
+// post-processing
+const composer = new EffectComposer(renderer);
+composer.setPixelRatio(Math.min(DPR, 1.5));
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 1.05, 0.65, 0.12);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+const filmPass = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uRes: { value: new THREE.Vector2(1, 1) }, uGlitch: { value: 0 } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`,
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uTime; uniform vec2 uRes; uniform float uGlitch; varying vec2 vUv;
+    float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+    void main(){
+      vec2 uv = vUv;
+      float band = step(0.97, hash(vec2(floor(uv.y * 40.0), floor(uTime * 20.0))));
+      uv.x += (hash(vec2(uTime, uv.y)) - 0.5) * 0.06 * uGlitch * band;
+      vec2 c = uv - 0.5; float d = dot(c, c);
+      float ca = 0.0018 + d * 0.012 + uGlitch * 0.01;
+      vec3 col = vec3(texture2D(tDiffuse, uv + c * ca).r, texture2D(tDiffuse, uv).g, texture2D(tDiffuse, uv - c * ca).b);
+      col += (hash(uv * uRes + fract(uTime) * 91.7) - 0.5) * 0.07;
+      col *= 0.96 + 0.04 * sin(uv.y * uRes.y * 1.3);
+      col *= 1.0 - d * 1.25;
+      gl_FragColor = vec4(col, 1.0);
+    }`
+});
+composer.addPass(filmPass);
+
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  renderer.setSize(w, h, false);
+  composer.setSize(w, h);
+  bloom.resolution.set(w, h);
+  filmPass.uniforms.uRes.value.set(w, h);
+  camera.aspect = w / h;
+  camera.fov = w < h ? 68 : 50;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+resize();
+
+// interaction
+const mouse = new THREE.Vector2(), smooth = new THREE.Vector2();
+addEventListener('pointermove', e => { mouse.set(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1); });
+let flare = 0;
+canvas.addEventListener('click', () => {
+  flare = 1;
+  const t = document.getElementById('title');
+  t.classList.remove('on'); void t.offsetWidth; t.classList.add('on');
+});
+
+let visible = true;
+new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(canvas);
+
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  if (!visible) { clock.getDelta(); return; }
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+  const p = Math.min(scrollY / innerHeight, 1);
+  flare = Math.max(0, flare - dt * 0.7);
+
+  smooth.lerp(mouse, 0.04);
+  camera.position.x = smooth.x * 1.6;
+  camera.position.y = 2.2 - smooth.y * 0.6 - p * 1.2;
+  lookTarget.y = 5 + p * 4;
+  camera.lookAt(lookTarget);
+
+  const lift = p * p * 14 + flare * 1.2;
+  ufo.position.y = UFO_Y + Math.sin(t * 0.8) * 0.3 + lift;
+  ufo.position.x = Math.sin(t * 0.23) * 0.6;
+  ufo.rotation.y += dt * (0.35 + flare * 4);
+  ufo.rotation.z = Math.sin(t * 0.6) * 0.045;
+  ufo.rotation.x = Math.cos(t * 0.5) * 0.03;
+
+  const beamI = Math.max(0, 1 - p * 1.6) * (1 + flare * 2.2) * (0.94 + 0.06 * Math.sin(t * 13));
+  beamMat.uniforms.uI.value = beamI;
+  glowMat.uniforms.uI.value = beamI;
+  spot.intensity = 900 * beamI;
+  const top = ufo.position.y - 0.55;
+  beam.scale.y = top / BEAM_H;
+  beam.position.set(ufo.position.x, top / 2, ufo.position.z);
+  glow.position.x = ufo.position.x; glow.position.z = ufo.position.z;
+
+  for (let i = 0; i < rimLights.length; i++) {
+    const k = Math.pow(Math.max(0, Math.sin(t * 3.2 - i * 0.7)), 10);
+    rimLights[i].color.setRGB(0.15 + k * 1.2, 0.6 + k * 4, 0.3 + k * 1.8);
+  }
+  const pulse = 1 + 0.4 * Math.sin(t * 2.4) + flare * 3;
+  coreMat.color.setRGB(1.2 * pulse, 3.6 * pulse, 1.8 * pulse);
+
+  const speed = 1 + flare * 6;
+  for (let i = 0; i < MOTES; i++) {
+    const m = moteSeed[i];
+    m.y += m.v * dt * speed;
+    if (m.y > top) m.y = 0;
+    const fr = m.y / top;
+    const rad = (6.2 * (1 - fr) + 0.9 * fr) * m.r * 0.92;
+    const a = m.a + t * (0.2 + m.s * 0.5);
+    motePos[i*3] = ufo.position.x + Math.cos(a) * rad;
+    motePos[i*3+1] = m.y;
+    motePos[i*3+2] = ufo.position.z + Math.sin(a) * rad;
+  }
+  moteGeo.attributes.position.needsUpdate = true;
+  moteMat.opacity = 0.85 * Math.max(0, 1 - p * 1.4);
+
+  starMat.uniforms.uTime.value = t;
+  beamMat.uniforms.uTime.value = t;
+  filmPass.uniforms.uTime.value = t;
+  filmPass.uniforms.uGlitch.value = flare > 0.75 ? (flare - 0.75) * 4 : 0;
+  bloom.strength = 1.05 + flare * 0.8;
+
+  composer.render(dt);
+}
+if (reduce) { composer.render(); } else { frame(); }
+</script>
+
+<!-- ================= page interactions ================= -->
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const store = {
+    get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+  };
+  const dlg = document.getElementById('dlg');
+  function openFile(kicker, title, body) {
+    document.getElementById('dlgKicker').textContent = kicker;
+    document.getElementById('dlgTitle').textContent = title;
+    document.getElementById('dlgBody').textContent = body;
+    if (dlg.showModal) dlg.showModal(); else alert(title + '\n\n' + body);
+  }
+
+  // nav background
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > innerHeight * 0.6), { passive: true });
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (el.classList.contains('dossier') ? (i % 4) * 0.1 : 0) + 's'; io.observe(el); });
+
+  // decrypt text
+  const GLYPHS = '!<>-_\\/[]{}=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  function decrypt(el) {
+    const target = el.dataset.decrypt;
+    if (reduce) { el.textContent = target; return; }
+    let frame = 0;
+    const iv = setInterval(() => {
+      const done = Math.floor(frame / 2);
+      el.textContent = target.split('').map((ch, i) => i < done || ch === ' ' ? ch : GLYPHS[Math.random() * GLYPHS.length | 0]).join('');
+      if (done >= target.length) clearInterval(iv);
+      frame++;
+    }, 45);
+  }
+  document.querySelectorAll('[data-decrypt]').forEach(el => setTimeout(() => decrypt(el), 600));
+
+  // ---------- flashlight room ----------
+  const room = document.getElementById('room'), dark = document.getElementById('dark');
+  const pencils = room.querySelector('.pencils');
+  [[10, -8], [44, 6], [80, -3], [118, 10], [160, -6]].forEach(([x, r]) => {
+    const i = document.createElement('i'); i.style.left = x + 'px'; i.style.transform = `rotate(${r}deg)`; pencils.appendChild(i);
+  });
+  const evEls = [...room.querySelectorAll('[data-evidence]')];
+  const evList = document.getElementById('evList'), evCount = document.getElementById('evCount');
+  const evTime = new Map(), found = new Set();
+  evEls.forEach(el => { const li = document.createElement('li'); li.textContent = el.dataset.evidence; evList.appendChild(li); el._li = li; });
+  let light = { x: 0.5, y: 0.4 }, target = { x: 0.5, y: 0.4 }, lastMove = -1e9, roomVisible = false;
+  function setTarget(e) {
+    const r = room.getBoundingClientRect();
+    target.x = (e.clientX - r.left) / r.width; target.y = (e.clientY - r.top) / r.height; lastMove = performance.now();
+  }
+  room.addEventListener('pointermove', setTarget);
+  room.addEventListener('pointerdown', setTarget);
+  new IntersectionObserver(([e]) => roomVisible = e.isIntersecting).observe(room);
+  let last = performance.now();
+  (function loop(now) {
+    requestAnimationFrame(loop);
+    const dt = (now - last) / 1000; last = now;
+    if (!roomVisible) return;
+    if (now - lastMove > 2500) { // idle: sweep the beam on its own
+      const t = now / 1000;
+      target.x = 0.5 + Math.sin(t * 0.55) * 0.4; target.y = 0.45 + Math.sin(t * 0.9) * 0.3;
+    }
+    const k = reduce ? 1 : 0.14;
+    light.x += (target.x - light.x) * k; light.y += (target.y - light.y) * k;
+    const rr = room.getBoundingClientRect();
+    const base = rr.width < 600 ? 115 : 150;
+    const flick = Math.random() > 0.985 ? 0.82 : 1;
+    const radius = base * flick;
+    dark.style.setProperty('--lx', light.x * 100 + '%');
+    dark.style.setProperty('--ly', light.y * 100 + '%');
+    dark.style.setProperty('--lr', radius + 'px');
+    const lx = rr.left + light.x * rr.width, ly = rr.top + light.y * rr.height;
+    evEls.forEach(el => {
+      if (found.has(el)) return;
+      const b = el.getBoundingClientRect();
+      const cx = Math.max(b.left, Math.min(lx, b.right)), cy = Math.max(b.top, Math.min(ly, b.bottom));
+      const lit = Math.hypot(cx - lx, cy - ly) < radius * 0.45 && now - lastMove < 2500;
+      const acc = (evTime.get(el) || 0) + (lit ? dt : -dt * 0.5);
+      evTime.set(el, Math.max(0, acc));
+      if (acc > 0.6) {
+        found.add(el); el.classList.add('found'); el._li.classList.add('got');
+        evCount.textContent = `EVIDENCE ${found.size}/${evEls.length}`;
+        if (found.size === evEls.length) setTimeout(() => openFile('// CASE CLOSED', 'Nice work, agent.', 'You found every piece of evidence in the dark. Mulder would put you on the X-Files. Skinner would deny it ever happened. The password on the sticky note still works, by the way.'), 400);
+      }
+    });
+  })(last);
+
+  // ---------- dossier tilt + redactions ----------
+  document.querySelectorAll('.dossier').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || reduce) return;
+      const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--ry', (x - 0.5) * 14 + 'deg'); card.style.setProperty('--rx', (0.5 - y) * 12 + 'deg');
+      card.style.setProperty('--mx', x * 100 + '%'); card.style.setProperty('--my', y * 100 + '%');
+    });
+    card.addEventListener('pointerleave', () => { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
+  });
+  document.querySelectorAll('.redact').forEach(el => {
+    const toggle = () => el.classList.toggle('shown');
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+
+  // ---------- corkboard ----------
+  const NOTES = [
+    { id: 'smoke', x: 40, y: 6, r: -3, cls: 'photo', icon: '🚬', title: 'Cigarette Smoking Man', sub: 'name unknown, brand known',
+      body: 'Always in the back of the room when the files go missing. He has been in the room for a lot of history, and he has a lighter for every occasion.' },
+    { id: 'sam', x: 6, y: 8, r: 4, cls: 'photo', icon: '👧', title: 'Samantha Mulder', sub: 'missing since 1973',
+      body: 'Taken from the Mulder family home on a November night. Everything Fox does traces back to that one moment, and to the question of who allowed it.' },
+    { id: 'syn', x: 74, y: 10, r: 2, cls: '', title: 'The Syndicate', sub: 'a club on 46th Street',
+      body: 'Well-dressed old men who meet in a private room in New York and decide what the rest of the world gets to know. They do not keep minutes.' },
+    { id: 'oil', x: 72, y: 50, r: -4, cls: 'photo', icon: '⚫', title: 'Black Oil', sub: 'do not touch',
+      body: 'A substance that moves from person to person and looks out through their eyes. Recovered from a French salvage operation, among other places.' },
+    { id: 'dt', x: 10, y: 52, r: -5, cls: '', title: 'Deep Throat', sub: 'informant #1',
+      body: 'A man in a raincoat who gave Mulder just enough to keep him digging. His last words were advice everyone should take: trust no one.' },
+    { id: 'chip', x: 38, y: 44, r: 3, cls: 'yellow', title: "Scully's chip", sub: 'found in her neck',
+      body: 'A small metal implant recovered after her abduction. Removing it turned out to be a bigger problem than leaving it in.' },
+    { id: 'bees', x: 44, y: 78, r: -2, cls: '', title: 'Bees & corn', sub: 'Texas, 1998',
+      body: 'Domes of crops in the desert and bees that carry something worse than honey. One of the strangest delivery systems ever imagined.' },
+    { id: 'gun', x: 4, y: 82, r: 5, cls: 'yellow', title: 'The Lone Gunmen', sub: 'they know a guy',
+      body: 'Three men with a newsletter and a lot of surveillance equipment. They are wrong about plenty, but they are right about the things that matter.' },
+  ];
+  const LINKS = [['smoke','sam'],['smoke','syn'],['smoke','dt'],['syn','oil'],['syn','bees'],['syn','chip'],['chip','oil'],['dt','gun'],['sam','chip']];
+  const board = document.getElementById('corkboard'), svg = document.getElementById('strings');
+  const pos = store.get('bf-board', {});
+  const els = {};
+  NOTES.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'note ' + n.cls;
+    el.style.setProperty('--r', n.r + 'deg');
+    el.tabIndex = 0; el.setAttribute('role', 'button'); el.setAttribute('aria-label', n.title + ', open file');
+    el.innerHTML = (n.icon ? `<div class="ph" aria-hidden="true">${n.icon}</div>` : '') + `${n.title}<small>${n.sub}</small>`;
+    const p = pos[n.id] || { x: n.x, y: n.y };
+    el.style.left = p.x + '%'; el.style.top = p.y + '%';
+    board.appendChild(el); els[n.id] = el;
+    let start = null;
+    el.addEventListener('pointerdown', e => {
+      el.setPointerCapture(e.pointerId);
+      const br = board.getBoundingClientRect();
+      start = { px: e.clientX, py: e.clientY, x: parseFloat(el.style.left), y: parseFloat(el.style.top), bw: br.width, bh: br.height, moved: false };
+      el.classList.add('dragging');
+    });
+    el.addEventListener('pointermove', e => {
+      if (!start) return;
+      const dx = e.clientX - start.px, dy = e.clientY - start.py;
+      if (Math.hypot(dx, dy) > 5) start.moved = true;
+      const maxX = 100 - el.offsetWidth / start.bw * 100, maxY = 100 - el.offsetHeight / start.bh * 100;
+      el.style.left = Math.max(0, Math.min(maxX, start.x + dx / start.bw * 100)) + '%';
+      el.style.top = Math.max(0, Math.min(maxY, start.y + dy / start.bh * 100)) + '%';
+    });
+    const end = () => {
+      if (!start) return;
+      el.classList.remove('dragging');
+      if (!start.moved) openFile('// EVIDENCE', n.title, n.body);
+      else { pos[n.id] = { x: parseFloat(el.style.left), y: parseFloat(el.style.top) }; store.set('bf-board', pos); }
+      start = null;
+    };
+    el.addEventListener('pointerup', end);
+    el.addEventListener('pointercancel', () => { el.classList.remove('dragging'); start = null; });
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFile('// EVIDENCE', n.title, n.body); } });
+  });
+  const NS = 'http://www.w3.org/2000/svg';
+  svg.innerHTML = '<defs><filter id="ys"><feDropShadow dx="0" dy="4" stdDeviation="2" flood-opacity=".5"/></filter></defs>';
+  const paths = LINKS.map(() => { const p = document.createElementNS(NS, 'path'); p.setAttribute('fill', 'none'); p.setAttribute('stroke', 'var(--yarn)'); p.setAttribute('stroke-width', '2.2'); p.setAttribute('filter', 'url(#ys)'); svg.appendChild(p); return p; });
+  let boardVisible = false;
+  new IntersectionObserver(([e]) => boardVisible = e.isIntersecting).observe(board);
+  function pin(el) { return { x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop + 13 }; }
+  (function drawStrings(now) {
+    requestAnimationFrame(drawStrings);
+    if (!boardVisible) return;
+    const t = now / 1000;
+    LINKS.forEach(([a, b], i) => {
+      const p1 = pin(els[a]), p2 = pin(els[b]);
+      const d = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+      const sag = Math.min(70, d * 0.14) + (reduce ? 0 : Math.sin(t * 1.3 + i) * 2.5);
+      paths[i].setAttribute('d', `M${p1.x},${p1.y} Q${(p1.x + p2.x) / 2},${(p1.y + p2.y) / 2 + sag} ${p2.x},${p2.y}`);
+    });
+  })(0);
+
+  // ---------- episodes ----------
+  const EPS = [
+    ['S01E01', 'myth', 'Pilot', "Scully is sent to keep an eye on Mulder. Oregon, missing time, and strange marks on the victims."],
+    ['S01E03', 'motw', 'Squeeze', "A killer who can fit through an air vent, and who only needs to eat every few decades."],
+    ['S01E08', 'motw', 'Ice', "An Arctic research station, a parasite, and nobody can tell who's infected. Paranoia in a box."],
+    ['S02E08', 'myth', 'One Breath', "Scully is returned, comatose, and Mulder has to decide what he's willing to do to get answers."],
+    ['S03E04', 'motw funny', "Clyde Bruckman's Final Repose", "An insurance salesman who can see how people will die. Funny and heartbreaking in the same hour."],
+    ['S03E20', 'funny', "Jose Chung's From Outer Space", "An abduction told by a novelist, every witness unreliable. The show taking itself apart, lovingly."],
+    ['S04E02', 'motw', 'Home', "A quiet small town, a farmhouse, and a family that never left. Infamous for a reason."],
+    ['S05E05', 'funny', 'The Post-Modern Prometheus', "Black and white, a town obsessed with a TV talk show, and a creature who just wants to be loved."],
+    ['S05E20', 'myth', 'The End', "A chess prodigy who can read minds, and the finale that sends everything to the big screen."],
+    ['S06E02', 'motw', 'Drive', "Mulder is stuck in a car with a man who'll die if it stops heading west. Written by a pre-Breaking Bad Vince Gilligan."],
+    ['S07E12', 'funny', 'X-Cops', "The X-Files shot as an episode of a reality cop show. Something is hunting people in LA, live on camera."],
+    ['S10E03', 'motw funny', 'Mulder and Scully Meet the Were-Monster', "The revival's best hour. A monster with an unusual problem, and a reminder of why we watched."],
+  ];
+  const LABEL = { myth: 'MYTH', motw: 'MOTW', funny: 'COMEDY' };
+  const ratings = store.get('bf-ratings', {});
+  const list = document.getElementById('caseList');
+  EPS.forEach(([code, tags, title, blurb]) => {
+    const a = document.createElement('article');
+    a.className = 'case'; a.dataset.tags = tags;
+    a.innerHTML = `<div class="meta"><span>${code}</span><span>${LABEL[tags.split(' ')[0]]}</span></div><h3></h3><p></p><div class="rate" role="group" aria-label="Rate ${title.replace(/"/g, '')}"></div>`;
+    a.querySelector('h3').textContent = title; a.querySelector('p').textContent = blurb;
+    const rate = a.querySelector('.rate'), note = document.createElement('span');
+    const btns = [1, 2, 3, 4, 5].map(n => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = 'X'; b.setAttribute('aria-label', n + ' out of 5');
+      b.addEventListener('click', () => { ratings[code] = ratings[code] === n ? 0 : n; store.set('bf-ratings', ratings); paint(); });
+      rate.appendChild(b); return b;
+    });
+    rate.appendChild(note);
+    function paint() {
+      const v = ratings[code] || 0;
+      btns.forEach((b, i) => { b.classList.toggle('on', i < v); b.setAttribute('aria-pressed', i < v); });
+      note.textContent = v ? ['', 'Swamp gas', 'Inconclusive', 'Credible', 'Classified', 'Paradigm shift'][v] : 'Rate this file';
+    }
+    paint();
+    list.appendChild(a);
+  });
+  const chips = document.querySelectorAll('.chip[data-filter]');
+  const cards = [...list.children];
+  chips.forEach(b => b.addEventListener('click', () => {
+    chips.forEach(x => x.setAttribute('aria-pressed', x === b));
+    const f = b.dataset.filter;
+    cards.forEach(c => { c.hidden = f !== 'all' && !c.dataset.tags.split(' ').includes(f); });
+  }));
+  document.getElementById('randomCase').addEventListener('click', () => {
+    chips[0].click();
+    const c = cards[Math.random() * cards.length | 0];
+    c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+  });
+
+  // ---------- belief gauge ----------
+  const ticks = document.getElementById('ticks');
+  for (let i = 0; i <= 20; i++) {
+    const a = Math.PI + (i / 20) * Math.PI, r1 = i % 5 ? 150 : 140, r2 = 160;
+    const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    l.setAttribute('x1', 210 + Math.cos(a) * r1); l.setAttribute('y1', 220 + Math.sin(a) * r1);
+    l.setAttribute('x2', 210 + Math.cos(a) * r2); l.setAttribute('y2', 220 + Math.sin(a) * r2);
+    l.setAttribute('stroke', '#3c5a43'); l.setAttribute('stroke-width', i % 5 ? 1.5 : 3);
+    ticks.appendChild(l);
+  }
+  const VERDICTS = [
+    [20, 'Scully would be proud. Rational, and slightly annoyed.'],
+    [45, 'Open-minded skeptic. You watch the autopsy AND the sky.'],
+    [70, 'You own at least one flashlight you call "the good one."'],
+    [90, 'Poster on the wall. Sunflower seeds in your pocket.'],
+    [101, 'Spooky. Please report to the basement.'],
+  ];
+  const needle = document.getElementById('needle'), verdict = document.getElementById('verdict');
+  document.getElementById('testBtn').addEventListener('click', () => {
+    const n = Math.floor(Math.random() * 101);
+    verdict.textContent = 'CALIBRATING...';
+    needle.style.transform = `rotate(${n % 2 ? 80 : -80}deg)`;
+    setTimeout(() => {
+      needle.style.transform = `rotate(${-90 + n * 1.8}deg)`;
+      setTimeout(() => { verdict.textContent = `BELIEF LEVEL ${n}%: ${VERDICTS.find(([m]) => n < m)[1]}`; }, 900);
+    }, reduce ? 0 : 450);
+  });
+
+  // ---------- the password ----------
+  const SECRET = 'trustno1';
+  const FILE = ['// FILE X-1013 · EYES ONLY', 'Access granted.',
+    "You got in with the oldest password in the Bureau. If it worked for Mulder's computer, it works here. Somewhere in a warehouse full of crates, a filing cabinet just unlocked itself. The truth is still out there. So is the person who left that sticky note."];
+  function granted() {
+    const t = document.getElementById('title');
+    t.classList.remove('on'); void t.offsetWidth; t.classList.add('on');
+    document.body.animate?.([{ filter: 'hue-rotate(0) contrast(1)' }, { filter: 'hue-rotate(90deg) contrast(1.6)' }, { filter: 'hue-rotate(0) contrast(1)' }], { duration: 500 });
+    openFile(...FILE);
+  }
+  let buf = '';
+  addEventListener('keydown', e => {
+    if (e.target.closest('input, textarea')) return;
+    if (e.key.length !== 1) return;
+    buf = (buf + e.key.toLowerCase()).slice(-SECRET.length);
+    if (buf === SECRET) { buf = ''; granted(); }
+  });
+  const pass = document.getElementById('pass'), out = document.getElementById('passOut');
+  pass.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    const v = pass.value.trim().toLowerCase(); pass.value = '';
+    if (v === SECRET) { out.textContent = 'ACCESS GRANTED'; granted(); }
+    else if (v) out.textContent = ['ACCESS DENIED', 'NICE TRY, SPENDER', 'INCIDENT LOGGED', 'THE TRUTH IS NOT "' + v.slice(0, 16).toUpperCase() + '"'][Math.random() * 4 | 0];
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+title: X-Philes and the Birth of Online Fandom
+date: 2026-08-14
+tag: Fandom
+icon: 🌐
+summary: The X-Files arrived just as people were getting online. Its fans built some of the web's first great fan communities, and a few of their words are still with us.
+---
+The X-Files premiered in 1993, right as the internet was becoming something regular people used. That timing turned out to matter a lot. The show's fans became one of the first big fandoms to organize online, and they set patterns that internet fan culture still follows.
+
+## Usenet and the X-Philes
+
+Before the web was everywhere, fans gathered on Usenet in newsgroups like alt.tv.x-files. They traded episode theories, posted reviews within hours of an airing, and argued about every clue in the mythology. They called themselves X-Philes, and fans have long believed the writers were paying attention to what was being said.
+
+## Shippers and "noromos"
+
+One of the biggest debates was whether Mulder and Scully should be romantically involved. Fans who wanted them together were called "relationshippers," which got shortened to "shippers." The word spread far beyond The X-Files and is now standard fandom vocabulary. Fans who wanted the partnership to stay platonic called themselves "noromos," for "no romance." That one didn't catch on as widely.
+
+## The great fan sites
+
+As the web grew, fans built sites to hold everything. [Chronicle X](https://fanlore.org/wiki/ChronX), which ran from 1998 to 2001, was a popular archive of recommended fan fiction. [The X-Files Experience](https://fanlore.org/wiki/The_X-Files_Experience) focused on writing, with episode reviews, analysis, screencaps, and notes on minor characters. [X-Files Universe](https://www.fanlore.org/wiki/X-Files_Universe) offered news, chat, a fan fiction archive, contests, and a photo gallery, and its message board outlived the rest of the site. Some early pages even ran interactive episode ratings so visitors could score each new episode.
+
+Many of these sites are gone now. The best way to see them is through the Wayback Machine and the histories collected on [Fanlore](https://fanlore.org/), the fan-run wiki.
+
+## Fan fiction everywhere
+
+X-Files fan fiction was huge. Archives held thousands of stories, organized by type: casefiles, romance, humor, and stories set after particular episodes. A lot of people who are writers today got their start there.
+
+## Why it mattered
+
+X-Files fans showed that an online community could be organized, creative, and loud enough for the people making the show to notice. Every fandom since has followed some version of the path they took.
+
+This site, with its ratings and its secret password, is a small tribute to those old pages.
