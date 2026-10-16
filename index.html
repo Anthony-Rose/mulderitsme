@@ -246,6 +246,22 @@
   .more { margin-top: 28px; text-align: center; }
   .more a { text-decoration: none; display: inline-block; }
 
+
+  nav a.link.pill { color: #031; background: var(--green); padding: 4px 14px; border-radius: 999px; font-weight: 600; box-shadow: 0 0 16px rgba(109,255,138,.45); }
+  nav a.link.pill:hover { color: #031; box-shadow: 0 0 26px rgba(109,255,138,.7); }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; pointer-events: auto; }
+  .cta .btn { text-decoration: none; }
+  .btn.ghost { background: rgba(2,6,4,.5); color: var(--green); border: 1px solid var(--green); box-shadow: none; backdrop-filter: blur(4px); }
+  #blog { background: radial-gradient(ellipse at 50% 0%, rgba(109,255,138,.07), transparent 60%); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  @media (min-width: 900px) {
+    .posts { grid-template-columns: repeat(3, 1fr); }
+    .posts .card:first-child { grid-column: span 2; grid-row: span 2; }
+    .posts .card:first-child .art { height: auto; flex: 1; min-height: 240px; font-size: 96px; }
+    .posts .card:first-child h3 { font-size: 32px; }
+    .posts .card:first-child p { font-size: 16px; flex: 0; }
+    .posts .card:first-child .art::after { content: "LATEST FILE"; position: absolute; top: 12px; right: 14px; font: 15px "VT323", monospace; letter-spacing: .15em; color: #031; background: var(--green); padding: 1px 10px; }
+  }
+
   /* ---------- footer / terminal ---------- */
   footer { padding: 70px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; text-align: center; }
   .term {
@@ -300,12 +316,12 @@
 <nav id="nav">
   <div class="wrap">
     <a class="brand" href="#top">&gt; MULDER_ITS_ME</a>
+    <a class="link pill" href="blog/">Blog</a>
     <a class="link" href="#agents">Agents</a>
     <a class="link" href="#board">Conspiracy</a>
     <a class="link" href="#cases">Case Files</a>
     <a class="link" href="#basement">The Office</a>
     <a class="link" href="#believe">Believe</a>
-    <a class="link" href="blog/">Blog</a>
   </div>
 </nav>
 
@@ -315,11 +331,42 @@
     <div class="hero-kicker" data-decrypt="THE TRUTH IS OUT THERE">&nbsp;</div>
     <h1 class="glitch" id="title" data-text="Mulder, It's Me">Mulder, It's Me</h1>
     <p>An unofficial fan page for The X-Files</p>
+    <div class="cta"><a class="btn" href="blog/">Read the blog</a><a class="btn ghost" href="#agents">Open the files</a></div>
     <div class="hint">click the sky to <b>signal them</b> &nbsp;·&nbsp; scroll to descend</div>
   </div>
 </header>
 
 <main>
+  <!-- ============ BLOG ============ -->
+  <section id="blog">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker">// FIELD REPORTS · NEW EVERY MONTH</div>
+        <h2>The Mulder, It's Me blog</h2>
+        <p class="lede">Essays, watch guides, and deep dives from the basement. Twelve files declassified so far.</p>
+      </div>
+      <div class="posts reveal">
+<!--BLOG-LATEST-->
+<a class="card" href="blog/mark-snow-theme.html" data-tag="Music" data-text="four notes and a whistle: the sound of the x-files mark snow&#x27;s music did as much to make the show scary as anything on screen. here&#x27;s how one strange theme became a pop hit. music you can probably hear it right now. a cold, echoing whistle over a slow electronic pulse. the x-files theme is one of the most recognizable pieces of tv music ever written, and it came from a composer working mostly alone with a room full of synthesizers. ## mark snow mark snow scored every episode of the original series and both films, and he came back for the revival. he worked fast, often composing a full episode score in a matter of days, and almost entirely with electronic instruments. that gave the show a sound that was cheaper than an orchestra and, as it turned out, far creepier. ## the theme the story snow has told over the years is that the theme came together only after several rejected attempts. chris carter wanted something different from the usual tv opening, and snow found the key sound while experimenting with an echo effect on his keyboard. the whistle melody with the long, repeating echo was the result. whatever the exact details, it sounded like nothing else on tv in 1993. ## a surprise hit in 1996 the theme was released as a single and became a hit in several countries, including the united kingdom, where it climbed high in the charts. very few tv themes have done that, and it happened mostly because people just wanted to hear it again. ## the score underneath the theme gets the attention, but the episode scores are just as important. snow&#x27;s music fills in what the low budget couldn&#x27;t show. a slow drone tells you something is wrong before anything happens on screen. long, cold pads make a parking lot feel like an alien landscape. in the quieter character episodes, he switches to soft piano that&#x27;s often more affecting than the dialogue. listen closely to &quot;paper clip,&quot; &quot;memento mori,&quot; or &quot;field trip&quot; and you can hear how much work the music is doing. ## why it still works most tv music from the early 90s sounds dated. snow&#x27;s work mostly doesn&#x27;t, because it was never trying to sound like the music of its time. it was trying to sound like the dark between the trees. put it on in a dark room tonight and see how long you last.">
+  <div class="art"><span class="num">FILE 12</span><span aria-hidden="true">🎵</span></div>
+  <div class="body"><h3>Four Notes and a Whistle: The Sound of The X-Files</h3><p>Mark Snow&#x27;s music did as much to make the show scary as anything on screen. Here&#x27;s how one strange theme became a pop hit.</p>
+  <div class="foot"><b>Music</b><span>October 9, 2026 · 2 min</span></div></div>
+</a>
+<a class="card" href="blog/trust-no-one-security.html" data-tag="Tech &amp; Paranoia" data-text="trust no one: what the show got right about security mulder&#x27;s password is now a famous example of what not to do. but the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well. tech &amp; paranoia &quot;trust no one&quot; is the most famous line in the x-files. it started as advice from an informant and became a whole philosophy. it also became mulder&#x27;s computer password, trustno1, which tells you something about the gap between having good instincts and having good security habits. ## the password problem mulder&#x27;s password is a perfect bad password: a well-known phrase, connected to the owner, with a single digit tacked on. in the real world, trustno1 has shown up for years on lists of the most commonly used passwords. if a password is famous enough to appear in a tv show, it&#x27;s in every attacker&#x27;s wordlist. the lesson is the same today: use long, random passphrases or a password manager, and turn on multi-factor authentication. any visitor who found the sticky note in the basement on this site has just proved the point. ## &quot;kill switch&quot; saw the future season five&#x27;s &quot;kill switch&quot; was co-written by william gibson, the novelist who helped invent cyberpunk, along with tom maddox. it&#x27;s about an artificial intelligence that has escaped into the internet and protects itself by any means necessary, including a military satellite. in 1998 it looked like science fiction. today, a story about software that spreads across networks and fights being shut off doesn&#x27;t seem quite so far-fetched. ## surveillance as the default the show&#x27;s paranoia was mostly about governments: wiretaps, tracking devices, implants, files kept on ordinary people. mulder assumes he&#x27;s being watched, and he&#x27;s usually right. what the show didn&#x27;t predict is how much of that surveillance we&#x27;d end up carrying around voluntarily. the revival made that point in episodes like &quot;rm9sbg93zxjz,&quot; where a smart home, a smart car, and a smart restaurant turn on the agents. ## the lone gunmen model the lone gunmen are the show&#x27;s best example of how security people actually work. they verify everyone at the door, they assume their phones are tapped, they keep their own copies of everything, and they share what they find. paranoid, yes. also mostly correct. ## the real lesson &quot;trust no one&quot; isn&#x27;t great life advice, but it&#x27;s not bad engineering advice. verify things before you rely on them. assume someone is trying to get in. and don&#x27;t put your password on a sticky note.">
+  <div class="art"><span class="num">FILE 11</span><span aria-hidden="true">🔐</span></div>
+  <div class="body"><h3>Trust No One: What the Show Got Right About Security</h3><p>Mulder&#x27;s password is now a famous example of what not to do. But the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well.</p>
+  <div class="foot"><b>Tech &amp; Paranoia</b><span>September 11, 2026 · 2 min</span></div></div>
+</a>
+<a class="card" href="blog/early-internet-fandom.html" data-tag="Fandom" data-text="x-philes and the birth of online fandom the x-files arrived just as people were getting online. its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us. fandom the x-files premiered in 1993, right as the internet was becoming something regular people used. that timing turned out to matter a lot. the show&#x27;s fans became one of the first big fandoms to organize online, and they set patterns that internet fan culture still follows. ## usenet and the x-philes before the web was everywhere, fans gathered on usenet in newsgroups like alt.tv.x-files. they traded episode theories, posted reviews within hours of an airing, and argued about every clue in the mythology. they called themselves x-philes, and fans have long believed the writers were paying attention to what was being said. ## shippers and &quot;noromos&quot; one of the biggest debates was whether mulder and scully should be romantically involved. fans who wanted them together were called &quot;relationshippers,&quot; which got shortened to &quot;shippers.&quot; the word spread far beyond the x-files and is now standard fandom vocabulary. fans who wanted the partnership to stay platonic called themselves &quot;noromos,&quot; for &quot;no romance.&quot; that one didn&#x27;t catch on as widely. ## the great fan sites as the web grew, fans built sites to hold everything. [chronicle x](https://fanlore.org/wiki/chronx), which ran from 1998 to 2001, was a popular archive of recommended fan fiction. [the x-files experience](https://fanlore.org/wiki/the_x-files_experience) focused on writing, with episode reviews, analysis, screencaps, and notes on minor characters. [x-files universe](https://www.fanlore.org/wiki/x-files_universe) offered news, chat, a fan fiction archive, contests, and a photo gallery, and its message board outlived the rest of the site. some early pages even ran interactive episode ratings so visitors could score each new episode. many of these sites are gone now. the best way to see them is through the wayback machine and the histories collected on [fanlore](https://fanlore.org/), the fan-run wiki. ## fan fiction everywhere x-files fan fiction was huge. archives held thousands of stories, organized by type: casefiles, romance, humor, and stories set after particular episodes. a lot of people who are writers today got their start there. ## why it mattered x-files fans showed that an online community could be organized, creative, and loud enough for the people making the show to notice. every fandom since has followed some version of the path they took. this site, with its ratings and its secret password, is a small tribute to those old pages.">
+  <div class="art"><span class="num">FILE 10</span><span aria-hidden="true">🌐</span></div>
+  <div class="body"><h3>X-Philes and the Birth of Online Fandom</h3><p>The X-Files arrived just as people were getting online. Its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us.</p>
+  <div class="foot"><b>Fandom</b><span>August 14, 2026 · 2 min</span></div></div>
+</a>
+<!--/BLOG-LATEST-->
+      </div>
+      <div class="more reveal"><a class="btn" href="blog/">Open all case files</a></div>
+    </div>
+  </section>
   <!-- ============ AGENTS ============ -->
   <section id="agents">
     <div class="wrap">
@@ -491,36 +538,6 @@
       </svg>
       <button type="button" class="btn" id="testBtn">Run the test</button>
       <output id="verdict" aria-live="polite"></output>
-    </div>
-  </section>
-  <!-- ============ BLOG ============ -->
-  <section id="blog">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="kicker">// FIELD REPORTS</div>
-        <h2>From the blog</h2>
-        <p class="lede">Essays, watch guides, and deep dives from the basement. Twelve files declassified so far.</p>
-      </div>
-      <div class="posts reveal">
-<!--BLOG-LATEST-->
-<a class="card" href="blog/mark-snow-theme.html" data-tag="Music" data-text="four notes and a whistle: the sound of the x-files mark snow&#x27;s music did as much to make the show scary as anything on screen. here&#x27;s how one strange theme became a pop hit. music you can probably hear it right now. a cold, echoing whistle over a slow electronic pulse. the x-files theme is one of the most recognizable pieces of tv music ever written, and it came from a composer working mostly alone with a room full of synthesizers. ## mark snow mark snow scored every episode of the original series and both films, and he came back for the revival. he worked fast, often composing a full episode score in a matter of days, and almost entirely with electronic instruments. that gave the show a sound that was cheaper than an orchestra and, as it turned out, far creepier. ## the theme the story snow has told over the years is that the theme came together only after several rejected attempts. chris carter wanted something different from the usual tv opening, and snow found the key sound while experimenting with an echo effect on his keyboard. the whistle melody with the long, repeating echo was the result. whatever the exact details, it sounded like nothing else on tv in 1993. ## a surprise hit in 1996 the theme was released as a single and became a hit in several countries, including the united kingdom, where it climbed high in the charts. very few tv themes have done that, and it happened mostly because people just wanted to hear it again. ## the score underneath the theme gets the attention, but the episode scores are just as important. snow&#x27;s music fills in what the low budget couldn&#x27;t show. a slow drone tells you something is wrong before anything happens on screen. long, cold pads make a parking lot feel like an alien landscape. in the quieter character episodes, he switches to soft piano that&#x27;s often more affecting than the dialogue. listen closely to &quot;paper clip,&quot; &quot;memento mori,&quot; or &quot;field trip&quot; and you can hear how much work the music is doing. ## why it still works most tv music from the early 90s sounds dated. snow&#x27;s work mostly doesn&#x27;t, because it was never trying to sound like the music of its time. it was trying to sound like the dark between the trees. put it on in a dark room tonight and see how long you last.">
-  <div class="art"><span class="num">FILE 12</span><span aria-hidden="true">🎵</span></div>
-  <div class="body"><h3>Four Notes and a Whistle: The Sound of The X-Files</h3><p>Mark Snow&#x27;s music did as much to make the show scary as anything on screen. Here&#x27;s how one strange theme became a pop hit.</p>
-  <div class="foot"><b>Music</b><span>October 9, 2026 · 2 min</span></div></div>
-</a>
-<a class="card" href="blog/trust-no-one-security.html" data-tag="Tech &amp; Paranoia" data-text="trust no one: what the show got right about security mulder&#x27;s password is now a famous example of what not to do. but the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well. tech &amp; paranoia &quot;trust no one&quot; is the most famous line in the x-files. it started as advice from an informant and became a whole philosophy. it also became mulder&#x27;s computer password, trustno1, which tells you something about the gap between having good instincts and having good security habits. ## the password problem mulder&#x27;s password is a perfect bad password: a well-known phrase, connected to the owner, with a single digit tacked on. in the real world, trustno1 has shown up for years on lists of the most commonly used passwords. if a password is famous enough to appear in a tv show, it&#x27;s in every attacker&#x27;s wordlist. the lesson is the same today: use long, random passphrases or a password manager, and turn on multi-factor authentication. any visitor who found the sticky note in the basement on this site has just proved the point. ## &quot;kill switch&quot; saw the future season five&#x27;s &quot;kill switch&quot; was co-written by william gibson, the novelist who helped invent cyberpunk, along with tom maddox. it&#x27;s about an artificial intelligence that has escaped into the internet and protects itself by any means necessary, including a military satellite. in 1998 it looked like science fiction. today, a story about software that spreads across networks and fights being shut off doesn&#x27;t seem quite so far-fetched. ## surveillance as the default the show&#x27;s paranoia was mostly about governments: wiretaps, tracking devices, implants, files kept on ordinary people. mulder assumes he&#x27;s being watched, and he&#x27;s usually right. what the show didn&#x27;t predict is how much of that surveillance we&#x27;d end up carrying around voluntarily. the revival made that point in episodes like &quot;rm9sbg93zxjz,&quot; where a smart home, a smart car, and a smart restaurant turn on the agents. ## the lone gunmen model the lone gunmen are the show&#x27;s best example of how security people actually work. they verify everyone at the door, they assume their phones are tapped, they keep their own copies of everything, and they share what they find. paranoid, yes. also mostly correct. ## the real lesson &quot;trust no one&quot; isn&#x27;t great life advice, but it&#x27;s not bad engineering advice. verify things before you rely on them. assume someone is trying to get in. and don&#x27;t put your password on a sticky note.">
-  <div class="art"><span class="num">FILE 11</span><span aria-hidden="true">🔐</span></div>
-  <div class="body"><h3>Trust No One: What the Show Got Right About Security</h3><p>Mulder&#x27;s password is now a famous example of what not to do. But the show&#x27;s instincts about surveillance, secrets, and machines aged surprisingly well.</p>
-  <div class="foot"><b>Tech &amp; Paranoia</b><span>September 11, 2026 · 2 min</span></div></div>
-</a>
-<a class="card" href="blog/early-internet-fandom.html" data-tag="Fandom" data-text="x-philes and the birth of online fandom the x-files arrived just as people were getting online. its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us. fandom the x-files premiered in 1993, right as the internet was becoming something regular people used. that timing turned out to matter a lot. the show&#x27;s fans became one of the first big fandoms to organize online, and they set patterns that internet fan culture still follows. ## usenet and the x-philes before the web was everywhere, fans gathered on usenet in newsgroups like alt.tv.x-files. they traded episode theories, posted reviews within hours of an airing, and argued about every clue in the mythology. they called themselves x-philes, and fans have long believed the writers were paying attention to what was being said. ## shippers and &quot;noromos&quot; one of the biggest debates was whether mulder and scully should be romantically involved. fans who wanted them together were called &quot;relationshippers,&quot; which got shortened to &quot;shippers.&quot; the word spread far beyond the x-files and is now standard fandom vocabulary. fans who wanted the partnership to stay platonic called themselves &quot;noromos,&quot; for &quot;no romance.&quot; that one didn&#x27;t catch on as widely. ## the great fan sites as the web grew, fans built sites to hold everything. [chronicle x](https://fanlore.org/wiki/chronx), which ran from 1998 to 2001, was a popular archive of recommended fan fiction. [the x-files experience](https://fanlore.org/wiki/the_x-files_experience) focused on writing, with episode reviews, analysis, screencaps, and notes on minor characters. [x-files universe](https://www.fanlore.org/wiki/x-files_universe) offered news, chat, a fan fiction archive, contests, and a photo gallery, and its message board outlived the rest of the site. some early pages even ran interactive episode ratings so visitors could score each new episode. many of these sites are gone now. the best way to see them is through the wayback machine and the histories collected on [fanlore](https://fanlore.org/), the fan-run wiki. ## fan fiction everywhere x-files fan fiction was huge. archives held thousands of stories, organized by type: casefiles, romance, humor, and stories set after particular episodes. a lot of people who are writers today got their start there. ## why it mattered x-files fans showed that an online community could be organized, creative, and loud enough for the people making the show to notice. every fandom since has followed some version of the path they took. this site, with its ratings and its secret password, is a small tribute to those old pages.">
-  <div class="art"><span class="num">FILE 10</span><span aria-hidden="true">🌐</span></div>
-  <div class="body"><h3>X-Philes and the Birth of Online Fandom</h3><p>The X-Files arrived just as people were getting online. Its fans built some of the web&#x27;s first great fan communities, and a few of their words are still with us.</p>
-  <div class="foot"><b>Fandom</b><span>August 14, 2026 · 2 min</span></div></div>
-</a>
-<!--/BLOG-LATEST-->
-      </div>
-      <div class="more reveal"><a class="btn" href="blog/">Open all case files</a></div>
     </div>
   </section>
 </main>
