@@ -1,44 +1,50 @@
-title: After the Basement: How The X-Files Rewired Television
+title: After the Basement: The Lesson Was the Failure
 date: 2026-10-16
 tag: Legacy
 hue: 128
-summary: A procedural with a serialized conspiracy underneath, a writers' room that became a showrunner academy, and a look that prestige TV absorbed. Tracing what the show left behind.
+summary: The X-Files is credited with the procedural-serial hybrid and a writers' room that produced half the showrunners of the 2000s. Its most powerful legacy was neither. It was the example of a great show that could not end, and the generation that built its own series to avoid becoming it.
 ---
-It's tempting to measure a show's influence by its imitators, and The X-Files had plenty. But its deeper legacy is structural. It changed how a television series could be built, it trained a generation of people who went on to run their own, and it pushed the visual standards of network drama toward cinema.
+Legacies are usually counted in imitations, and The X-Files has plenty: the two-track structure of weekly cases over a long arc, the dark frame that network drama eventually adopted as a default, the alumni list. All of that is real. But the show's deepest influence on the television that followed was not something it did well. It was something it did badly and publicly, for years, in front of the people who would go on to run the medium. The X-Files proved that a serialized mystery on American television could become the most talked-about drama in the country and still be unable to pay off its own story. The shows that learned most from it learned by refusing to be it.
 
-## Two shows in one
+That is an uncomfortable thesis for a site devoted to the series, so it is worth stating plainly what it does not mean. It does not mean the mythology was a cheat from the start, or that the show was a failure. It means that the most consequential thing the series taught its successors was a negative lesson about endings, and that the proof is in what those successors said and built.
 
-The X-Files ran on two tracks. Most weeks it was a procedural: a self-contained case, solved or abandoned by the end of the hour. Running underneath was a serialized conspiracy, the "mythology," which advanced in a smaller number of episodes and carried over across seasons.
+## The cautionary tale, on the record
 
-That hybrid was not entirely new, but the show made it a model. It let casual viewers drop in on any week while giving dedicated fans a long story to follow and argue about. Many of the genre series that followed, from *Fringe* to *Supernatural*, use the same structure: weekly cases laid over a long arc.
+In January 2007, at the Television Critics Association press tour in Pasadena, the producers of *Lost* were asked about their show's future. Carlton Cuse reached for The X-Files. "That was a great show that probably ran two seasons too long," he said, and then: "That is a cautionary tale for us." He and Damon Lindelof said they had begun talking to ABC about picking an end point. The network, which at first said no such talks had taken place, agreed that May to a 2010 finish, and *Lost* ended with its date fixed three seasons in advance.
 
-The hybrid also has costs, and The X-Files demonstrated those too. A mythology that runs for years has to keep expanding without resolving, and the show's later conspiracy episodes struggled under that weight. Series that came after learned from both its success and its fatigue.
+It is hard to overstate how unusual that was. The commercial logic of American network television had always been that a hit runs until it stops being one. *Lost* argued for the right to stop while it was still a hit, and the argument it made was The X-Files. A show that had reinvented the serialized mystery was now the example its heirs cited when asking to be allowed to end. Whatever one thinks of how *Lost* used its negotiated ending, the negotiation itself was a structural change in the medium, and the series under discussion was Carter's.
 
-## A school for showrunners
+## Gilligan's refusal
 
-The show's writers' room became one of the most important training grounds in modern television. Vince Gilligan, who wrote episodes like *Pusher*, *Bad Blood* and *Drive*, went on to create *Breaking Bad*. He cast Bryan Cranston in that series because of Cranston's performance in *Drive*, and the network was reportedly persuaded after seeing the episode.
+The second proof is *Breaking Bad*, and it is more interesting because its creator came from inside the room. Vince Gilligan wrote some of The X-Files' best standalone hours, *Pusher*, *Bad Blood*, *Drive*, and he has told the Television Academy that it was *Drive*, in 1998, where he first worked with Bryan Cranston and realized the actor could play what he called a sympathetic creep. A decade later he built Walter White on that discovery.
 
-Howard Gordon went on to run *24* and co-develop *Homeland*. Frank Spotnitz developed *The Man in the High Castle*. Glen Morgan and James Wong moved into features, writing the first *Final Destination* film, which Wong directed. On the directing side, David Nutter became one of the most in-demand pilot directors in television.
+The usual way to tell this is as a casting anecdote. The better way is to notice what Gilligan took from the show and what he left behind. *Breaking Bad* has no mythology. It has no hidden conspiracy that advances in a few episodes a season and defers its answers to May. It is one story, about one man, and its creator has described it as close-ended by design. Everything Gilligan absorbed from The X-Files was the standalone's discipline: a contained situation, a guest actor given room to be human, a moral pressure that resolves inside the hour. Everything he declined was the long game. The most acclaimed drama of the following decade was made by an X-Files writer who kept the show's episodes and rejected its architecture.
 
-That's an extraordinary record for a single show, and it suggests that what the X-Files taught wasn't a formula but a way of working: genre stories told with ambition, specificity and an eye for character.
+## The alumni, and what they ran
 
-## Carter's other worlds
+The writers' room did become a kind of academy, and the record is remarkable. Howard Gordon went on to *24* and co-created *Homeland*, winning the Emmy for its pilot script with Alex Gansa and Gideon Raff. Frank Spotnitz, who wrote more episodes than anyone but Carter, brought *The Man in the High Castle* to Amazon after other outlets passed. Glen Morgan and James Wong rewrote a spec script that Jeffrey Reddick had written as an X-Files episode called "Flight 180" and never submitted; Wong directed it as *Final Destination* in 2000 and it became a franchise. David Nutter, a mainstay of the early seasons from *Ice* to *Clyde Bruckman's Final Repose*, became the industry's pilot specialist, with twenty-one of twenty-four pilots picked up to series by one count, among them *Smallville*, *Supernatural*, *Arrow* and *The Flash*.
 
-Chris Carter extended the X-Files sensibility himself. *Millennium*, which premiered in October 1996, followed a former FBI profiler with a disturbing ability to see through killers' eyes. It was darker and more apocalyptic than its parent show and found a devoted following of its own. *The Lone Gunmen*, a spinoff about Mulder's hacker allies, premiered on March 4, 2001 with a pilot in which rogue officials plot to fly a hijacked airliner into the World Trade Center. Six months later that plot became one of the most unsettling coincidences in television history.
+Look at that list as a set of structural choices rather than a roll of honor. *24* is built on a clock, a ticking constraint that forces resolution by design. *Homeland* reinvents itself season to season. *The Man in the High Castle* is a closed alternate world with a novel's shape. *Final Destination* is a rules machine in which the only mystery is who dies next. None of the alumni, with one exception, built a show on an open-ended conspiracy that promises a truth and keeps the promise in escrow. They had seen how that ends.
 
-## The look
+## The exception
 
-The show's darkness has also become television's default for serious drama. Today, a prestige series that lets faces fall into shadow and trusts the audience to read a dim frame is unremarkable. In 1993, on network television, it was a provocation. The X-Files did it for nine seasons, on 35mm, at a weekly pace, and proved that viewers would follow.
+The exception is *Supernatural*, and it proves the rule by paying the full price. Kim Manners, who directed more X-Files episodes than anyone, joined it in its first season as a director and executive producer and worked on it until his death in January 2009. The series copied the model more faithfully than any other: two investigators in a car, a monster a week, a demonic mythology running underneath. It premiered in 2005 and ended in November 2020 after fifteen seasons, by which point it had staged an apocalypse, survived it, and kept going for a decade. Its finale divided a fan base that had stayed through years of diminishing returns, and the loudest response was anger. Anyone who watched the last seasons of The X-Files knew the feeling. The one descendant that adopted the engine whole inherited the exhaust.
 
-## Descendants
+## Carter's own experiments
 
-You can see the show's fingerprints on *Stranger Things*, which premiered in 2016 with its secret government lab, small-town disappearances and flashlights in the woods. You can see them in true-crime podcasts and in the whole culture of online investigation, where amateurs gather evidence and argue about what it means. The idea of the obsessed, slightly isolated investigator chasing something the authorities dismiss has become one of the defining figures of contemporary storytelling.
+Carter himself tested the lesson before anyone else did. *Millennium*, which premiered on Fox on October 25, 1996, gave Lance Henriksen's Frank Black a darker world than Mulder's and a mythology, the Millennium Group, that the show rebuilt from the ground up when Glen Morgan and James Wong took over its second season, and then rebuilt again in its third. It lasted three seasons. *The Lone Gunmen*, the spinoff about Mulder's hacker allies, premiered on March 4, 2001 with a pilot, credited to Carter, Spotnitz, Gilligan and John Shiban, in which conspirators try to remotely fly a passenger jet into the World Trade Center; the plane pulls up at the last second. Six months later the episode became the most unsettling footnote in the franchise, and Spotnitz told TV Guide the following summer that almost no one had noticed the connection. The show had already been cancelled after thirteen episodes.
 
-## What lasts
+Neither spinoff ran long enough to face the problem the parent show faced. But both show Carter reaching for the same device, a secret organization whose meaning is deferred, and both suggest he understood its appeal better than its cost. When Fox brought The X-Files back in 2016 and 2018, the revival reopened the conspiracy twice more and closed it twice more. A new series from Ryan Coogler, ordered by Hulu this week and discussed elsewhere on this site, is reported to start from new agents rather than Mulder and Scully. If that holds, it is the franchise itself finally drawing the conclusion its imitators drew in 2007.
 
-Influence fades as it spreads, until a show's innovations become simply the way things are done. That's the clearest sign of how much The X-Files changed. Watching it now, much of what was radical about it looks normal, because so much of television has followed it into the dark.
+## What the positive legacies actually were
+
+None of this erases what the show gave the medium on purpose. The hybrid of case and arc is now the default shape of genre television, and it was The X-Files that proved a network audience would follow both tracks at once. The 35mm darkness, examined in this site's first essay, became the look of serious drama once the screens caught up. The guest-star economy, in which a Bryan Cranston or a Peter Boyle, who won an Emmy for *Clyde Bruckman's Final Repose*, could be handed an hour and trusted to carry it, is where a generation of character actors and the writers who loved them learned their trade.
+
+But a legacy is measured by what people do with it, and what the people who came out of that room did was build shows that could end. They kept the episode and dropped the escrow. They put clocks on their stories and dates on their finales. They cited the show by name when asking their networks for the right to stop. The X-Files changed television less by what it showed could be done than by what it showed could not, and the proof of its influence is that no major drama since has been allowed to promise the truth for nine years without being asked, by its own makers, when it intends to deliver.
 
 Sources:
-- [Drive (Wikipedia)](https://en.wikipedia.org/wiki/Drive_(The_X-Files))
-- [Millennium (Wikipedia)](https://en.wikipedia.org/wiki/Millennium_(TV_series))
-- [The Lone Gunmen (Wikipedia)](https://en.wikipedia.org/wiki/The_Lone_Gunmen_(TV_series))
+- [Animation World Network (AP report): Lost creators talk about series end, January 15, 2007](https://www.awn.com/news/lost-creators-talk-about-series-end)
+- [Television Academy Foundation: Vince Gilligan interview](https://interviews.televisionacademy.com/interviews/vince-gilligan)
+- [TV Guide: Sept. 11 parallel in The Lone Gunmen, June 21, 2002](https://www.tvguide.com/news/sept-11-parallel-41409/)
+- [Television Academy: Frank Spotnitz and The Man in the High Castle](https://www.televisionacademy.com/node/262616)
+- [Michael J. Fox Foundation: David Nutter bio](https://www.michaeljfox.org/bio/david-nutter)

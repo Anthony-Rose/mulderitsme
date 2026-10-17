@@ -1,45 +1,44 @@
-title: Two Cities, Two Shows: Vancouver Gray and Los Angeles Light
+title: Los Angeles Made the Look a Choice
 date: 2026-10-16
 tag: Cinematography
 hue: 195
-summary: After five seasons in British Columbia, the production moved to Los Angeles. The change altered everything from the weather to the color of the night, and the show adapted its storytelling to match.
+summary: Fans remember the 1998 move from Vancouver as the moment The X-Files lost its atmosphere. The awards record and the episodes say the opposite: the show's photography only became a style once the weather stopped supplying it.
 ---
-There are really two looks to the original run of The X-Files, and you can date most episodes within a few seconds of the first exterior shot. One is wet, green and gray, with forests that swallow light and skies that never quite clear. The other is dry and warm, with hard sun, open roads and nights lit by the orange of sodium streetlamps. The dividing line is the summer of 1998, when production left Vancouver for Los Angeles.
+Ask a longtime viewer when The X-Files stopped looking like The X-Files and you will usually get the same answer: the summer of 1998, when production left Vancouver for Los Angeles. The rain went, the fog went, the forests went, and in their place came hard sun, desert highways and the beige of Southern California suburbs. The move has been treated ever since as the point where the show's atmosphere drained away.
 
-## Vancouver as production design
+I want to argue the reverse. For five seasons in British Columbia the show's look was largely a gift of climate. It was a magnificent gift, and the crew that received it was superb, but overcast skies, wet asphalt and real mist are conditions, not decisions. The Los Angeles seasons were the first in which the photography had to be chosen, shot by shot, against an environment that offered nothing for free. The result was the most consistently honored cinematography of the show's run, and a visual identity that finally belonged to the production rather than to the Pacific Northwest.
 
-For its first five seasons the show was filmed in and around Vancouver, British Columbia. The city stood in for small towns in Oregon and Washington, suburbs of Virginia, and remote locations all over North America. Its forests, its industrial waterfront and its constant overcast did enormous work for the production.
+## What Vancouver gave away
 
-That overcast is easy to underestimate. Flat, soft daylight with no hard shadows looks melancholy on film and is forgiving to shoot in. It also matches from shot to shot, because the light doesn't change much over an afternoon. The rain added texture to every exterior. Wet asphalt reflects whatever light you put near it, so a night street becomes a field of reflections rather than a black hole.
+Chris Carter never pretended otherwise. Announcing the move in March 1998, he told the Vancouver Sun that "Vancouver was one of the stars of the show," and that leaving its crew was the hardest part of the decision. Later that year he put the practical side to the Los Angeles Times with unusual candor. In Vancouver, he said, "we had rain and misty conditions." In the new city, "we'll have to make them, without it looking forced."
 
-The result was a look that felt like a region rather than a set. The Pacific Northwest became the X-Files' landscape the way Monument Valley became John Ford's, even when the script claimed the episode was set somewhere else entirely.
+That sentence is the whole argument in miniature. Flat, soft daylight with no hard shadows is forgiving to shoot in and matches from setup to setup across an afternoon. Rain turns a night street into a field of reflections, so that a single practical lamp lights a whole block. Mist turns every source into a visible shaft. Vancouver handed those effects to the show on most shooting days, and the first three seasons' cinematographer, John S. Bartley, built a dark, low-fill style on top of them that won him an Emmy in 1996. The achievement was real. But its raw material arrived with the weather.
 
-## The move
+The move itself was driven by David Duchovny, who had said publicly that he would leave the series rather than spend another year away from his wife, Téa Leoni, who worked in Los Angeles. Carter denied he had been forced, saying he had promised both stars that the show would not stay in Vancouver indefinitely. Whatever the mix of motives, *The Beginning*, the sixth-season premiere, was the first episode shot in California, and it opens on exactly the thing the old show never had: open sky and a desert.
 
-After season five the production moved to Los Angeles. *The Beginning*, the sixth-season premiere, was the first episode shot there. David Duchovny had pushed for the change, and the logic of filming closer to the studio made sense for a show now big enough to support a feature film.
+## Hard sun, and what to do with it
 
-Bill Roe became director of photography with the move and stayed through the end of the original run in season nine. He faced a different problem from his predecessors. Southern California light is bright, hard and high-contrast. It doesn't hide anything. The fog and rain that had done so much of the atmospheric work were gone.
+Rob Bowman, who had directed more than two dozen episodes and had just finished the feature film, saw the problem before the crew arrived. "You're not going to get the diffuse light every day," he told Sci-Fi Age in its November 1998 issue; what they would get instead was "hard sun" and "LA sun." His answer was not to fight it but to find "a new look that takes the old one and goes a little further with it." Post-production supervisor Paul Rabwin told the Los Angeles Times the colors in the new city had "a whole different hue," and that the unit had changed film stocks and cameras to cope.
 
-## A new palette, and a new tone
+The person who had to deliver was Bill Roe, a camera veteran with one season of *Brooklyn South* as a director of photography behind him, whom his mentor Michael Watkins introduced to Carter when Watkins joined the show as a producer in Los Angeles. Roe stayed through the end of the ninth season. His first episode with Bowman, *Drive*, is the clearest demonstration of what the Los Angeles show could do that the Vancouver show could not. Most of it takes place in daylight inside a moving car on an open highway, with a hostage, a dying man and no cover. There is nowhere to hide a monster and no darkness to withhold it in. The suspense is built from the geometry of the road, the dust, the heat and the color of the light as the day runs out, and the ASC gave Roe its award for it in 1999. He won again the following year for *Agua Mala*, a hurricane episode drenched in moving water that in Vancouver would have been just another rainy night, and in Los Angeles had to be manufactured from nothing.
 
-Roe and the directors didn't fight the light. They used it. The sixth season leans into desert locations, sun-bleached suburbs and the particular loneliness of a well-lit place at night. The colors move from greens and slate grays toward ochre, amber and hard blue sky.
+> "Now we'll have to make them, without it looking forced."
 
-The writing moved with it. Season six is among the most playful in the show's history, with episodes like *Triangle*, *Monday*, *Arcadia* and *The Unnatural*. It's hard to say whether the setting changed the tone or the tone was already changing, but the two clearly reinforced each other. A show that had been about what hides in the dark found a new subject in what hides in plain sight.
+Then came the episodes that could only exist in the new light. *The Unnatural*, Duchovny's writing and directing debut, is a 1940s baseball story shot in warm, late-afternoon tones that look like no other hour of the series; Roe described to American Cinematographer hanging lamps from cranes so the sunlight would seem to shift as a bus traveled, and ringing a ball field built in Simi Valley with period lights on pickup trucks, flicker included. *Triangle*, which Carter shot in long continuous takes aboard the Queen Mary in Long Beach, needed a real ocean liner within driving distance of the studio. The Television Academy nominated Roe for the series twice, in 1999 and 2001. In four seasons the Los Angeles unit collected two ASC awards and two Emmy nominations. The Vancouver unit, in five, collected one Emmy win and a handful of nominations. Both records are excellent. Only one of them was earned against the weather.
 
-Roe's work was widely recognized. He won ASC awards for *Drive* in 1999 and *Agua Mala* in 2000, and received Emmy nominations for *The Unnatural* and *This Is Not Happening*. He later shot the 2008 film *I Want to Believe*.
+## The tone followed the light
 
-## Going home
+It is often said that season six went soft, that the comedies and the romantic undercurrent arrived with the sunshine. The causation is probably backward. Carter told the Times that the city would force the show to "tell stories using the landscape that is presented to us now," and the landscape of Los Angeles is one of surfaces: tract housing, strip malls, planned communities. *Arcadia*, set in a gated development with a homeowners' association that kills, is a Los Angeles story in a way no Vancouver episode could have been. The show did not become about what hides in the dark less because it had cheered up. It became about what hides in plain sight because plain sight was now what the camera had.
 
-When the series returned in 2016, it went back to Vancouver. The tenth season was shot there in the summer of 2015, and the eleventh followed. For a lot of viewers, the first shots of wet forest were as much a part of the reunion as the cast.
+## Going home, and the frame
 
-## A note on frames
+When Fox announced a six-episode revival in March 2015, production returned to Vancouver, shooting there from June to September. A ten-episode eleventh season was ordered in 2017 and shot there too. Fox's Dana Walden told critics in 2016 that the revival had been short because the show films in Vancouver and its leads live in London, New York and Los Angeles, so everything turned on finding a window when they could all be in the city at once. The homecoming was the right sentimental choice, and the revival episodes look handsome. They also look, on first glance, like any well-shot drama filmed in the city today, which rather proves the point: the Vancouver atmosphere was never exclusive to The X-Files. The Los Angeles look was.
 
-Anyone watching today should know that the image they see may not be the one that aired. The series was shot on 35mm film, and the HD remaster prepared for Blu-ray went back to the original negatives. In doing so it reframed the early seasons, originally composed for 4:3 screens, to fill a 16:9 frame, opening up the sides of the image and losing a little at the top and bottom. Accounts differ on exactly when the production began protecting its framing for widescreen, but the later seasons were shot with it in mind.
-
-It's a small difference, but for a show so precise about what it kept out of the frame, it's worth knowing which version you're looking at.
+One caution for anyone testing this argument on a screen. The series was shot in Super 35 and broadcast in 4:3, and the HD remaster released on Blu-ray in December 2015 was scanned from the original negatives and reframed to 16:9, adding image at the sides and losing some at the top and bottom. Bartley said his unit protected for 16:9 because "we knew it was coming," and the remaster bears him out; the pilot is the exception that had to be cropped. The compositions you see now are close to what the cinematographers shot, but they are not always the compositions the directors chose. Watch for the edges before deciding which city framed the show better.
 
 Sources:
-- [The X-Files, season 6 (Wikipedia)](https://en.wikipedia.org/wiki/The_X-Files_season_6)
-- [The X-Files, season 10 (Wikipedia)](https://en.wikipedia.org/wiki/The_X-Files_season_10)
-- [List of accolades received by The X-Files (Wikipedia)](https://en.wikipedia.org/wiki/List_of_accolades_received_by_The_X-Files)
-- [Blu-ray remaster announcement (SciFiNow)](https://www.scifinow.co.uk/news/the-x-files-coming-to-blu-ray-in-late-2013/)
+- [Vancouver Sun, March 30, 1998: X-Files creator bids B.C. sad adieu, by Alex Strachan (fan reprint, mjq.net)](https://mjq.net/xfiles/cc-farewell.htm)
+- [Los Angeles Times, fall 1998: X Marks Its Spot, by Greg Braxton (fan reprint, EatTheCorn)](https://www.eatthecorn.com/?p=1941)
+- [Remastered "X-Files" Quietly Hits Netflix (Dark Horizons, April 2015)](https://www.darkhorizons.com/?p=31718)
+- [ASC to Honor Bailey, Roe, Leonetti, Meheux (American Society of Cinematographers)](https://theasc.com/news/asc-to-honor-bailey-roe-leonetti-meheux)
+- [Bill Roe, Emmy nominations (Television Academy)](https://www.televisionacademy.com/bios/bill-roe)

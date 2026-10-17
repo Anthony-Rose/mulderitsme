@@ -1,39 +1,50 @@
-title: In Black and White: The Post-Modern Prometheus
+title: The Wrong Whale: Post-Modern Prometheus and the Bride
 date: 2026-10-16
 tag: Form
 hue: 0
-summary: Chris Carter's fifth-season episode drains the color from the show and rebuilds it as a monster movie in the tradition of James Whale. Why the homage works, and what it says about the creature at its center.
+summary: Chris Carter said his black-and-white fifth-season episode was an homage to the 1931 Frankenstein. Its framing device, its talking monster, its camp doctor and its rewritten ending all come from the sequel. Reading it against the right film explains why it works.
 ---
-The first thing *The Post-Modern Prometheus* does is announce that it isn't a normal episode. The color is gone. The image is black and white, and the story opens like a comic book. Written and directed by Chris Carter for the fifth season, it's an open homage to James Whale's *Frankenstein* (1931), and its title points even further back, to the subtitle of Mary Shelley's novel: *The Modern Prometheus*.
+When *The Post-Modern Prometheus* aired on November 30, 1997, Chris Carter told The New York Times what he was after. The episode, which he wrote and directed, was shot entirely in black and white as a tribute to the James Whale film "that starred Karloff," and he described his creature as an unlikely monster "who's got a fixation on Cher." Every account of the episode since has repeated the first half of that sentence. The homage is to *Frankenstein* (1931). Case closed.
 
-It's one of the show's great formal gambles, and it's worth understanding why the gamble pays off.
+Except that almost nothing in the hour behaves like the 1931 film. Whale's first *Frankenstein* is a grim, nearly humorless picture with a mute monster who ends it burning in a windmill. Carter's episode is a comedy with a monster who talks, a story told inside a frame, a scientist played for camp, a plea for companionship at its center and a finale that refuses the tragedy its plot has set up. Those are not the marks of *Frankenstein*. They are, point for point, the marks of *Bride of Frankenstein* (1935), the sequel Whale made four years later and the film this episode is really descended from. Carter may have named the wrong Whale, or he may have been using the famous title as shorthand. Either way, the episode makes much more sense once you put the right film next to it.
 
-## Why black and white
+## The frame
 
-For an audience in 1997, black and white wasn't neutral. It meant old movies: late-night monster features, Universal horror, the kind of film people watched on a black-and-white set long after color television arrived. Draining the color from The X-Files drags it into that tradition.
+*Bride* opens not with the monster but with its author. In a prologue set in 1818, Mary Shelley sits by a fire with Byron and her husband while a storm rages outside, and agrees to continue her story. Elsa Lanchester plays Shelley and, at the end of the film, the Bride, a doubling Whale intended to suggest the monstrous side of the gentle woman who imagined all this. The film is explicitly a story someone is telling.
 
-It also changes how the show's usual tools behave. In color, darkness is moody. In black and white, it's graphic. Shadows become shapes, faces become planes of light, and the image takes on the hard contrast of Whale's era. Joel Ransom's photography leans into that, with deep blacks and bright, sculptural highlights, and it earned him an Emmy nomination.
+Carter's episode opens the same way, translated into a 1990s idiom. The first image is a comic book, *The Great Mutato*, drawn by a teenager named Izzy, and the live action grows out of its panels. The final image returns to the comic. Everything between is framed as an authored object, and the episode never lets you forget it. The 1931 film has no such frame. It opens on a graveyard and means it.
 
-## The monster and the mob
+The frame matters because it licenses the ending. Near the close, with the creature arrested and the plot heading toward a cell, Mulder protests that the story is ending wrong, that the monster was supposed to escape and search for his bride, and says, "I want to speak to the writer." The next scene is a Cher concert for the whole town, with the monster on stage and Mulder and Scully dancing. Critics have treated this as either a lark or a cheat. Within a story that announced itself as a story on page one, it is neither. It is the author stepping in, as Whale's prologue promised an author could.
 
-Whale's *Frankenstein* is famous for making its creature sympathetic. Boris Karloff's monster is a confused, wounded figure, and the real menace is the village that hunts him with torches. Carter's episode keeps that moral structure and moves it to a small Indiana town.
+## The monster who speaks
 
-The creature at the center of the story is a lonely, gentle figure created by a scientist's experiments and hidden from a town that would not accept him. He loves the music of Cher. The townspeople, meanwhile, are obsessed with getting on a daytime talk show. The episode suggests that the real monstrousness lies in a culture that turns pain into spectacle.
+In the 1931 film, Karloff's creature grunts. The decision to give him dialogue in *Bride* was, the American Society of Cinematographers' history of the film notes, a departure Karloff himself thought was a mistake, because speech made the monster too sympathetic. Whale wanted the sympathy. He built the film's best sequence around a blind hermit who takes the creature in, feeds him and teaches him words, so that the monster can at last say what he wants, which is a friend.
 
-That's where the "post-modern" in the title earns its place. The episode isn't only borrowing from old horror films. It's aware that its characters live in a media world where everything, including monsters, is something to be watched.
+The Great Mutato, played under heavy makeup by Chris Owens, is a hermit's pupil without the hermit. He has learned the world from Cher records and from *Mask* (1985), the film in which Cher plays the mother of a boy with a disfiguring condition. When he finally talks, in a long monologue near the end, he is articulate and gentle, and what he explains is that the man who raised him had been trying, by terrible means, to make him a mate. That is the plot of *Bride* reduced to a confession: a creature who wants not to be alone, and a maker who tries to manufacture the cure. Carter's version removes the Bride and substitutes the singer. Cher is the mate the monster cannot have, which is why the real Cher's absence, with an impersonator performing in the finale to Cher's own recordings, accidentally sharpens the point. He gets the image of her, never the woman.
 
-## Tone
+## The camp doctor
 
-The episode is funny, which is easy to miss when you describe it on paper. It's also sincere. That combination is hard to pull off, and it depends on the black and white. The old-movie look gives Carter permission to be openly sentimental in a way the show's usual realism wouldn't allow. It's a fairy tale, and it knows it.
+*Bride* is also where Whale's humor came off the leash. The ASC history describes him pushing his dark comedy further than before, with Ernest Thesiger's Dr. Pretorius, skeletal and arch, improvising witty lines on set. Pretorius is not a tormented scientist. He is a showman who toasts "a new world of gods and monsters" and enjoys himself.
 
-The ending, which trades the torch-wielding mob for a pop song, is either the most joyful or the most baffling moment in the series, depending on who you ask. It may be both.
+John O'Hurley's Dr. Pollidori is Pretorius in a tweed jacket. Asked why he would experiment on living things, he answers, "Because I can," and the line is played for the vanity, not the horror. Carter had no use for Colin Clive's shaking, guilty Henry Frankenstein. He wanted the strut.
 
-## Form as meaning
+The name is the tell. Pollidori is a near spelling of John Polidori, the young physician who traveled with Byron to the Villa Diodati in 1816, sat in on the ghost-story contest that produced *Frankenstein*, and wrote *The Vampyre*, which the New Monthly Magazine then misattributed to Byron. Polidori is a figure from the summer *Bride* dramatizes in its prologue. He has no place in the 1931 film at all. Carter, or someone on his staff, was reading around the sequel.
 
-The best formal experiments on The X-Files don't just change the look of an episode. They make the form part of the argument. *The Post-Modern Prometheus* uses the vocabulary of 1930s horror to tell a story about how audiences treat outsiders, and it asks the viewer to notice that they, too, are watching a monster for entertainment.
+## What the black and white is for
 
-It's a reminder that the show's sense of film history was never just decoration. The creators knew where their genre came from, and they were willing to go back to the source when a story called for it.
+None of this makes the photography incidental. Joel Ransom was nominated for the cinematography Emmy in 1998, a nomination generally credited to this hour, and the work deserves it because it refuses the easy version of monochrome. The temptation with black and white is to make everything a shadow. Ransom lights the small-town interiors brightly and flatly, like a 1950s sitcom, and saves the deep contrast for the barn, the woods and the mob. That is a *Bride* strategy too. Whale and John Mescall lit the laboratory like an opera and the hermit's cottage like a nativity, and let the two registers argue.
+
+Black and white also gives the episode's talk-show material its bite. The townspeople want to be on Jerry Springer, who appears as himself, and their yearning plays as parody because the format they crave is so plainly a color medium. The episode's title puts "post-modern" in front of Shelley's subtitle, and the joke is that the villagers with torches have been replaced by villagers with a story to sell.
+
+## Why it matters which film
+
+The show's 1998 Emmy haul, which the Television Academy records by series rather than by episode, is generally credited in large part to this hour: Carter's writing and directing nominations, Ransom's photography, Mark Snow's score, the makeup team, and the art direction award the show won that year. The Directors Guild nominated Carter for the episode by name. It was recognized, in other words, as a piece of filmmaking, and the critical habit of filing it under "homage to *Frankenstein*" has let it be admired without being read.
+
+Read against the right film, its supposed indulgences become its structure. The frame is from *Bride*. The talking, yearning creature is from *Bride*. The arch doctor and his Diodati name are from *Bride*. And the finale, the one that sends the monster to a concert instead of a windmill, is the ending *Bride* could not quite give its creature. Whale's monster pulls a lever and brings the tower down on himself and the woman who screamed at him. Carter's gets Cher. Call that sentimental if you like. It is also the most precise piece of film criticism the show ever produced, an argument that the 1935 picture wanted a happy ending and that television, sixty-two years later, could finally afford one.
 
 Sources:
-- [The Post-Modern Prometheus (Wikipedia)](https://en.wikipedia.org/wiki/The_Post-Modern_Prometheus)
-- [List of accolades received by The X-Files (Wikipedia)](https://en.wikipedia.org/wiki/List_of_accolades_received_by_The_X-Files)
+- [The New York Times via The Spokesman-Review: "X-Files Takes On Frankenstein Tale" (Nov. 27, 1997)](https://www.spokesman.com/stories/1997/nov/27/x-files-takes-on-frankenstein-tale/)
+- [American Cinematographer / ASC: "The Bride of Frankenstein: A Gothic Masterpiece"](https://theasc.com/article/bride-of-frankenstein/)
+- [Television Academy: The X-Files awards and nominations](https://www.televisionacademy.com/shows/x-files)
+- [DGA press release: 1997 nominees, including Carter for "The Post-Modern Prometheus"](https://www.dga.org/News/PressReleases/1998/0203-DGA-Announces-1997-Nominees-for-Outstanding-Directorial-Achievement-In-TV)
+- [Literary Hub: Nick Groom on John Polidori and The Vampyre](https://lithub.com/on-the-very-scary-rise-of-the-first-literary-vampire/)

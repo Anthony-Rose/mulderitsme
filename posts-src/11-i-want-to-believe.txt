@@ -1,36 +1,46 @@
-title: I Want to Believe, Reconsidered
+title: The Case Against Mulder: I Want to Believe
 date: 2026-10-16
 tag: The Films
 hue: 205
-summary: Released in July 2008 a week after The Dark Knight, the second X-Files film was dismissed as small and strange. Seen now, its smallness looks like the point.
+summary: The second X-Files film is remembered as the small one that opened behind The Dark Knight. Its real problem was braver than that. It is the only X-Files story that puts its hero's faith on trial and rules for the skeptic.
 ---
-The second X-Files film opened in the United States on July 25, 2008, one week after *The Dark Knight*. It finished fourth in its opening weekend with about $10.2 million and went on to gross roughly $68 million worldwide on a reported $30 million budget. By the standards of summer releases it was a disappointment, and the critical response was largely cool.
+The explanation everyone settled on for *The X-Files: I Want to Believe* is the calendar. It opened on July 25, 2008, one week after *The Dark Knight*, finished fourth with just over $10 million, and ended with about $69 million worldwide against a reported $30 million budget. Fox, by Chris Carter's later account, had commissioned it "for a price," roughly a third of what the 1998 film cost, and then barely advertised it. All of that is true and none of it is the interesting failure. The interesting failure is that Carter and Frank Spotnitz wrote the one X-Files story in which Mulder is the problem, and then released it to an audience that had spent fifteen years being told he was the point.
 
-It's worth looking at again, because most of the things held against it at the time were deliberate.
+Watch the film as Scully's and it coheres. Watch it as Mulder's, the way the title and the poster invite you to, and it falls apart, because the plot keeps refusing to pay him. That is not a mistake in the writing. It is the writing. Carter's own 2026 recut, which strips out the romance to push the horror, confirms that the theatrical version was never the film he wanted either. The 2008 release is the one X-Files movie that was accidentally about its skeptic, and it is better for it.
 
-## Not a mythology film
+## Where the film finds him
 
-Directed by Chris Carter and co-written with Frank Spotnitz, *I Want to Believe* is a standalone story. There are no aliens, no Syndicate, no black oil. Mulder and Scully, now out of the FBI, are drawn into the search for a missing agent, with help from a disgraced priest, Father Joseph Crissman, played by Billy Connolly, who claims psychic visions of the case. Amanda Peet and Xzibit play the FBI agents who bring them in.
+The series spent nine seasons teaching the audience to read Mulder's isolation as integrity. The film opens by reading it as damage. He is in hiding, discredited by the Bureau, in a room papered with clippings, and the first thing the story asks of him is whether he will come back to the work at all. The FBI agents who fetch him, Amanda Peet's Dakota Whitney and Xzibit's Mosley Drummy, are not villains or dupes. They are a procedural audience, one willing to believe and one not, and the film gives neither of them the satisfaction of being right.
 
-For audiences expecting the conspiracy to continue, that was frustrating. But the choice makes sense. The original series had largely resolved its mythology, and a film that tried to restart it would have needed to explain years of continuity to newcomers. Carter instead made something closer to the show's standalone episodes: a contained case with a moral question at its center.
+What they bring him is Father Joseph Crissman, Billy Connolly's defrocked priest, a man who by his own count abused thirty-seven boys and who now lives in a dormitory of offenders and reports visions of a kidnapped agent. The structure is a dare. The show's whole method was to put a believer and a skeptic in a car and let the case referee their argument. Here the case is a pedophile who may be a prophet, and the film asks Mulder to want him to be real. Mulder does. That is the film's quiet indictment: belief, which the series treated as a form of courage, is shown here as an appetite that will take its evidence from anyone.
 
-## Snow, not darkness
+Connolly plays it without a trace of charm, and the division among critics on his performance is telling. Peter Rainer in the Christian Science Monitor wrote that he "steals the acting honors"; Den of Geek's Simon Brew said flatly that he "never bought him." Both reactions come from the same choice. Connolly refuses to make Father Joe likable or theatrical, so the audience is given no permission to enjoy him, and no permission to dismiss him. His visions find the missing agent's remains in the snow. They never find her alive. The gift is real and it is useless, which is the most hostile thing the franchise ever said about the thing Mulder wants.
 
-The film was photographed by Bill Roe, who had shot the later seasons of the series. Its most striking visual choice is to replace the show's signature darkness with snow. Much of the film takes place in bright, white, wintry landscapes, where nothing can hide in shadow and figures stand out against the ground.
+## Scully's film
 
-That's a reversal of the show's visual logic, and it suits the story. *I Want to Believe* isn't really about discovering a hidden truth. It's about whether two people can keep faith, in each other and in something larger, when the answers are not hidden but simply unavailable. A white landscape is the right image for that kind of uncertainty: nothing is concealed, and you still can't see far.
+Meanwhile the movie's actual argument is happening in a hospital. Scully is a physician at a Catholic institution, treating a boy named Christian with Sandhoff disease, a terminal condition, and arguing for a painful experimental stem cell treatment that her superior, a priest, wants to stop in favor of letting the child die gently. This is the show's old faith-against-medicine axis turned inside out. The believer in the room is the Church, and it is counseling resignation. The skeptic is the one insisting on a treatment that probably will not work. Scully's belief is the kind that costs her something and has a patient attached to it. Mulder's has a corkboard.
 
-## Faith as the subject
+The film cuts between the two tracks with a bluntness that has been called television direction, and Den of Geek's Simon Brew was right that Carter's instinct for close-ups is a small-screen instinct. But the intercutting is the thesis. Every time Mulder gets closer to the kidnappers, Scully gets closer to a decision about a child, and the film weights the second. When Father Joe tells her, "Don't give up," the line is written so that it can only apply to the boy. It never belongs to Mulder's case. The film's one piece of grace is routed around its hero.
 
-The title is the key. The film is less interested in the case than in what each character is willing to believe. Scully, now working as a doctor at a Catholic hospital, is fighting for a young patient against the wishes of the institution. Mulder is drawn back to the work that nearly destroyed him. Father Joe, a man guilty of terrible crimes, may or may not be receiving genuine visions.
+Scully's own line is the film's verdict, and it is the opposite of the poster. She tells Mulder she is "done chasing monsters in the dark." The series had let her say versions of this for years and always brought her back to the car. The film takes her at her word. It lets her be done, and then it shows what Mulder looks like without her, which is a man in snow following the visions of a sex offender toward an operating table.
 
-The film doesn't resolve those questions neatly, and that refusal is part of why it frustrated audiences. But it's also faithful to the show at its best, which was always more interested in the act of searching than in the answers.
+## Snow instead of dark
 
-## Wrong place, wrong time
+Bill Roe, who had shot the series from its move to Los Angeles through the final season, photographs the Vancouver winter as the show's darkness turned inside out. Carter has described the shoot as miserable and cold, and the cold is in the frame: wide fields of white in which nothing can hide and figures stand out like marks on paper. The series' signature image was a flashlight beam defining the one thing you were allowed to see. Here you can see everything, and it does not help. A severed arm is found in a snowfield. The kidnappers' surgical room is lit like a clinic. Even the horror the plot is building toward, a transplant operation that keeps a head alive in ice while it waits for a body, is shown with the lights on.
 
-Some of the film's reception came down to timing. A quiet, wintry, adult drama about faith arrived in the middle of a summer dominated by one of the biggest superhero films ever made. It was marketed as an event and turned out to be an intimate character piece. Expectations and reality didn't match.
+That inversion was deliberate and it was punished. The film's few gestures toward the series' old visual vocabulary, the night scenes near the kidnappers' compound, are the moments that play most like the show. The rest reads as flat, and it was meant to. The show's whole aesthetic argued that the truth is hidden and can be found. The film's argues that the truth is right there in the daylight and is simply awful: a sick child, a dying man, a priest who did what he did. There is nothing in the dark to chase. There is only what you decide to do about what you can already see.
 
-Seen today, without that context, it plays more like an epilogue to the original series: a small, sincere film about two people who have survived what the show put them through and still haven't stopped looking.
+## What Carter cut, and what it proves
+
+Carter has said the Fox executives who saw his first cut dismissed it as torture porn, that the ratings board told them it was not a PG-13 film, and that the version released was shaped by cutting back the horror and leaning on the Mulder and Scully relationship. His R-rated recut, released on Hulu and Disney+ in August 2026 under the subtitle *Vrach Frankenshteyn* and running about 98 minutes against the original 104, reverses that trade. By his account it lays into the darkness and takes away some of the romance, which he felt the revival seasons had exhausted anyway.
+
+It is worth noticing what survives both versions: the hospital, the boy, the priest, and Scully's refusal. Those were never the parts anyone wanted to cut. The romance could come or go, the gore could be dialed up or down, but the film's spine was always a woman choosing a patient over a partner's obsession. Carter calls the theatrical version a relationship movie with an X-File in it. It is more accurate to say it is a film about one half of the relationship finally winning an argument the series had rigged for fifteen years, and that the audience, reasonably enough, did not come to a summer movie to watch Mulder lose.
+
+Seen in that light, the fourth-place opening behind *The Dark Knight*, *Step Brothers* and *Mamma Mia!* is less a tragedy of scheduling than a demonstration of what the franchise's audience was and was not willing to buy. A conspiracy with aliens would have sold better. So would a Mulder who was right. The film offered neither, and offered instead a question the show had spent its life avoiding: what if the person who wants to believe is the one who needs to stop? That is a serious thing for a franchise film to ask. It is not a surprise that it was asked once.
 
 Sources:
-- [The X-Files: I Want to Believe (Wikipedia)](https://en.wikipedia.org/wiki/The_X-Files:_I_Want_to_Believe)
+- [Box Office Mojo: The X-Files: I Want to Believe](https://www.boxofficemojo.com/title/tt0443701/)
+- [Box Office Mojo: weekend of July 25-27, 2008](https://www.boxofficemojo.com/weekend/2008W30/)
+- [TheWrap: How Chris Carter finally fixed The X-Files: I Want to Believe (August 2026)](https://www.thewrap.com/creative-content/movies/the-x-files-i-want-to-believe-directors-cut-chris-carter-interview/)
+- [AFI Catalog: The X-Files: I Want to Believe (2008)](https://catalog.afi.com/Catalog/moviedetails/64814)
+- [Christian Science Monitor review, Peter Rainer, July 26, 2008](https://csmonitor.com/The-Culture/Movies/2008/0726/p25s04-almo.html)

@@ -1,41 +1,48 @@
-title: Triangle and the Long Take
+title: Triangle Is a Comedy, and the Long Take Is the Joke
 date: 2026-10-16
 tag: Form
 hue: 220
-summary: Chris Carter built a sixth-season episode to play as four unbroken takes, borrowing a trick from Hitchcock's Rope. A close look at what the long take does, and how it was faked.
+summary: Chris Carter sold his sixth-season stunt as Hitchcock. Watch where the unbroken camera actually comes alive and it looks like something else: a screwball farce, timed by a Steadicam instead of an editor.
 ---
-Most television is assembled from coverage. A scene is shot from several angles, and the editor chooses among them, cutting to shape performance and pace. The cut is the basic unit of control. *Triangle*, written and directed by Chris Carter for the show's sixth season, gives that control away, or at least pretends to.
+*Triangle* arrived on November 22, 1998 wrapped in a famous name. Chris Carter, who wrote and directed it, built the episode on the model of Alfred Hitchcock's *Rope*, and the comparison has stuck to it ever since: four acts, each designed to play as one unbroken take, a ghost liner adrift in the Bermuda Triangle, Mulder trapped in 1939 among Nazis. The Directors Guild nominated Carter for it, his third nomination from the show after *The List* and *The Post-Modern Prometheus*. Everything about the episode's reputation says suspense.
 
-The episode is designed to look as if it were made from four long, unbroken takes, each running roughly eleven minutes, one per act. It's a stunt, and it's also an argument about what continuous time does to suspense.
+I think the reputation is wrong about the genre. The long take in *Triangle* does almost nothing for dread. What it does, superbly, is comic timing. The episode's best act is a chase through an office building that plays like a Blake Edwards set piece, and its emotional payoff is a punch in the mouth followed by a joke. Carter borrowed Hitchcock's method and discovered, probably without meaning to, that on television the unbroken shot belongs to farce.
 
-## The Rope precedent
+## What Rope actually does
 
-The obvious model is Alfred Hitchcock's *Rope* (1948), which was staged to appear as a single continuous shot. Hitchcock was limited by how much film a camera magazine could hold, so he hid his cuts: the camera would move into a dark surface, such as the back of a jacket, and the next reel would begin from the same darkness.
+Start with the model. *Rope* (1948) was shot in takes limited by how much film a camera could hold, a little over ten minutes. The film has eleven shots and ten cuts, and Chris Wisniewski's account in Reverse Shot lays out the pattern: every other cut is an ordinary edit, placed where projectionists would have to change reels anyway, and the ones in between are hidden by pushing the lens into a man's back until the frame goes dark. Hitchcock was not trying to make you forget the cut. He was trying to make you feel the clock. The daylight dying in the window behind the actors does the same work, and the film's eighty minutes feel longer than they are. *Rope* uses continuous time to tighten a screw.
 
-*Triangle* faces a similar problem. The Steadicam rig used for the long moving shots could only hold about four minutes of film, so the production had to disguise cuts within each act to sustain the illusion. The craft is in making the seams disappear. The audience should feel continuous time even though the footage isn't continuous.
+*Triangle* has the same constraint in a different form. Bill Roe, the show's new director of photography that season, has said that every shot in the episode was done on a Steadicam, because the hour was meant to play in real time, and that it "seems like every shot was four minutes long." Dave Luckenbach operated the rig for ten straight days. Carter, in an X-Files Diaries podcast interview [summarized by the fan archive EatTheCorn in 2025](https://www.eatthecorn.com/tag/triangle/), said the footage came in at exactly the forty-five minutes the hour needed, with nothing to spare, and that setting the story at night helped hide the joins. So far, so Hitchcock. The question is what the continuous camera is doing while it runs.
 
-## Why continuous time works
+## The ship, where the method fails
 
-A long take changes how you watch. With no cuts to tell you what to look at, your attention wanders the frame the way it would in a real space. You become aware of geography: where the doors are, how far the characters are from each other, how long it takes to get from one place to another.
+Act one puts Mulder aboard the *Queen Anne*, a liner that vanished in 1939 and has surfaced in 1998 with its original passengers still aboard. The production shot on the real Queen Mary in Long Beach, dressed for the period, and the ship gives the Steadicam long corridors and real stairwells to work with. It should be ideal.
 
-That awareness is the source of the episode's tension. Mulder is adrift on a ship that seems to belong to 1939, in a story full of mistaken identities and armed men. Back in the present, Scully races through the FBI building to get help. Because the camera never cuts away, every corridor is as long as it really is, and every delay costs real time.
+It isn't, and the reason is instructive. Suspense in a long take comes from a space the viewer has learned. In *Rope*, one apartment, one evening, one trunk. On the ship, Mulder is running through rooms he has never seen toward a goal he is improvising, pursued by a Nazi crew led by the Cigarette Smoking Man, with Spender as his lieutenant and Skinner as a sympathetic officer. The camera follows at a jog, and because it never stops to establish geography, the geography never accumulates. We don't know how far the engine room is from the ballroom, so there is no dread in the distance. Carter's doubled casting, which gives the regulars 1939 counterparts, is a pleasure, but it is a dream's pleasure, and the Reactor critic Meghan Deans is right that the episode plays the whole 1939 story as something Mulder imagines while he is drowning. Dreams can be funny. They are rarely suspenseful, because nothing in them is at stake in a way the body believes.
 
-## Split-screen
+## The Hoover Building, where it succeeds
 
-In the final acts, Carter splits the frame. The two storylines play side by side, and at one point the two halves of the screen appear to brush against each other, as though Mulder and Scully, separated by decades, nearly cross paths.
+Then act two cuts to Washington, and the episode becomes a different thing. Scully needs one piece of information, the location of a ship, and she has to extract it from a building full of people who will not help her. The camera attaches itself to her back and does not let go as she goes from Kersh's office to Spender to the Lone Gunmen to Skinner, up and down floors, in and out of elevators, through a maze of standing sets that the Los Angeles crew had only just built.
 
-Split-screen is usually a device for showing simultaneity. Here it does something stranger. It suggests that two moments in time are adjacent, separated only by a thin line, which is exactly what the episode's supernatural premise proposes.
+Watch what the continuity is doing here. It is not stretching time; it is compressing it, the way a farce does. Scully's lines are quick, her turns are sharp, and every obstacle arrives on a beat. The elevator becomes a running gag: Carter has described redressing the set while the doors were closed so that the same box could open onto a different scene, which is an old stage trick dressed as cinema. When Scully finally gets what she needs she grabs Skinner and kisses him, an act so out of character that it only works because the camera has been with her, breathless, for ten unbroken minutes and has earned the release. The A.V. Club's Emily St. James called this her favorite act, and what she singled out was Gillian Anderson, "so delightful, racing all over the building." Delight is exactly the right word. Delight, not tension.
 
-## Stunt or style
+Hitchcock's long take asks you to wait. Carter's asks you to keep up. Those are opposite demands, and the second one is the engine of physical comedy from Keaton forward: a body moving through space in real time, with no cut to save it from its own momentum.
 
-It would be easy to dismiss *Triangle* as a formal stunt, a showcase for the crew rather than a story. But the technique is matched to the material. The episode is about a man stuck in a single, continuous, impossible night, and the form makes you share that condition. You can't step out of the shot any more than Mulder can step off the ship.
+## The split screen as a sight gag
 
-It's also a sign of how much confidence the show had by its sixth season. A program that had once been a modest, rain-soaked procedural was now willing to rebuild its own grammar for a single hour, and trusted its audience to follow.
+The last two acts divide the frame, 1939 on one side and 1998 on the other, and the device's celebrated moment is the one where the two Scullys pass each other at the center line, pause, and frown. People describe this as uncanny, and it is, slightly. But look at the construction. It is a double take. The timing is a comedian's: the pass, the half-beat, the shared look of puzzlement, the resumption. The split screen's supposed subject, two moments in time pressed against each other, is delivered as a joke about mistaken identity, which is the oldest joke farce has.
 
-## Watching it now
+The ending confirms the register. Mulder, convinced he is about to die in 1939, kisses the OSS agent who looks like his partner. She punches him. He wakes in a hospital bed, tells the real Scully he loves her, and she answers "Oh, brother." The whole episode has been working toward a declaration, and it lands as a punchline, with the long-take machinery as the setup. Deans sees this as wish fulfillment turned into a running joke. I would say Carter knew precisely what kind of hour he had made and ended it in kind.
 
-*Triangle* rewards a second viewing with your eye on the edges of the frame. Watch for where the camera chooses to pass close to a wall or a dark doorway. Those are the places where the trick might be hiding. Finding them doesn't spoil the episode. It makes you appreciate how much planning goes into something that is meant to feel unplanned.
+## Why the distinction matters
+
+Calling *Triangle* a comedy is not a demotion. It explains why the episode is remembered with affection rather than awe, and why the Emmy recognition attributed to it was a craft nomination, for sound editing, while the directing nomination came from the guild instead. It also tells you something about the long take as a television tool. Suspense in a long take depends on a learned space and a slow clock, which a weekly schedule rarely allows. Comedy in a long take depends on choreography and actors who can hit marks for minutes at a stretch, which is exactly what a trained series cast can deliver. Carter had Anderson, a Steadicam operator with ten days of stamina, and a set of corridors. He used them for the thing they were good at.
+
+Put *Rope* and *Triangle* side by side and the difference is not quality but temperature. Hitchcock's camera watches a crime cool in a trunk. Carter's runs after a woman who refuses to stop. One is a thriller that wants you to feel the minutes. The other is a chase that wants you to lose count of them, and does.
 
 Sources:
-- [Triangle (Wikipedia)](https://en.wikipedia.org/wiki/Triangle_(The_X-Files))
-- [The X-Files, season 6 (Wikipedia)](https://en.wikipedia.org/wiki/The_X-Files_season_6)
+- [The A.V. Club: "Triangle" / Millennium: "TEOTWAWKI" (Emily St. James, 2012)](https://www.avclub.com/the-x-files-triangle-millennium-teotwawki-1798173183)
+- [DGA press release: 1998 nominees for Dramatic Series, including Carter for "Triangle"](https://www.dga.org/News/PressReleases/1999/0202-DGA-Announces-1998-Nominees-for-Outstanding-Directorial-Achievement-in-TV-Categories)
+- [Kodak / Bob Fisher: The Paranormal and Alien Experiences of Bill Roe, ASC (reprinted at EatTheCorn)](https://www.eatthecorn.com/?itw=kodak-2)
+- [Reverse Shot: Rope (Chris Wisniewski)](https://reverseshot.org/archive/entry/1312/rope)
+- [Reactor: Reopening The X-Files, "Triangle" (Meghan Deans)](https://reactormag.com/reopening-the-x-files-triangle/)
