@@ -222,6 +222,25 @@
     .syllabus .dir { white-space: normal; }
     nav .wrap { gap: 18px; }
   }
+  /* transmissions: drifting quotes */
+  #transmissions.mist { min-height: 78vh; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 120%, #0a1d12, var(--bg) 66%); }
+  .mist .fog { position: absolute; inset: -20% -10%; z-index: 0; pointer-events: none; }
+  .mist .fog span { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; background: radial-gradient(circle at 50% 50%, rgba(109,255,138,.10), rgba(109,255,138,0) 70%); }
+  .mist .fog .f1 { width: 62vw; height: 62vw; left: -12vw; top: 6%; animation: fogA 36s ease-in-out infinite alternate; }
+  .mist .fog .f2 { width: 52vw; height: 52vw; right: -10vw; top: 22%; background: radial-gradient(circle at 50% 50%, rgba(150,180,170,.08), rgba(150,180,170,0) 70%); animation: fogB 44s ease-in-out infinite alternate; }
+  .mist .fog .f3 { width: 46vw; height: 46vw; left: 26vw; bottom: -14%; animation: fogA 52s ease-in-out infinite alternate-reverse; }
+  @keyframes fogA { from { transform: translate3d(-6%, 4%, 0) scale(1); } to { transform: translate3d(8%, -6%, 0) scale(1.25); } }
+  @keyframes fogB { from { transform: translate3d(6%, 0, 0) scale(1.1); } to { transform: translate3d(-8%, 6%, 0) scale(.9); } }
+  .mist-wrap { position: relative; z-index: 2; text-align: center; }
+  .mist-kicker { font: 500 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--green); margin-bottom: 30px; }
+  .mist-dek { font: 400 15px/1.5 var(--read); color: var(--muted); margin: 0 auto 38px; max-width: 460px; }
+  .mist-quote { margin: 0 auto; max-width: 920px; opacity: 0; filter: blur(12px); transform: translateY(16px); transition: opacity 1.4s ease, filter 1.4s ease, transform 1.4s ease; will-change: opacity, filter, transform; }
+  .mist-quote.in { opacity: 1; filter: blur(0); transform: none; }
+  .mist-quote.out { opacity: 0; filter: blur(18px); transform: translateY(-30px) scale(1.03); transition: opacity 1.9s ease, filter 1.9s ease, transform 1.9s ease; }
+  .mist-quote .mq-text { display: block; font: italic 300 clamp(26px, 4.6vw, 50px)/1.22 var(--serif); color: #f3efe6; text-shadow: 0 6px 40px rgba(0,0,0,.85); }
+  .mist-quote .mq-cite { display: block; margin-top: 24px; font: 500 12px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--soft); font-style: normal; }
+  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     html { scroll-behavior: auto; }
@@ -451,6 +470,16 @@
         <div class="tl"><div class="y">2008</div><h4>Fringe</h4><span class="tag">Descendant</span><p>An FBI team, a believer and a skeptic, and a weekly case laid over a long mythology.</p></div>
         <div class="tl"><div class="y">2016</div><h4>Stranger Things</h4><span class="tag">Descendant</span><p>Government labs, small-town disappearances and flashlights in the woods, filtered through the 1980s.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="transmissions" class="mist" aria-label="Famous lines from The X-Files">
+    <div class="fog" aria-hidden="true"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+    <div class="wrap mist-wrap">
+      <div class="mist-kicker reveal">Static on the line</div>
+      <p class="mist-dek reveal">The lines that outlived the show, surfacing and dissolving the way they do in memory.</p>
+      <blockquote class="mist-quote" id="mistQuote" aria-hidden="true"><span class="mq-text"></span><cite class="mq-cite"></cite></blockquote>
+      <ul class="sr-only" id="mistList"></ul>
     </div>
   </section>
 </main>
@@ -781,6 +810,42 @@ if (reduce) { composer.render(); } else { frame(); }
   addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > innerHeight * 0.6), { passive: true });
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+(() => {
+  const el = document.getElementById('mistQuote');
+  if (!el) return;
+  const t = el.querySelector('.mq-text'), c = el.querySelector('.mq-cite');
+  const Q = [
+    {q: "The truth is out there.", a: "series tagline"},
+    {q: "Mulder, it's me.", a: "Dana Scully · catchphrase"},
+    {q: "Trust no one.", a: "tagline, The Erlenmeyer Flask"},
+    {q: "I want to believe.", a: "the poster in Mulder's office"},
+    {q: "Sorry, nobody down here but the FBI's most unwanted.", a: "Fox Mulder · Pilot"},
+    {q: "Deny everything.", a: "tagline, Ascension"},
+    {q: "I'd settle for a life in this one.", a: "Dana Scully · Shadows"},
+    {q: "Don't try and threaten me, Mulder. I've watched presidents die.", a: "Cigarette Smoking Man · One Breath"},
+    {q: "Mulder, toads just fell from the sky!", a: "Dana Scully · Die Hand Die Verletzt"},
+    {q: "Sure. Fine. Whatever.", a: "Dana Scully · Syzygy"},
+    {q: "You're my one in five billion.", a: "Fox Mulder · Folie à Deux"},
+    {q: "I owe you everything, Scully, and you owe me nothing.", a: "Fox Mulder · The X-Files: Fight the Future"}
+  ];
+  const list = document.getElementById('mistList');
+  if (list) Q.forEach(x => { const li = document.createElement('li'); li.textContent = '"' + x.q + '" (' + x.a + ')'; list.appendChild(li); });
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = Math.floor(Math.random() * Q.length);
+  (function show() {
+    const x = Q[i];
+    t.textContent = x.q;
+    c.textContent = x.a;
+    el.classList.remove('out');
+    void el.offsetWidth;
+    el.classList.add('in');
+    setTimeout(() => {
+      el.classList.remove('in');
+      el.classList.add('out');
+      setTimeout(() => { el.classList.remove('out'); i = (i + 1) % Q.length; show(); }, reduce ? 300 : 1950);
+    }, reduce ? 3800 : 4600);
+  })();
 })();
 </script>
 </body>
