@@ -2,7 +2,7 @@ title: Who Holds the Camera: The X-Files' Real Format Experiments
 date: 2026-10-16
 tag: Form
 hue: 275
-summary: The show's famous rule-breaking episodes get lumped together as stunts. They are two different projects. One asserts the director's control of the image. The other, the more radical one, gives the camera away to someone who can't be trusted.
+summary: The show's famous rule-breaking episodes get lumped together as stunts, but they are two different projects. One asserts the director's control of the image. The other, the more radical one, hands the camera to someone who can't be trusted.
 ---
 Ask an X-Files viewer to name the episodes that broke the format and the same titles come back: *Jose Chung's From Outer Space*, *Bad Blood*, *Triangle*, *The Post-Modern Prometheus*, *Monday*, *X-Cops*, and from the revival, *Rm9sbG93ZXJz*. They are discussed as one tradition, the show letting its hair down. The grouping hides a split that matters more than anything they share.
 
@@ -42,7 +42,7 @@ Morgan shoots much of it from the machines' point of view, from security cameras
 
 Put the five together and the pattern is plain. A novelist's informants, two rival partners, a woman trapped in a day, a reality crew, a network of appliances: each episode names the eye through which we are seeing and makes that eye the problem. Carter's experiments, for all their skill, never do this. The long take and the black and white are an author showing you his hand. The writers' episodes hide the hand and ask whose it is.
 
-That second project is the one with descendants. The comic procedural of the last two decades, with its mockumentary crews, its contradictory flashbacks and its episodes narrated by the least reliable person in the room, runs on a grammar The X-Files worked out in these hours. It did so not by abandoning its subject but by turning the subject on itself. A show about witnesses who could not be trusted eventually asked whether its own camera could be, and the honest answer, delivered as comedy, was no.
+That second project is the one with descendants. The comic procedural of the last two decades, with its mockumentary crews, its contradictory flashbacks and its episodes narrated by the least reliable person in the room, runs on a grammar The X-Files worked out in these hours by turning its subject on itself. A show about witnesses who could not be trusted eventually asked whether its own camera could be, and the honest answer, delivered as comedy, was no.
 
 Sources:
 - [The A.V. Club: "Hell Money" / "Jose Chung's From Outer Space" / "Avatar" (Emily St. James)](https://www.avclub.com/the-x-files-hell-money-jose-chungs-from-outer-space-1798165717)

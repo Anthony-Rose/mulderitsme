@@ -32,6 +32,12 @@ Sources:
 
 The body supports `## ` headings, `- ` lists, `> ` pull quotes, `*italic titles*` and `[links](https://...)`. House style: no em dashes or en dashes, every fact verified, sources listed at the end.
 
+## Authorship
+
+Only Claude Fable writes the actual prose on this site. Every word that ships to readers, the essays, the homepage copy, the section introductions, the syllabus and lineage notes, the error page, is drafted or edited by Fable. Other models may research, gather sources, fact-check, run `build_blog.py` and handle the plumbing, but the writing itself is Fable's. When a different model is driving a session, it delegates the writing pass to a Fable subagent rather than editing the copy directly.
+
+The writing should sound as authentically human as possible. Keep the confident, literate voice, but avoid the tells of machine-written prose: the "it is not X, it is Y" antithesis on a loop, formula openers repeated across pieces, tidy triads, and endings that restate the thesis with a neat button. Vary sentence length, let some sentences be plain, and trim rather than pad.
+
 After adding or editing an essay, rebuild:
 
 ```bash
