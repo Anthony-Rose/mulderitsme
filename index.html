@@ -223,7 +223,7 @@
     nav .wrap { gap: 18px; }
   }
   /* transmissions: drifting quotes */
-  #transmissions.mist { min-height: 78vh; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 120%, #0a1d12, var(--bg) 66%); }
+  #transmissions.mist { padding: 72px 0; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 150%, #0a1d12, var(--bg) 78%); }
   .mist .fog { position: absolute; inset: -20% -10%; z-index: 0; pointer-events: none; }
   .mist .fog span { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; background: radial-gradient(circle at 50% 50%, rgba(109,255,138,.10), rgba(109,255,138,0) 70%); }
   .mist .fog .f1 { width: 62vw; height: 62vw; left: -12vw; top: 6%; animation: fogA 36s ease-in-out infinite alternate; }
@@ -234,7 +234,7 @@
   .mist-wrap { position: relative; z-index: 2; text-align: center; }
   .mist-kicker { font: 500 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--green); margin-bottom: 30px; }
   .mist-dek { font: 400 15px/1.5 var(--read); color: var(--muted); margin: 0 auto 38px; max-width: 460px; }
-  .mist-quote { margin: 0 auto; max-width: 920px; opacity: 0; filter: blur(12px); transform: translateY(16px); transition: opacity 1.4s ease, filter 1.4s ease, transform 1.4s ease; will-change: opacity, filter, transform; }
+  .mist-quote { margin: 0 auto; max-width: 920px; min-height: 170px; display: flex; flex-direction: column; justify-content: center; opacity: 0; filter: blur(12px); transform: translateY(16px); transition: opacity 1.4s ease, filter 1.4s ease, transform 1.4s ease; will-change: opacity, filter, transform; }
   .mist-quote.in { opacity: 1; filter: blur(0); transform: none; }
   .mist-quote.out { opacity: 0; filter: blur(18px); transform: translateY(-30px) scale(1.03); transition: opacity 1.9s ease, filter 1.9s ease, transform 1.9s ease; }
   .mist-quote .mq-text { display: block; font: italic 300 clamp(26px, 4.6vw, 50px)/1.22 var(--serif); color: #f3efe6; text-shadow: 0 6px 40px rgba(0,0,0,.85); }
