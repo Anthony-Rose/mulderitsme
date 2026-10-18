@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" width="640" height="800" role="img" aria-label="Illustration of a vintage television set, a stand-in for the Lone Gunmen">
+  <defs>
+    <radialGradient id="lg-bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#121a1e"/>
+      <stop offset="58%" stop-color="#0a0f12"/>
+      <stop offset="100%" stop-color="#05080a"/>
+    </radialGradient>
+    <radialGradient id="lg-screen" cx="48%" cy="44%" r="75%">
+      <stop offset="0%" stop-color="#32444a"/>
+      <stop offset="68%" stop-color="#121b1f"/>
+      <stop offset="100%" stop-color="#0b1215"/>
+    </radialGradient>
+    <clipPath id="lg-screenclip"><rect x="168" y="332" width="252" height="196" rx="22"/></clipPath>
+  </defs>
+
+  <rect width="640" height="800" fill="url(#lg-bg)"/>
+
+  <!-- antenna -->
+  <g stroke="#b8b2a4" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.65">
+    <line x1="320" y1="306" x2="246" y2="196"/>
+    <line x1="320" y1="306" x2="402" y2="190"/>
+  </g>
+  <circle cx="246" cy="196" r="5" fill="#b8b2a4" opacity="0.65"/>
+  <circle cx="402" cy="190" r="5" fill="#b8b2a4" opacity="0.65"/>
+
+  <!-- cabinet -->
+  <rect x="138" y="302" width="364" height="300" rx="34" fill="#0e1417" stroke="#c7c1b2" stroke-width="3" opacity="0.95"/>
+
+  <!-- screen -->
+  <rect x="168" y="332" width="252" height="196" rx="22" fill="url(#lg-screen)" stroke="#8f8a7d" stroke-width="2"/>
+  <g clip-path="url(#lg-screenclip)">
+    <g stroke="#dfe6e2" stroke-width="1" opacity="0.06">
+      <line x1="168" y1="338" x2="420" y2="338"/><line x1="168" y1="346" x2="420" y2="346"/>
+      <line x1="168" y1="354" x2="420" y2="354"/><line x1="168" y1="362" x2="420" y2="362"/>
+      <line x1="168" y1="370" x2="420" y2="370"/><line x1="168" y1="378" x2="420" y2="378"/>
+      <line x1="168" y1="386" x2="420" y2="386"/><line x1="168" y1="394" x2="420" y2="394"/>
+      <line x1="168" y1="402" x2="420" y2="402"/><line x1="168" y1="410" x2="420" y2="410"/>
+      <line x1="168" y1="418" x2="420" y2="418"/><line x1="168" y1="426" x2="420" y2="426"/>
+      <line x1="168" y1="434" x2="420" y2="434"/><line x1="168" y1="442" x2="420" y2="442"/>
+      <line x1="168" y1="450" x2="420" y2="450"/><line x1="168" y1="458" x2="420" y2="458"/>
+      <line x1="168" y1="466" x2="420" y2="466"/><line x1="168" y1="474" x2="420" y2="474"/>
+      <line x1="168" y1="482" x2="420" y2="482"/><line x1="168" y1="490" x2="420" y2="490"/>
+      <line x1="168" y1="498" x2="420" y2="498"/><line x1="168" y1="506" x2="420" y2="506"/>
+      <line x1="168" y1="514" x2="420" y2="514"/><line x1="168" y1="522" x2="420" y2="522"/>
+    </g>
+    <circle cx="294" cy="430" r="120" fill="#e9f0ec" opacity="0.05"/>
+  </g>
+
+  <!-- control column -->
+  <g fill="none" stroke="#b8b2a4" stroke-width="2" opacity="0.7">
+    <circle cx="462" cy="356" r="15"/>
+    <circle cx="462" cy="410" r="15"/>
+  </g>
+  <g stroke="#b8b2a4" stroke-width="2" stroke-linecap="round" opacity="0.5">
+    <line x1="448" y1="452" x2="476" y2="452"/>
+    <line x1="448" y1="462" x2="476" y2="462"/>
+    <line x1="448" y1="472" x2="476" y2="472"/>
+    <line x1="448" y1="482" x2="476" y2="482"/>
+    <line x1="448" y1="492" x2="476" y2="492"/>
+  </g>
+
+  <!-- legs -->
+  <g stroke="#9a9488" stroke-width="6" stroke-linecap="round" opacity="0.7">
+    <line x1="206" y1="602" x2="188" y2="636"/>
+    <line x1="434" y1="602" x2="452" y2="636"/>
+  </g>
+</svg>
