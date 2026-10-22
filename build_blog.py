@@ -18,6 +18,7 @@ import html
 import json
 import pathlib
 import re
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "posts-src"
@@ -271,13 +272,19 @@ PROGRESS = """<script>
 
 INDEX_JS = """<script>
 (() => {
-  const cards = [...document.querySelectorAll('.card')], chips = document.querySelectorAll('.chip'), q = document.getElementById('q'), empty = document.getElementById('empty');
+  const cards = [...document.querySelectorAll('.card')], chips = [...document.querySelectorAll('.chip')], q = document.getElementById('q'), empty = document.getElementById('empty');
   let tag = 'all';
   function apply() { const term = q.value.trim().toLowerCase(); let n = 0;
     cards.forEach(c => { const ok = (tag === 'all' || c.dataset.tag === tag) && (!term || c.dataset.text.includes(term)); c.hidden = !ok; n += ok; });
     empty.hidden = n > 0; }
-  chips.forEach(b => b.addEventListener('click', () => { tag = b.dataset.tag; chips.forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
+  function select(t, push) {
+    const b = chips.find(x => x.dataset.tag === t) || chips.find(x => x.dataset.tag === 'all');
+    tag = b.dataset.tag; chips.forEach(x => x.setAttribute('aria-pressed', x === b)); apply();
+    if (push) { const u = new URL(location); tag === 'all' ? u.searchParams.delete('tag') : u.searchParams.set('tag', tag); history.replaceState(null, '', u); }
+  }
+  chips.forEach(b => b.addEventListener('click', () => select(b.dataset.tag, true)));
   q.addEventListener('input', apply);
+  select(new URLSearchParams(location.search).get('tag') || 'all', false);
 })();
 </script>"""
 
@@ -374,6 +381,9 @@ def build():
     home = HOME.read_text(encoding="utf-8")
     latest = "\n".join(card(p, "blog/" + p["slug"] + ".html") for p in newest[:4])
     home = re.sub(r"(<!--BLOG-LATEST-->).*?(<!--/BLOG-LATEST-->)", lambda m: f"{m[1]}\n{latest}\n{m[2]}", home, flags=re.S)
+    browse = "".join(f'<a class="tagpill" href="blog/?tag={urllib.parse.quote(t)}">{html.escape(t)}</a>' for t in tags)
+    home = re.sub(r"(<!--BROWSE-TAGS-->).*?(<!--/BROWSE-TAGS-->)", lambda m: f"{m[1]}{browse}{m[2]}", home, flags=re.S)
+    home = render_reboot(home)
     hdesc = ("A film journal on The X-Files: long-form essays on its direction, cinematography, form, music and legacy, "
              "with a viewing syllabus and filmmaker profiles.")
     site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
@@ -384,6 +394,24 @@ def build():
     write_feeds(newest)
     write_credits()
     print(f"built {len(posts)} posts, plus sitemap.xml, feed.xml and robots.txt")
+
+
+def render_reboot(home):
+    try:
+        data = json.loads((ROOT / "data_reboot.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return home
+    dek = f'<p>{html.escape(data.get("dek", ""))}</p>'
+    rows = "".join(
+        f'<div class="statusrow" data-status="{html.escape(it["status"])}">'
+        f'<span class="statustag">{html.escape(it["status"].capitalize())}</span>'
+        f'<div class="statusbody"><b>{html.escape(it["label"])}</b>{html.escape(it["text"])}</div></div>'
+        for it in data.get("items", []))
+    updated = f'<span class="updated">Updated {html.escape(data.get("updated", ""))}</span>'
+    home = re.sub(r"(<!--REBOOT-DEK-->).*?(<!--/REBOOT-DEK-->)", lambda m: f"{m[1]}{dek}{m[2]}", home, flags=re.S)
+    home = re.sub(r"(<!--REBOOT-BOARD-->).*?(<!--/REBOOT-BOARD-->)", lambda m: f"{m[1]}{rows}{m[2]}", home, flags=re.S)
+    home = re.sub(r"(<!--REBOOT-UPDATED-->).*?(<!--/REBOOT-UPDATED-->)", lambda m: f"{m[1]}{updated}{m[2]}", home, flags=re.S)
+    return home
 
 
 def write_credits():
