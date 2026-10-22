@@ -413,15 +413,17 @@ def render_reboot(home):
         return home
     glyph = {"confirmed": "▲", "reported": "◆", "rumored": "▽"}
 
-    def tk(it):
+    def tk(it, dup=False):
         g = glyph.get(it["status"], "●")
-        return (f'<span class="tk" data-status="{html.escape(it["status"])}">'
+        extra = ' aria-hidden="true" tabindex="-1"' if dup else ''
+        return (f'<button type="button" class="tk"{extra} aria-expanded="false" data-status="{html.escape(it["status"])}"'
+                f' data-label="{html.escape(it["label"], quote=True)}" data-text="{html.escape(it["text"], quote=True)}">'
                 f'<span class="tkg" aria-hidden="true">{g}</span>'
                 f'<span class="tkl">{html.escape(it["label"])}</span>'
-                f'<span class="tks">{html.escape(it["status"].capitalize())}</span></span>')
-    items = "".join(tk(it) for it in data.get("items", []))
-    track = items + items  # duplicated for a seamless loop
-    li = "".join(f'<li>{html.escape(it["label"])} ({html.escape(it["status"])}): {html.escape(it["text"])}</li>' for it in data.get("items", []))
+                f'<span class="tks">{html.escape(it["status"].capitalize())}</span></button>')
+    its = data.get("items", [])
+    track = "".join(tk(it) for it in its) + "".join(tk(it, True) for it in its)
+    li = "".join(f'<li>{html.escape(it["label"])} ({html.escape(it["status"])}): {html.escape(it["text"])}</li>' for it in its)
     updated = f'<span class="updated">Updated {html.escape(data.get("updated", ""))}</span>'
     home = re.sub(r"(<!--REBOOT-TICK-->).*?(<!--/REBOOT-TICK-->)", lambda m: f"{m[1]}{track}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-LIST-->).*?(<!--/REBOOT-LIST-->)", lambda m: f"{m[1]}{li}{m[2]}", home, flags=re.S)
