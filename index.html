@@ -286,6 +286,7 @@
   <a class="link" href="#syllabus">Syllabus</a>
   <a class="link" href="#lineage">Lineage</a>
   <a class="link" href="#reboot">Reboot</a>
+  <a class="link" href="glossary.html">Glossary</a>
   <a class="link pill" href="blog/">Journal</a>
 </div></nav>
 
@@ -848,6 +849,7 @@ function frame() {
 if (reduce) { composer.render(); } else { frame(); }
 </script>
 
+<script id="quote-data" type="application/json"><!--QUOTES-->[{"q": "The truth is out there.", "a": "series tagline"}, {"q": "Mulder, it's me.", "a": "Dana Scully · catchphrase"}, {"q": "Trust no one.", "a": "tagline, The Erlenmeyer Flask"}, {"q": "I want to believe.", "a": "the poster in Mulder's office"}, {"q": "Sorry, nobody down here but the FBI's most unwanted.", "a": "Fox Mulder · Pilot"}, {"q": "Deny everything.", "a": "tagline, Ascension"}, {"q": "I'd settle for a life in this one.", "a": "Dana Scully · Shadows"}, {"q": "Don't try and threaten me, Mulder. I've watched presidents die.", "a": "Cigarette Smoking Man · One Breath"}, {"q": "Mulder, toads just fell from the sky!", "a": "Dana Scully · Die Hand Die Verletzt"}, {"q": "Sure. Fine. Whatever.", "a": "Dana Scully · Syzygy"}, {"q": "You're my one in five billion.", "a": "Fox Mulder · Folie à Deux"}, {"q": "I owe you everything, Scully, and you owe me nothing.", "a": "Fox Mulder · The X-Files: Fight the Future"}, {"q": "Agent Mulder believes we are not alone.", "a": "Dana Scully · Pilot"}, {"q": "He had a nickname at the academy... Spooky Mulder.", "a": "Dana Scully · Pilot"}, {"q": "Time can't just disappear. It's a universal invariant!", "a": "Dana Scully · Pilot"}, {"q": "Not in this zip code.", "a": "Fox Mulder · Pilot"}, {"q": "Mr. Mulder, they've been here for a long, long time.", "a": "Deep Throat · Deep Throat"}, {"q": "I like you. I like her, too. That's why she was returned to you.", "a": "Cigarette Smoking Man · One Breath"}, {"q": "Men can never be free, because they're weak, corrupt, worthless and restless.", "a": "Cigarette Smoking Man · Talitha Cumi"}, {"q": "Life is like a box of chocolates. A cheap, thoughtless, perfunctory gift that nobody ever asks for.", "a": "Cigarette Smoking Man · Musings of a Cigarette Smoking Man"}, {"q": "You don't.", "a": "Clyde Bruckman · Clyde Bruckman's Final Repose"}, {"q": "I'm not going to ask you if you just said what I think you just said, because I know it's what you just said.", "a": "Dana Scully · War of the Coprophages"}, {"q": "I was just never sure your little feet could reach the pedals.", "a": "Fox Mulder · Syzygy"}, {"q": "Roswell! Roswell!", "a": "Blaine Faulkner · Jose Chung's From Outer Space"}, {"q": "You know, Mulder, you are Ahab.", "a": "Dana Scully · Quagmire"}, {"q": "Nothing happens in contradiction to nature, only in contradiction to what we know of it.", "a": "Dana Scully · Herrenvolk"}, {"q": "Not everything dies, Mr. Mulder.", "a": "Marita Covarrubias · Herrenvolk"}, {"q": "Scully, would you think less of me as a man if I told you I was kind of excited right now?", "a": "Fox Mulder · Home"}, {"q": "I was born a loser, but you're one by choice.", "a": "Eddie Van Blundht · Small Potatoes"}, {"q": "I did not overreact. Ronnie Strickland was a vampire!", "a": "Fox Mulder · Bad Blood"}, {"q": "If you don't hear from me by midnight... feed my fish.", "a": "Fox Mulder · The Pine Bluff Variant"}, {"q": "Oh, brother.", "a": "Dana Scully · Triangle"}, {"q": "I'd kiss you if you weren't so damn ugly.", "a": "Dana Scully · Dreamland II"}, {"q": "Maybe there's hope.", "a": "Fox Mulder · The Truth"}]<!--/QUOTES--></script>
 <script>
 (() => {
   const nav = document.getElementById('nav');
@@ -859,20 +861,8 @@ if (reduce) { composer.render(); } else { frame(); }
   const el = document.getElementById('mistQuote');
   if (!el) return;
   const t = el.querySelector('.mq-text'), c = el.querySelector('.mq-cite');
-  const Q = [
-    {q: "The truth is out there.", a: "series tagline"},
-    {q: "Mulder, it's me.", a: "Dana Scully · catchphrase"},
-    {q: "Trust no one.", a: "tagline, The Erlenmeyer Flask"},
-    {q: "I want to believe.", a: "the poster in Mulder's office"},
-    {q: "Sorry, nobody down here but the FBI's most unwanted.", a: "Fox Mulder · Pilot"},
-    {q: "Deny everything.", a: "tagline, Ascension"},
-    {q: "I'd settle for a life in this one.", a: "Dana Scully · Shadows"},
-    {q: "Don't try and threaten me, Mulder. I've watched presidents die.", a: "Cigarette Smoking Man · One Breath"},
-    {q: "Mulder, toads just fell from the sky!", a: "Dana Scully · Die Hand Die Verletzt"},
-    {q: "Sure. Fine. Whatever.", a: "Dana Scully · Syzygy"},
-    {q: "You're my one in five billion.", a: "Fox Mulder · Folie à Deux"},
-    {q: "I owe you everything, Scully, and you owe me nothing.", a: "Fox Mulder · The X-Files: Fight the Future"}
-  ];
+  const Q = JSON.parse((document.getElementById('quote-data') || {}).textContent || '[]');
+  if (!Q.length) return;
   const list = document.getElementById('mistList');
   if (list) Q.forEach(x => { const li = document.createElement('li'); li.textContent = '"' + x.q + '" (' + x.a + ')'; list.appendChild(li); });
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

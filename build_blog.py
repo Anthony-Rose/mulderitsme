@@ -249,6 +249,8 @@ HEAD = """<!doctype html>
   <a class="link" href="../#grammar">Visual grammar</a>
   <a class="link" href="../#people">Filmmakers</a>
   <a class="link" href="../#syllabus">Syllabus</a>
+  <a class="link" href="../#reboot">Reboot</a>
+  <a class="link" href="../glossary.html">Glossary</a>
   <a class="link here" href="./">Journal</a>
 </div></nav>
 """
@@ -384,6 +386,13 @@ def build():
     browse = "".join(f'<a class="tagpill" href="blog/?tag={urllib.parse.quote(t)}">{html.escape(t)}</a>' for t in tags)
     home = re.sub(r"(<!--BROWSE-TAGS-->).*?(<!--/BROWSE-TAGS-->)", lambda m: f"{m[1]}{browse}{m[2]}", home, flags=re.S)
     home = render_reboot(home)
+    try:
+        qdata = json.loads((ROOT / "data_quotes.json").read_text(encoding="utf-8"))
+        qarr = [{"q": it["quote"], "a": (f'{it["speaker"]} · {it["source"].split(",")[0]}' if it["speaker"] else it["source"])} for it in qdata]
+        qjson = json.dumps(qarr, ensure_ascii=False)
+        home = re.sub(r"(<!--QUOTES-->).*?(<!--/QUOTES-->)", lambda m: f"{m[1]}{qjson}{m[2]}", home, flags=re.S)
+    except FileNotFoundError:
+        pass
     hdesc = ("A film journal on The X-Files: long-form essays on its direction, cinematography, form, music and legacy, "
              "with a viewing syllabus and filmmaker profiles.")
     site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
@@ -393,6 +402,7 @@ def build():
     HOME.write_text(home, encoding="utf-8")
     write_feeds(newest)
     write_credits()
+    write_glossary()
     print(f"built {len(posts)} posts, plus sitemap.xml, feed.xml and robots.txt")
 
 
@@ -412,6 +422,62 @@ def render_reboot(home):
     home = re.sub(r"(<!--REBOOT-BOARD-->).*?(<!--/REBOOT-BOARD-->)", lambda m: f"{m[1]}{rows}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-UPDATED-->).*?(<!--/REBOOT-UPDATED-->)", lambda m: f"{m[1]}{updated}{m[2]}", home, flags=re.S)
     return home
+
+
+def write_glossary():
+    try:
+        data = json.loads((ROOT / "data_glossary.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return
+    gdesc = ("A field guide to the mythology of The X-Files: the Syndicate, the colonists, the black oil, "
+             "the informants and the people of the basement office.")
+    rows = "".join(f'<div class="gterm"><dt>{html.escape(e["term"])}</dt><dd>{html.escape(e["def"])}</dd></div>' for e in data)
+    gstyle = (
+        "  .glossary { max-width: 820px; margin: 0 auto; padding: 0 16px 120px; }\n"
+        "  .glossary dl { margin: 0; }\n"
+        "  .gterm { padding: 24px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }\n"
+        "  .gterm dt { font: 400 22px/1.25 var(--serif); color: #f3efe6; }\n"
+        "  .gterm dd { margin: 0; color: var(--soft); font: 16px/1.65 var(--read); }\n"
+        "  @media (max-width: 680px) { .gterm { grid-template-columns: 1fr; gap: 6px; } }\n")
+    seo_tags = seo("Glossary: The Mythology of The X-Files", gdesc, "/glossary.html")
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary · {html.escape(SITE_NAME)}</title>
+<meta name="description" content="{html.escape(gdesc, quote=True)}">
+<meta name="theme-color" content="#06090a">
+{seo_tags}
+{FONTS}
+<style>{STYLE}{gstyle}</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="./"><b>Mulder,</b> It's Me</a>
+  <a class="link" href="./#grammar">Visual grammar</a>
+  <a class="link" href="./#people">Filmmakers</a>
+  <a class="link" href="./#syllabus">Syllabus</a>
+  <a class="link" href="./#reboot">Reboot</a>
+  <a class="link here" href="glossary.html">Glossary</a>
+  <a class="link pill" href="blog/">Journal</a>
+</div></nav>
+<header class="masthead"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
+  <div class="eyebrow">Field guide</div>
+  <h1>A glossary of the mythology</h1>
+  <p class="dek">{html.escape(gdesc)}</p>
+</div></header>
+<main class="glossary"><dl>{rows}</dl></main>
+<footer><div class="wrap">
+  <div class="sig">The truth is out there.</div>
+  <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
+  The X-Files and all related names are trademarks of their respective owners. <a href="credits.html" style="color:var(--soft)">Image credits</a>.</p>
+</div></footer>
+<script>{STARS}</script>
+</body>
+</html>
+"""
+    (ROOT / "glossary.html").write_text(page, encoding="utf-8")
 
 
 def write_credits():
