@@ -411,15 +411,20 @@ def render_reboot(home):
         data = json.loads((ROOT / "data_reboot.json").read_text(encoding="utf-8"))
     except FileNotFoundError:
         return home
-    dek = f'<p>{html.escape(data.get("dek", ""))}</p>'
-    rows = "".join(
-        f'<div class="statusrow" data-status="{html.escape(it["status"])}">'
-        f'<span class="statustag">{html.escape(it["status"].capitalize())}</span>'
-        f'<div class="statusbody"><b>{html.escape(it["label"])}</b>{html.escape(it["text"])}</div></div>'
-        for it in data.get("items", []))
+    glyph = {"confirmed": "▲", "reported": "◆", "rumored": "▽"}
+
+    def tk(it):
+        g = glyph.get(it["status"], "●")
+        return (f'<span class="tk" data-status="{html.escape(it["status"])}">'
+                f'<span class="tkg" aria-hidden="true">{g}</span>'
+                f'<span class="tkl">{html.escape(it["label"])}</span>'
+                f'<span class="tks">{html.escape(it["status"].capitalize())}</span></span>')
+    items = "".join(tk(it) for it in data.get("items", []))
+    track = items + items  # duplicated for a seamless loop
+    li = "".join(f'<li>{html.escape(it["label"])} ({html.escape(it["status"])}): {html.escape(it["text"])}</li>' for it in data.get("items", []))
     updated = f'<span class="updated">Updated {html.escape(data.get("updated", ""))}</span>'
-    home = re.sub(r"(<!--REBOOT-DEK-->).*?(<!--/REBOOT-DEK-->)", lambda m: f"{m[1]}{dek}{m[2]}", home, flags=re.S)
-    home = re.sub(r"(<!--REBOOT-BOARD-->).*?(<!--/REBOOT-BOARD-->)", lambda m: f"{m[1]}{rows}{m[2]}", home, flags=re.S)
+    home = re.sub(r"(<!--REBOOT-TICK-->).*?(<!--/REBOOT-TICK-->)", lambda m: f"{m[1]}{track}{m[2]}", home, flags=re.S)
+    home = re.sub(r"(<!--REBOOT-LIST-->).*?(<!--/REBOOT-LIST-->)", lambda m: f"{m[1]}{li}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-UPDATED-->).*?(<!--/REBOOT-UPDATED-->)", lambda m: f"{m[1]}{updated}{m[2]}", home, flags=re.S)
     return home
 
