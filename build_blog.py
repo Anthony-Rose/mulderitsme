@@ -193,7 +193,11 @@ STYLE = """
   .search { margin-left:auto; background:transparent; border:0; border-bottom:1px solid var(--line-2); color:var(--text); font:17px var(--read); padding:6px 2px; width:260px; max-width:100%; outline:0; }
   .search:focus { border-color:var(--green); }
   .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:48px 30px; padding-bottom:120px; }
-  .card { display:flex; flex-direction:column; text-decoration:none; color:var(--text); }
+  .card { position:relative; display:flex; flex-direction:column; color:var(--text); }
+  .card :is(h2,h3) a { color:inherit; text-decoration:none; }
+  .card :is(h2,h3) a::after { content:""; position:absolute; inset:0; z-index:2; }
+  .card :is(h2,h3) a:focus-visible { outline:none; }
+  .card:focus-within { outline:2px solid var(--green); outline-offset:6px; }
   .card .frame { position:relative; aspect-ratio:2.39/1; overflow:hidden; border:1px solid var(--line-2); background:#040606; margin-bottom:18px; }
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
@@ -204,8 +208,8 @@ STYLE = """
   .card:hover .frame .n { transform:translateX(6px); }
   .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
   .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
-  .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
-  .card:hover h3 { color:var(--green); }
+  .card :is(h2,h3) { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
+  .card:hover :is(h2,h3) { color:var(--green); }
   .card p { margin:0 0 12px; color:var(--soft); font-size:16px; line-height:1.55; }
   .card .foot { font:12px var(--sans); color:var(--muted); letter-spacing:.04em; margin-top:auto; }
   .card[hidden] { display:none; }
@@ -291,16 +295,16 @@ INDEX_JS = """<script>
 </script>"""
 
 
-def card(p, href, prefix=""):
+def card(p, href, prefix="", level=3):
     text = html.escape(" ".join([p["title"], p["summary"], p["tag"], re.sub(r"\s+", " ", p["body"])]).lower(), quote=True)
     tc = f"{p['num']:02d}:{(p['words'] // 60) % 60:02d}:{p['words'] % 60:02d}:{p['num'] * 7 % 24:02d}"
     fx = 20 + (int(p["hue"]) * 7) % 60
-    return f"""<a class="card" href="{href}" data-tag="{html.escape(p['tag'])}" data-text="{text}" style="--h:{p['hue']};--fx:{fx}%">
+    return f"""<article class="card" data-tag="{html.escape(p['tag'])}" data-text="{text}" style="--h:{p['hue']};--fx:{fx}%">
   <div class="frame" aria-hidden="true">{f'<span class="ph" style="background-image:url({prefix}{p["img"]})"></span>' if p.get("img") else ""}<span class="n">{p['num']:02d}</span><span class="tc">{tc}</span></div>
   <div class="kick">{html.escape(p['tag'])}</div>
-  <h3>{html.escape(p['title'])}</h3><p>{html.escape(p['summary'])}</p>
+  <h{level}><a href="{href}">{html.escape(p['title'])}</a></h{level}><p>{html.escape(p['summary'])}</p>
   <div class="foot">{p['pretty']} · {p['minutes']} min read</div>
-</a>"""
+</article>"""
 
 
 def build():
@@ -373,7 +377,7 @@ def build():
 <main class="wrap">
   <div class="tools" role="group" aria-label="Filter essays">{chips}
     <input class="search" id="q" type="search" placeholder="Search the essays" aria-label="Search essays"></div>
-  <div class="grid">{"".join(card(p, p["slug"] + ".html", "../") for p in newest)}</div>
+  <div class="grid">{"".join(card(p, p["slug"] + ".html", "../", 2) for p in newest)}</div>
   <p class="empty" id="empty" hidden>Nothing matches. The truth is elsewhere.</p>
 </main>
 """
