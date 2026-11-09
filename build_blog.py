@@ -290,6 +290,17 @@ LEGAL = ("Mulder, It's Me is an unofficial, non-commercial film journal. It is n
          "or Ten Thirteen Productions. The X-Files and all related names are trademarks of their respective owners. "
          "Writing and illustrations on this site are original.")
 
+# robots.txt: crawlers that gather text to train AI models are asked to stay out;
+# search engines, AI search indexers and on-demand fetchers that answer a reader's
+# question stay allowed (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User,
+# PerplexityBot, Perplexity-User, meta-externalfetcher, DuckAssistBot, Googlebot,
+# Bingbot, Applebot all fall through to the catch-all Allow).
+TRAINING_CRAWLERS = ["GPTBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "Applebot-Extended",
+                     "CCBot", "Bytespider", "meta-externalagent", "Amazonbot"]
+ROBOTS = ("# Training crawlers\n" + "".join(f"User-agent: {b}\n" for b in TRAINING_CRAWLERS) + "Disallow: /\n\n"
+          "# Everyone else, including search engines and AI search or user-requested fetchers\n"
+          "User-agent: *\nAllow: /\n\n" f"Sitemap: {SITE_URL}/sitemap.xml\n")
+
 
 def nav_html(prefix, here=None, attrs=""):
     """The site nav. prefix is "" at the root and "../" under blog/; here is the current page's href."""
@@ -631,7 +642,7 @@ def write_feeds(newest):
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{m}</lastmod></url>\n" for u, m, *_ in urls)
         + "</urlset>\n", encoding="utf-8")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(ROBOTS, encoding="utf-8")
 
     def rfc822(d):
         return datetime.datetime.combine(datetime.date.fromisoformat(d), datetime.time(12)).strftime("%a, %d %b %Y %H:%M:%S +0000")
