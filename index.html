@@ -26,290 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
-<style>
-  :root {
-    --bg: #06090a;
-    --bg-2: #0b1012;
-    --panel: #0e1416;
-    --line: #1c2528;
-    --line-2: #2a3539;
-    --text: #e6e2d8;
-    --soft: #b9b5aa;
-    --muted: #8f948f;
-    --green: #6dff8a;
-    --green-dim: #3d8f52;
-    --amber: #d9b56a;
-    --serif: "Fraunces", Georgia, serif;
-    --read: "Source Serif 4", Georgia, serif;
-    --sans: "IBM Plex Sans", system-ui, sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--read); overflow-x: hidden; }
-  body::before { /* film grain */
-    content: ""; position: fixed; inset: -50%; pointer-events: none; z-index: 70; opacity: .06;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation: grain 1.2s steps(6) infinite;
-  }
-  @keyframes grain { 0% { transform: translate(0,0) } 20% { transform: translate(-3%,2%) } 40% { transform: translate(2%,-3%) } 60% { transform: translate(-2%,-1%) } 80% { transform: translate(3%,3%) } 100% { transform: translate(0,0) } }
-  body::after { /* crt scanlines */ content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 71; background: repeating-linear-gradient(to bottom, rgba(0,0,0,.07) 0 1px, transparent 1px 3px); }
-  ::selection { background: var(--green); color: #000; }
-  a { color: inherit; }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
-  .narrow { max-width: 760px; }
-
-  /* nav */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
-  nav.solid { background: rgba(6,9,10,.88); backdrop-filter: blur(10px); border-color: var(--line); }
-  nav .wrap { display: flex; gap: 26px; align-items: center; height: 60px; overflow-x: auto; scrollbar-width: none; }
-  nav .brand { font: italic 400 22px var(--serif); color: var(--text); text-decoration: none; white-space: nowrap; margin-right: auto; }
-  nav .brand b { font-style: normal; font-weight: 500; color: var(--green); }
-  nav a.link { font: 500 12px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); text-decoration: none; white-space: nowrap; transition: color .2s; }
-  nav a.link:hover { color: var(--green); }
-  nav a.link.pill { color: #04140a; background: var(--green); padding: 6px 14px; border-radius: 999px; }
-
-  /* hero */
-  .hero { position: relative; height: 100vh; height: 100svh; min-height: 600px; overflow: hidden; }
-  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; }
-  .no-webgl .hero { background: radial-gradient(ellipse at 50% 85%, #0c2a15, var(--bg) 70%); }
-  .hero-ui { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center;
-    padding: 0 16px 10vh; pointer-events: none; background: linear-gradient(rgba(6,9,10,0) 40%, rgba(6,9,10,.6) 72%, rgba(6,9,10,.92)); }
-  .eyebrow { font: 500 12px var(--mono); letter-spacing: .32em; text-transform: uppercase; color: var(--green); }
-  .hero h1 { font: italic 300 clamp(52px, 11vw, 148px)/.95 var(--serif); letter-spacing: -.02em; margin: .18em 0 .2em; color: #f3efe6; text-shadow: 0 8px 50px rgba(0,0,0,.9); }
-  .hero .dek { font: 400 clamp(16px, 2.1vw, 21px)/1.5 var(--read); color: var(--soft); max-width: 640px; margin: 0; }
-  .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 28px; pointer-events: auto; }
-  .btn { display: inline-block; font: 600 13px var(--sans); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; padding: 13px 24px; border-radius: 2px;
-    background: var(--green); color: #04140a; border: 1px solid var(--green); transition: transform .15s, box-shadow .2s, background .2s; cursor: pointer; }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(109,255,138,.25); }
-  .btn.ghost { background: rgba(6,9,10,.4); color: var(--text); border-color: var(--line-2); backdrop-filter: blur(4px); }
-  .btn.ghost:hover { border-color: var(--green); color: var(--green); }
-  .glitch { position: relative; display: inline-block; }
-  .glitch .gl { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-  .glitch .gl1 { color: #ff3b6b; transform: translate(-3px, 0); }
-  .glitch .gl2 { color: #38f3ff; transform: translate(3px, 0); }
-  .glitch.on .gl1 { opacity: .6; animation: slice .35s steps(2) 2; }
-  .glitch.on .gl2 { opacity: .6; animation: slice .35s steps(2) reverse 2; }
-  @keyframes slice { 0% { clip-path: inset(10% 0 70% 0) } 25% { clip-path: inset(60% 0 15% 0) } 50% { clip-path: inset(30% 0 45% 0) } 75% { clip-path: inset(80% 0 2% 0) } 100% { clip-path: inset(0 0 90% 0) } }
-
-  /* sections */
-  section { padding: 120px 0; border-top: 1px solid var(--line); position: relative; }
-  .sec-head { margin-bottom: 56px; max-width: 860px; }
-  .sec-head h2 { font: 300 clamp(36px, 5.6vw, 66px)/1.02 var(--serif); letter-spacing: -.015em; margin: 0 0 18px; color: #f3efe6; }
-  .sec-head p { margin: 0; color: var(--soft); font-size: 19px; max-width: 680px; }
-  /* one entrance, on the hero only; content is visible by default */
-  @media (prefers-reduced-motion: no-preference) {
-    .js .hero-ui > * { animation: rise 320ms cubic-bezier(.23,1,.32,1) both; }
-    .js .hero-ui > :nth-child(2) { animation-delay: 60ms; }
-    .js .hero-ui > :nth-child(3) { animation-delay: 120ms; }
-    .js .hero-ui > :nth-child(4) { animation-delay: 180ms; }
-  }
-  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
-  /* journal strip (generated cards) */
-  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .card { position: relative; display: flex; flex-direction: column; color: var(--text); }
-  .card :is(h2, h3) a { color: inherit; text-decoration: none; }
-  .card :is(h2, h3) a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
-  .card :is(h2, h3) a:focus-visible { outline: none; }
-  .card:focus-within { outline: 2px solid var(--green); outline-offset: 6px; }
-  .card .frame { position: relative; aspect-ratio: 2.39 / 1; overflow: hidden; border: 1px solid var(--line-2); background: #040606; margin-bottom: 18px; }
-  .card .frame::before { content: ""; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at var(--fx, 50%) 120%, hsla(var(--h, 140), 80%, 60%, .28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h, 140), 60%, 70%, .12), transparent 60%);
-    transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-  .card .frame::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
-  .card:hover .frame::before { transform: scale(1.08); }
-  .card .frame .ph { position: absolute; inset: 0; background-size: cover; background-position: center; filter: grayscale(.35) contrast(1.05) brightness(.7); transform: scale(1.01); transition: transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
-  .card:hover .frame .ph { transform: scale(1.07); filter: grayscale(0) contrast(1.05) brightness(.85); }
-  .card .frame .n { z-index: 1; text-shadow: 0 4px 30px rgba(0,0,0,.6); position: absolute; left: 18px; bottom: 6px; font: italic 300 88px/1 var(--serif); color: rgba(243,239,230,.92); letter-spacing: -.03em; transition: transform .6s; }
-  .card:hover .frame .n { transform: translateX(6px); }
-  .card .frame .tc { z-index: 1; position: absolute; right: 14px; top: 12px; font: 500 .75rem var(--mono); letter-spacing: .12em; color: rgba(243,239,230,.55); }
-  .card .kick { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
-  .card :is(h2, h3) { font: 400 26px/1.15 var(--serif); margin: 0 0 10px; color: #f3efe6; transition: color .2s; }
-  .card:hover :is(h2, h3) { color: var(--green); }
-  .card p { margin: 0 0 12px; color: var(--soft); font-size: 16px; line-height: 1.55; }
-  .card .foot { font: 12px var(--sans); color: var(--muted); letter-spacing: .04em; margin-top: auto; }
-  .posts .card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1.5fr 1fr; column-gap: 44px; align-content: center; padding-bottom: 36px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
-  .posts .card:first-child > * { grid-column: 2; }
-  .posts .card:first-child > .frame { grid-column: 1; grid-row: 1 / span 5; margin: 0; align-self: center; }
-  .posts .card:first-child .kick { align-self: end; }
-  .posts .card:first-child .frame .n { font-size: 170px; }
-  .posts .card:first-child :is(h2, h3) { font-size: clamp(32px, 4vw, 48px); line-height: 1.05; }
-  .posts .card:first-child p { font-size: 19px; }
-  .posts .card:first-child .kick::after { content: "  ·  Latest essay"; color: var(--amber); }
-  .more { margin-top: 48px; }
-
-  /* visual grammar */
-  .grammar { border-bottom: 1px solid var(--line); }
-  .grammar article { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1.4fr); gap: 8px 40px; align-items: baseline; padding: 28px 0; border-top: 1px solid var(--line); }
-  .grammar .k { font: 500 .75rem var(--mono); letter-spacing: .12em; color: var(--green); }
-  .grammar h3 { font: 400 25px/1.2 var(--serif); margin: 0; color: #f3efe6; }
-  .grammar p { margin: 0; color: var(--soft); font-size: 16px; }
-  .palette { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
-  .palette figure { margin: 0; }
-  .palette .strip { display: flex; height: 92px; border: 1px solid var(--line-2); }
-  .palette .strip span { flex: 1; }
-  .palette figcaption { margin-top: 12px; font: 13px/1.5 var(--sans); color: var(--muted); }
-  .palette figcaption b { display: block; font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--text); margin-bottom: 4px; }
-
-  /* people */
-  .people { display: grid; grid-template-columns: repeat(12, 1fr); gap: 36px 28px; }
-  .people .person { grid-column: span 4; }
-  .people .person:nth-child(-n+2) { grid-column: span 6; }
-  .people .person:nth-child(n+3):nth-child(-n+6) { grid-column: span 3; }
-  .people .person:nth-child(n+3):nth-child(-n+6) h3 { font-size: 21px; }
-  .people .person:nth-child(-n+2) h3 { font-size: 30px; }
-  .people .person:nth-child(-n+2) .ph { aspect-ratio: 16 / 9; }
-  .people .person:nth-child(-n+2) .ph img { object-position: 50% 35%; }
-  .person .ph { aspect-ratio: 4 / 3; overflow: hidden; background: #000; border: 1px solid var(--line-2); margin-bottom: 18px; }
-  .person .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: grayscale(1) contrast(1.08) brightness(.88); transition: filter .6s, transform .8s cubic-bezier(.2,.7,.2,1); }
-  .person:hover .ph img { filter: grayscale(0); transform: scale(1.04); }
-  .plate-band { position: relative; aspect-ratio: 2.39 / 1; max-height: 520px; width: 100%; overflow: hidden; border: 1px solid var(--line-2); margin: 0 0 56px; }
-  .plate-band img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.75); }
-  .person h3 { font: 400 24px/1.15 var(--serif); margin: 0 0 4px; color: #f3efe6; }
-  .person .role { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
-  .person p { margin: 0; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
-  .person .rule { width: 36px; height: 1px; background: var(--green-dim); margin-bottom: 18px; }
-  .cast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 80px; }
-  .cast figure { margin: 0; }
-  .cast .ph { aspect-ratio: 4 / 5; overflow: hidden; background: #000; border: 1px solid var(--line-2); }
-  .cast img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; filter: grayscale(1) contrast(1.08) brightness(.9); transition: filter .6s, transform .8s cubic-bezier(.2,.7,.2,1); }
-  .cast figure:hover img { filter: grayscale(0) contrast(1); transform: scale(1.04); }
-  .cast a.castlink { display: block; color: inherit; text-decoration: none; }
-  .cast figcaption { padding-top: 12px; }
-  .cast figcaption b { display: block; font: 400 19px/1.2 var(--serif); color: #f3efe6; }
-  .cast figcaption span { font: 12px/1.5 var(--sans); color: var(--muted); }
-  .cast-note { margin-top: 18px; font: 12px var(--sans); color: var(--muted); }
-  .sub { font: 500 12px var(--mono); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); margin: 0 0 26px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-
-  /* syllabus */
-  .syllabus { width: 100%; border-collapse: collapse; }
-  .syllabus th { text-align: left; font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 16px 14px 0; border-bottom: 1px solid var(--line-2); }
-  .syllabus td { padding: 20px 16px 20px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .syllabus tr { transition: background .2s; }
-  .syllabus tbody tr:hover { background: rgba(109,255,138,.03); }
-  .syllabus .code { font: 500 13px var(--mono); color: var(--green); white-space: nowrap; }
-  .syllabus .t { font: 400 21px/1.2 var(--serif); color: #f3efe6; }
-  .syllabus .dir { font: 13px var(--sans); color: var(--soft); white-space: nowrap; }
-  .syllabus .why { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
-
-  /* lineage */
-  .timeline { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 11), minmax(170px, 1fr)); gap: 0; overflow-x: auto; padding-bottom: 18px; scrollbar-color: var(--green-dim) transparent; }
-  .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 46px; height: 1px; background: var(--line-2); }
-  .tl { padding: 0 22px 0 0; position: relative; }
-  .tl .y { font: 300 30px var(--serif); color: var(--soft); }
-  .tl::after { content: ""; position: absolute; left: 0; top: 41px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 1px solid var(--soft); }
-  .tl.core::after { background: var(--green); border-color: var(--green); box-shadow: 0 0 18px var(--green); }
-  .tl.core .y { color: var(--green); }
-  .tl h3 { font: 400 19px/1.2 var(--serif); margin: 38px 0 8px; color: #f3efe6; }
-  .tl p { margin: 0; font: 14px/1.55 var(--sans); color: var(--muted); }
-  .tl .tag { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 6px; }
-
-  /* footer */
-  footer { padding: 80px 0 70px; border-top: 1px solid var(--line); color: var(--muted); font: 13px/1.7 var(--sans); }
-  footer .sig { font: italic 300 40px var(--serif); color: var(--text); margin-bottom: 18px; }
-  footer .credits a { color: var(--muted); }
-  footer .cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; }
-
-  @media (max-width: 980px) {
-    .posts { grid-template-columns: 1fr 1fr; }
-    .posts .card:first-child { grid-template-columns: 1fr; }
-    .posts .card:first-child > *, .posts .card:first-child > .frame { grid-column: 1; grid-row: auto; }
-    .posts .card:first-child > .frame { margin-bottom: 20px; }
-    .grammar article { grid-template-columns: 1fr; }
-    .people { grid-template-columns: 1fr 1fr; }
-    .people .person, .people .person:nth-child(-n+2) { grid-column: auto; }
-    .people .person:first-child { grid-column: 1 / -1; }
-    .cast { grid-template-columns: repeat(3, 1fr); }
-    footer .cols { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    body { font-size: 16px; }
-    section { padding: 84px 0; }
-    .posts, .palette { grid-template-columns: 1fr; }
-    .posts .card:first-child .frame .n { font-size: 110px; }
-    .people { grid-template-columns: 1fr; }
-    .cast { grid-template-columns: 1fr 1fr; }
-    .syllabus thead { display: none; }
-    .syllabus, .syllabus tbody, .syllabus tr, .syllabus td { display: block; width: 100%; }
-    .syllabus tr { padding: 18px 0; border-bottom: 1px solid var(--line); }
-    .syllabus td { border: 0; padding: 3px 0; }
-    .syllabus .dir { white-space: normal; }
-    nav .wrap { gap: 18px; }
-  }
-  /* transmissions: drifting quotes */
-  #transmissions.mist { padding: 72px 0; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 150%, #0a1d12, var(--bg) 78%); }
-  .mist .fog { position: absolute; inset: -20% -10%; z-index: 0; pointer-events: none; }
-  .mist .fog span { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; background: radial-gradient(circle at 50% 50%, rgba(109,255,138,.10), rgba(109,255,138,0) 70%); }
-  .mist .fog .f1 { width: 62vw; height: 62vw; left: -12vw; top: 6%; animation: fogA 36s ease-in-out infinite alternate; }
-  .mist .fog .f2 { width: 52vw; height: 52vw; right: -10vw; top: 22%; background: radial-gradient(circle at 50% 50%, rgba(150,180,170,.08), rgba(150,180,170,0) 70%); animation: fogB 44s ease-in-out infinite alternate; }
-  .mist .fog .f3 { width: 46vw; height: 46vw; left: 26vw; bottom: -14%; animation: fogA 52s ease-in-out infinite alternate-reverse; }
-  @keyframes fogA { from { transform: translate3d(-6%, 4%, 0) scale(1); } to { transform: translate3d(8%, -6%, 0) scale(1.25); } }
-  @keyframes fogB { from { transform: translate3d(6%, 0, 0) scale(1.1); } to { transform: translate3d(-8%, 6%, 0) scale(.9); } }
-  .mist-wrap { position: relative; z-index: 2; text-align: center; }
-  .mist-kicker { font: 500 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; color: var(--green); margin-bottom: 30px; }
-  .mist-dek { font: 400 15px/1.5 var(--read); color: var(--muted); margin: 0 auto 38px; max-width: 460px; }
-  .mist-quote { margin: 0 auto; max-width: 920px; min-height: 170px; display: flex; flex-direction: column; justify-content: center; opacity: 0; filter: blur(12px); transform: translateY(16px); transition: opacity 1.4s ease, filter 1.4s ease, transform 1.4s ease; will-change: opacity, filter, transform; }
-  .mist-quote.in { opacity: 1; filter: blur(0); transform: none; }
-  .mist-quote.out { opacity: 0; filter: blur(18px); transform: translateY(-30px) scale(1.03); transition: opacity 1.9s ease, filter 1.9s ease, transform 1.9s ease; }
-  .mist-quote .mq-text { display: block; font: italic 300 clamp(26px, 4.6vw, 50px)/1.22 var(--serif); color: #f3efe6; text-shadow: 0 6px 40px rgba(0,0,0,.85); }
-  .mist-quote .mq-cite { display: block; margin-top: 24px; font: 500 12px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--soft); font-style: normal; }
-  @media (max-width: 640px) { #transmissions.mist { padding: 40px 0; } .mist-dek { margin-bottom: 24px; } .mist-quote { min-height: 116px; } .mist-quote .mq-text { font-size: 25px; } }
-  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-  .browse { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 24px; }
-  .browse-label { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
-  a.tagpill { font: 500 12px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); text-decoration: none; border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 13px; transition: color .2s, border-color .2s; }
-  a.tagpill:hover { border-color: var(--green); color: var(--green); }
-
-  #reboot { padding: 46px 0 50px; }
-  .reboot-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin-bottom: 20px; }
-  .reboot-bar .num { font: 500 12px var(--mono); letter-spacing: .28em; text-transform: uppercase; color: var(--green); margin-right: auto; }
-  .reboot-legend { display: flex; flex-wrap: wrap; gap: 14px; font: .75rem var(--sans); color: var(--muted); }
-  .reboot-legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .reboot-legend span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-  .reboot-legend .k-conf::before { background: var(--green); }
-  .reboot-legend .k-rep::before { background: var(--amber); }
-  .reboot-legend .k-rum::before { background: var(--muted); }
-  .reboot-meta { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-  .reboot-meta a { color: var(--soft); text-decoration: none; }
-  .reboot-meta a:hover { color: var(--green); }
-  .ticker { width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); background: rgba(10,16,18,.5); }
-  .ticker-track { display: inline-flex; white-space: nowrap; will-change: transform; animation: tickerscroll 80s linear infinite; }
-  .ticker:hover .ticker-track { animation-play-state: paused; }
-  @keyframes tickerscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .tk { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border: 0; border-right: 1px solid var(--line); background: transparent; color: inherit; font: 500 12px var(--mono); letter-spacing: .08em; cursor: pointer; transition: background .2s; }
-  .tk:hover, .tk[aria-expanded="true"] { background: rgba(109,255,138,.07); }
-  .tk:hover .tkl, .tk[aria-expanded="true"] .tkl { color: var(--green); }
-  .tk .tkg { font-size: .75rem; }
-  .tk .tkl { color: var(--text); text-transform: uppercase; }
-  .tk .tks { color: var(--muted); text-transform: uppercase; font-size: .75rem; letter-spacing: .12em; }
-  .tk[data-status="confirmed"] .tkg { color: var(--green); }
-  .tk[data-status="reported"] .tkg { color: var(--amber); }
-  .tk[data-status="rumored"] .tkg { color: var(--muted); }
-  .ticker-track.paused, .ticker-track.held { animation-play-state: paused; }
-  .pause-btn { background: transparent; border: 1px solid var(--line-2); color: var(--soft); font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; cursor: pointer; }
-  .pause-btn:hover { border-color: var(--green); color: var(--green); }
-  .pause-btn[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #04140a; }
-  .mist .pause-btn { margin-top: 26px; }
-  .ticker:focus-within .ticker-track { animation-play-state: paused; }
-  .ticker-detail { border-bottom: 1px solid var(--line-2); background: rgba(10,16,18,.55); }
-  .ticker-detail .wrap { padding: 20px 16px 22px; position: relative; }
-  .ticker-detail .td-status { font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-  .ticker-detail .td-status.confirmed { color: var(--green); }
-  .ticker-detail .td-status.reported { color: var(--amber); }
-  .ticker-detail .td-status.rumored { color: var(--muted); }
-  .ticker-detail .td-label { display: block; font: 500 14px var(--sans); color: #f3efe6; margin: 5px 0 6px; }
-  .ticker-detail .td-text { margin: 0; color: var(--soft); font: 16px/1.6 var(--read); max-width: 760px; }
-  .ticker-detail .td-close { position: absolute; top: 16px; right: 16px; background: transparent; border: 1px solid var(--line-2); color: var(--soft); font: 500 .75rem var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; cursor: pointer; }
-  .ticker-detail .td-close:hover { border-color: var(--green); color: var(--green); }
-  @media (prefers-reduced-motion: reduce) { .ticker { overflow-x: auto; } #reboot .pause-btn { display: none; } }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-    html { scroll-behavior: auto; }
-  }
-</style>
+<link rel="stylesheet" href="site.css">
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -319,16 +36,14 @@
 </head>
 <body>
 
-<nav id="nav"><div class="wrap">
-  <a class="brand" href="#top"><b>Mulder,</b> It's Me</a>
-  <a class="link" href="#grammar">Visual grammar</a>
-  <a class="link" href="#people">Filmmakers</a>
-  <a class="link" href="#syllabus">Syllabus</a>
-  <a class="link" href="#lineage">Lineage</a>
-  <a class="link" href="#reboot">Reboot</a>
+<!--NAV--><nav id="nav"><div class="wrap">
+  <a class="brand" href="./"><b>Mulder,</b> It's Me</a>
+  <a class="link" href="blog/">Journal</a>
+  <a class="link" href="syllabus.html">Syllabus</a>
+  <a class="link" href="filmmakers.html">Filmmakers</a>
+  <a class="link" href="reboot.html">Reboot</a>
   <a class="link" href="glossary.html">Glossary</a>
-  <a class="link pill" href="blog/">Journal</a>
-</div></nav>
+</div></nav><!--/NAV-->
 
 <header class="hero" id="top">
   <canvas id="scene" aria-label="Animated night sky with a hovering UFO over a forest"></canvas>
@@ -336,38 +51,14 @@
     <div class="eyebrow">A film journal on The X-Files</div>
     <h1 class="glitch" id="title">Mulder, It's Me<span class="gl gl1" aria-hidden="true">Mulder, It's Me</span><span class="gl gl2" aria-hidden="true">Mulder, It's Me</span></h1>
     <p class="dek">Long-form writing on the most cinematic show of the 1990s: how it was lit, framed, scored and directed, where it came from, and what it left behind.</p>
-    <div class="cta"><a class="btn" href="blog/">Read the journal</a><a class="btn ghost" href="#syllabus">Viewing syllabus</a></div>
+    <div class="cta"><a class="btn" href="blog/">Read the journal</a><a class="btn ghost" href="syllabus.html">Viewing syllabus</a></div>
   </div>
 </header>
 
 <main>
-  <section id="transmissions" class="mist" aria-label="Famous lines from The X-Files">
-    <div class="fog" aria-hidden="true"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
-    <div class="wrap mist-wrap">
-      <div class="mist-kicker">Static on the line</div>
-      <p class="mist-dek">The lines that outlived the show, surfacing and dissolving the way they do in memory.</p>
-      <blockquote class="mist-quote" id="mistQuote" aria-hidden="true"><span class="mq-text"></span><cite class="mq-cite"></cite></blockquote>
-      <ul class="sr-only" id="mistList"></ul>
-      <button type="button" class="pause-btn" id="quotePause" aria-label="Pause the rotating quotes" aria-pressed="false">Pause</button>
-    </div>
-  </section>
 
-  <section id="reboot">
-    <div class="wrap reboot-bar">
-      <span class="num">The Reboot</span>
-      <span class="reboot-legend"><span class="k-conf">Confirmed</span><span class="k-rep">Reported</span><span class="k-rum">Rumored</span></span>
-      <button type="button" class="pause-btn" id="tickerPause" aria-label="Pause the reboot ticker" aria-pressed="false">Pause</button>
-      <span class="reboot-meta"><!--REBOOT-UPDATED--><span class="updated">Updated 2026-10-22</span><!--/REBOOT-UPDATED--> · <a href="blog/hulu-coogler-series-order.html">Full story</a></span>
-    </div>
-    <div class="ticker"><div class="ticker-track"><!--REBOOT-TICK--><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Series order" data-text="Hulu picked up Ryan Coogler&#x27;s The X-Files to series on October 13, 2026, eight months after ordering the pilot. Onyx Collective and 20th Television produce with Proximity Media."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Series order</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Showrunner" data-text="Jennifer Yale (Legion, See, The Copenhagen Test) is showrunner and executive producer, in place since the February pilot order."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Showrunner</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Coogler&#x27;s role" data-text="Coogler wrote, directed and executive produced the pilot. On the series he is an executive producer, not the day to day showrunner."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Coogler&#x27;s role</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Leads" data-text="Danielle Deadwyler and Himesh Patel star as two decorated, mismatched FBI agents assigned to a long shuttered division. Both are co-executive producers."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Leads</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="New characters" data-text="Patel said on the record in July that he and Deadwyler play &quot;completely new characters,&quot; and Variety&#x27;s source agrees. Hulu&#x27;s announcement does not name the roles."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">New characters</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Score" data-text="Ludwig Göransson scored the pilot, per the Proximity founders&#x27; statement. Nothing has been said about who scores the rest of the season."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Score</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Cinematography" data-text="Autumn Durald Arkapaw, Coogler&#x27;s Oscar winning Sinners cinematographer, shot the pilot and posted photos from the Vancouver set. What she shot on has not been stated."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Cinematography</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="rumored" data-label="65mm and runtime" data-text="The claim that the pilot runs about two hours and was shot on 65mm film comes from the blog World of Reel, citing unnamed sources. No trade or Hulu confirmation."><span class="tkg" aria-hidden="true">▽</span><span class="tkl">65mm and runtime</span><span class="tks">Rumored</span></button><button type="button" class="tk" aria-expanded="false" data-status="rumored" data-label="Mulder and Scully cameo" data-text="World of Reel&#x27;s October 13 post says Duchovny and Anderson appear in the pilot, attributed only to what the writer has heard. Neither actor nor Hulu has said so."><span class="tkg" aria-hidden="true">▽</span><span class="tkl">Mulder and Scully cameo</span><span class="tks">Rumored</span></button><button type="button" class="tk" aria-expanded="false" data-status="reported" data-label="Pilot shoot" data-text="Vancouver production listings put the pilot shoot at May 11 to June 11, 2026, and Patel confirmed the wrap in early July. No dates for the rest of the season have been announced."><span class="tkg" aria-hidden="true">◆</span><span class="tkl">Pilot shoot</span><span class="tks">Reported</span></button><button type="button" class="tk" aria-expanded="false" data-status="reported" data-label="Guest cast" data-text="Deadline reported in May that Amy Madigan, Steve Buscemi, Ben Foster, Devery Jacobs, Lochlyn Munro, Tantoo Cardinal, Joel D. Montgrand and Sofia Grace Clifton have guest roles in the pilot."><span class="tkg" aria-hidden="true">◆</span><span class="tkl">Guest cast</span><span class="tks">Reported</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Chris Carter" data-text="Carter is an executive producer in credit only. He told The Hollywood Reporter in August he had done &quot;exactly nothing&quot; and had chosen not to read the script."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Chris Carter</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Duchovny and Anderson" data-text="Anderson said in March she had read the pilot script and liked it. Duchovny said in April there was &quot;nothing concrete&quot; and he did not know whether Mulder exists in the show. No casting announced."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Duchovny and Anderson</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-expanded="false" data-status="confirmed" data-label="Premiere" data-text="No premiere date and no episode count. TheWrap&#x27;s fall 2027 was its own labeled guess; the season still has to be shot."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Premiere</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Series order" data-text="Hulu picked up Ryan Coogler&#x27;s The X-Files to series on October 13, 2026, eight months after ordering the pilot. Onyx Collective and 20th Television produce with Proximity Media."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Series order</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Showrunner" data-text="Jennifer Yale (Legion, See, The Copenhagen Test) is showrunner and executive producer, in place since the February pilot order."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Showrunner</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Coogler&#x27;s role" data-text="Coogler wrote, directed and executive produced the pilot. On the series he is an executive producer, not the day to day showrunner."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Coogler&#x27;s role</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Leads" data-text="Danielle Deadwyler and Himesh Patel star as two decorated, mismatched FBI agents assigned to a long shuttered division. Both are co-executive producers."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Leads</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="New characters" data-text="Patel said on the record in July that he and Deadwyler play &quot;completely new characters,&quot; and Variety&#x27;s source agrees. Hulu&#x27;s announcement does not name the roles."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">New characters</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Score" data-text="Ludwig Göransson scored the pilot, per the Proximity founders&#x27; statement. Nothing has been said about who scores the rest of the season."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Score</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Cinematography" data-text="Autumn Durald Arkapaw, Coogler&#x27;s Oscar winning Sinners cinematographer, shot the pilot and posted photos from the Vancouver set. What she shot on has not been stated."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Cinematography</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="rumored" data-label="65mm and runtime" data-text="The claim that the pilot runs about two hours and was shot on 65mm film comes from the blog World of Reel, citing unnamed sources. No trade or Hulu confirmation."><span class="tkg" aria-hidden="true">▽</span><span class="tkl">65mm and runtime</span><span class="tks">Rumored</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="rumored" data-label="Mulder and Scully cameo" data-text="World of Reel&#x27;s October 13 post says Duchovny and Anderson appear in the pilot, attributed only to what the writer has heard. Neither actor nor Hulu has said so."><span class="tkg" aria-hidden="true">▽</span><span class="tkl">Mulder and Scully cameo</span><span class="tks">Rumored</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="reported" data-label="Pilot shoot" data-text="Vancouver production listings put the pilot shoot at May 11 to June 11, 2026, and Patel confirmed the wrap in early July. No dates for the rest of the season have been announced."><span class="tkg" aria-hidden="true">◆</span><span class="tkl">Pilot shoot</span><span class="tks">Reported</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="reported" data-label="Guest cast" data-text="Deadline reported in May that Amy Madigan, Steve Buscemi, Ben Foster, Devery Jacobs, Lochlyn Munro, Tantoo Cardinal, Joel D. Montgrand and Sofia Grace Clifton have guest roles in the pilot."><span class="tkg" aria-hidden="true">◆</span><span class="tkl">Guest cast</span><span class="tks">Reported</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Chris Carter" data-text="Carter is an executive producer in credit only. He told The Hollywood Reporter in August he had done &quot;exactly nothing&quot; and had chosen not to read the script."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Chris Carter</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Duchovny and Anderson" data-text="Anderson said in March she had read the pilot script and liked it. Duchovny said in April there was &quot;nothing concrete&quot; and he did not know whether Mulder exists in the show. No casting announced."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Duchovny and Anderson</span><span class="tks">Confirmed</span></button><button type="button" class="tk" aria-hidden="true" tabindex="-1" aria-expanded="false" data-status="confirmed" data-label="Premiere" data-text="No premiere date and no episode count. TheWrap&#x27;s fall 2027 was its own labeled guess; the season still has to be shot."><span class="tkg" aria-hidden="true">▲</span><span class="tkl">Premiere</span><span class="tks">Confirmed</span></button><!--/REBOOT-TICK--></div></div>
-    <div class="ticker-detail" id="tickerDetail" role="region" aria-live="polite" hidden><div class="wrap">
-      <button type="button" class="td-close" aria-label="Close details">Close</button>
-      <span class="td-status"></span><b class="td-label"></b><p class="td-text"></p>
-    </div></div>
-    <ul class="sr-only" aria-label="The Coogler X-Files reboot status"><!--REBOOT-LIST--><li>Series order (confirmed): Hulu picked up Ryan Coogler&#x27;s The X-Files to series on October 13, 2026, eight months after ordering the pilot. Onyx Collective and 20th Television produce with Proximity Media.</li><li>Showrunner (confirmed): Jennifer Yale (Legion, See, The Copenhagen Test) is showrunner and executive producer, in place since the February pilot order.</li><li>Coogler&#x27;s role (confirmed): Coogler wrote, directed and executive produced the pilot. On the series he is an executive producer, not the day to day showrunner.</li><li>Leads (confirmed): Danielle Deadwyler and Himesh Patel star as two decorated, mismatched FBI agents assigned to a long shuttered division. Both are co-executive producers.</li><li>New characters (confirmed): Patel said on the record in July that he and Deadwyler play &quot;completely new characters,&quot; and Variety&#x27;s source agrees. Hulu&#x27;s announcement does not name the roles.</li><li>Score (confirmed): Ludwig Göransson scored the pilot, per the Proximity founders&#x27; statement. Nothing has been said about who scores the rest of the season.</li><li>Cinematography (confirmed): Autumn Durald Arkapaw, Coogler&#x27;s Oscar winning Sinners cinematographer, shot the pilot and posted photos from the Vancouver set. What she shot on has not been stated.</li><li>65mm and runtime (rumored): The claim that the pilot runs about two hours and was shot on 65mm film comes from the blog World of Reel, citing unnamed sources. No trade or Hulu confirmation.</li><li>Mulder and Scully cameo (rumored): World of Reel&#x27;s October 13 post says Duchovny and Anderson appear in the pilot, attributed only to what the writer has heard. Neither actor nor Hulu has said so.</li><li>Pilot shoot (reported): Vancouver production listings put the pilot shoot at May 11 to June 11, 2026, and Patel confirmed the wrap in early July. No dates for the rest of the season have been announced.</li><li>Guest cast (reported): Deadline reported in May that Amy Madigan, Steve Buscemi, Ben Foster, Devery Jacobs, Lochlyn Munro, Tantoo Cardinal, Joel D. Montgrand and Sofia Grace Clifton have guest roles in the pilot.</li><li>Chris Carter (confirmed): Carter is an executive producer in credit only. He told The Hollywood Reporter in August he had done &quot;exactly nothing&quot; and had chosen not to read the script.</li><li>Duchovny and Anderson (confirmed): Anderson said in March she had read the pilot script and liked it. Duchovny said in April there was &quot;nothing concrete&quot; and he did not know whether Mulder exists in the show. No casting announced.</li><li>Premiere (confirmed): No premiere date and no episode count. TheWrap&#x27;s fall 2027 was its own labeled guess; the season still has to be shot.</li><!--/REBOOT-LIST--></ul>
-  </section>
+  <div class="reboot-strip"><div class="wrap reboot-line"><!--REBOOT-LINE--><span class="rl-lead">The reboot ledger:</span> <span class="rl-conf">10 confirmed</span>, <span class="rl-repo">2 reported</span>, <span class="rl-rumo">2 rumored</span> <span class="rl-sep" aria-hidden="true">·</span> <span class="updated">Updated 2026-10-22</span> <span class="rl-sep" aria-hidden="true">·</span> <a href="reboot.html">See every item</a><!--/REBOOT-LINE--></div></div>
 
-  <!-- ============ JOURNAL ============ -->
   <section id="journal">
     <div class="wrap">
       <div class="sec-head">
@@ -394,12 +85,6 @@
   <h3><a href="blog/four-by-three.html">The Frame Had a Ceiling</a></h3><p>The X-Files was composed for the 4:3 television set, and the 2015 remaster that now streams everywhere opened it to 16:9. The wider picture adds a little at the sides and takes the top, and the top was where the show kept its fear.</p>
   <div class="foot">October 29, 2026 · 6 min read</div>
 </article>
-<article class="card" data-tag="Form" data-text="three minutes ahead of the badge the x-files teaser showed the audience the thing before the agents ever heard of it. that made every case an exercise in dramatic irony, and quietly rigged the show&#x27;s central argument in mulder&#x27;s favor from the first scene. form the first thing *the x-files* ever showed anyone was a title card. &quot;the following story is inspired by actual documented accounts,&quot; it read, and keith phipps, rewatching the pilot for [the a.v. club](https://www.avclub.com/the-x-files-pilot-1798204522) in 2008, answered it: &quot;uh-huh.&quot; then a woman stumbles through the woods at night and meets a blinding light from above. something shaped like a man comes out of it. the next day she is dead, with marks on her body. only after that does dana scully get called into an office and told about her new partner. chris carter has said on the strange arrivals podcast, in an interview summarized by the fan archive [eatthecorn](https://www.eatthecorn.com/?p=17795), that the network asked for the disclaimer. whoever wanted it, the show never opened with a claim again. from the third episode onward it mostly opened with a body, or with the three minutes that produce one. ## a segment that sets up the show the teaser was a network convention before it was an x-files convention. an associated press reporter who sat in on a story meeting in [march 1996](https://www.eatthecorn.com/itw/1996/03/13/associated-press/) described a bulletin board of index cards laying out the plot points of an episode&#x27;s four acts, separated by commercial breaks, plus the opening &quot;teaser&quot; scene. when carter revived the show in 2015 he told the canadian press, in an interview run by [infonews](https://infonews.ca/?p=185140), that fox had since done away with the format and the production needed special dispensation to restore &quot;a little two or three minute segment in the beginning that sets up the show.&quot; the segment put the viewer somewhere the protagonists could not go. in *squeeze*, the first monster-of-the-week hour, written by glen morgan and james wong, a baltimore businessman is dead on his office floor, the door jammed behind him and a hand still in the air vent, before either agent has been mentioned. we were in the room before it was a case. *ice*, six weeks later, is the purest version. meghan deans at [reactor](https://reactormag.com/reopening-the-x-files-ice/) describes it: a shirtless, bloodied man sets up a video camera and rasps &quot;we&#x27;re not who we are,&quot; says it again, a second man attacks him, they draw guns on each other, and then each slowly lowers his weapon and turns it on himself. two shots. the agents are sent north to find out what happened. we already know the station is poisoned and that whatever is in those men makes them kill themselves rather than each other, and for forty minutes the dread is in watching intelligent people reason their way toward a fact we were handed before the credits. ## the length of the gap the show&#x27;s genre gets misdescribed here. an x-file was almost never a whodunit. the teaser disposed of the &quot;who&quot; and often the &quot;how&quot; before the credits, so the hour that followed could not be a puzzle. it was dramatic irony, hitchcock&#x27;s bomb under the table stretched to four acts. the audience is ahead, the characters are behind, and the suspense is the length of the gap. darin morgan described the mechanism plainly when he told [cinefantastique](https://www.eatthecorn.com/itw/1996/10/28/cinefantastique-darin-morgan/) in 1996 that the writers got into the habit of saying &quot;okay, here&#x27;s a dead body,&quot; cut to commercial. he was proudest of *jose chung&#x27;s from outer space* because &quot;only two people died, and i didn&#x27;t have a death on an act-out.&quot; the teaser was the first and most important of those act-outs, the one the opening credits sealed. zack handlen&#x27;s recap of *monday* at [the a.v. club](https://www.avclub.com/the-x-files-monday-millennium-matryoshka-1798174178) renders the beat: the swat team comes through the doors, the robber has a bomb, &quot;kaboom. opening credits.&quot; vince gilligan was the best at it. *pusher*, his second script, directed by rob bowman, opens with the fbi already catching its man. robert modell is arrested in the first minutes and put in the back of a police car, where he talks to the deputy about cerulean blue until the deputy turns the car into traffic, straight into a truck marked, as deans [noted](https://reactormag.com/reopening-the-x-files-pusher/), &quot;cerulean hauling.&quot; the method is handed to the audience whole, and the agents spend the hour catching up to it. *drive*, in the fall of 1998, starts with what handlen [called](https://avclub.com/the-x-files-drive-millennium-exegesis-1798173089) a phony news bulletin from a fox affiliate: a chase that looks like a hostage situation, a woman put safely in a cop car, and then her head against the window until &quot;her skull bursts.&quot; handlen added that &quot;this series has done some of the best cold opens ever.&quot; bryan cranston spends the episode trying to outrun what we have already watched happen to his wife. the device worked for pure horror too. *home*, from morgan and wong with kim manners directing, begins, in deans&#x27;s [summary](https://reactormag.com/reopening-the-x-files-home/), with a baby born and buried in a rainstorm by three men. [fangoria](https://www.fangoria.com/original/theres-no-disgrace-like-home-the-x-files-episode-too-horrifying-for-television/) reports that fox asked for the audio to be altered so the infant would sound sick, and that the hour remains the only episode of the series to carry a tv-ma rating. carter had told the chicago sun-times in [august 1993](https://www.eatthecorn.com/itw/1993/08/18/chicago-sun-times/) that the show would &quot;show the results of violence, not the act.&quot; the four acts mostly kept that promise. the first three minutes are where it was spent. ## the thumb on the scale the show sold itself as an argument between a believer and a skeptic, and scully&#x27;s position has often been praised as the honest one. structurally she never had a chance. the viewer was in the room at the ice station. scully&#x27;s rationalism arrives in act one as an opinion about events the audience has already witnessed, and so it plays as the thing a smart person says before she knows better. the teaser is a thumb on the scale for mulder. he holds the position the audience was placed in before either of them appeared. even *clyde bruckman&#x27;s final repose*, an hour about whether anyone can see death coming, opens by letting us see it. a [fortune teller](https://reactormag.com/reopening-the-x-files-qclyde-bruckmans-final-reposeq/) is attacked by a man with large, beady eyes who wants to know why he keeps &quot;doing things&quot; that seem &quot;out of character.&quot; we know his face before the agents know there is a case. bruckman can foresee every death and we can foresee the killer, and neither of us can do anything with the knowledge. ## the hard cut what made the teaser&#x27;s knowledge official was the title sequence. castle/bryant/johnsen designed it in a couple of months, according to a 2013 empire interview [excerpted](https://www.eatthecorn.com/?p=5081) at eatthecorn, with mark snow&#x27;s theme arriving midway through the job. it won the show its first emmy, the 1994 award for [graphic design and title sequences](https://www.televisionacademy.com/node/67316). it functioned as a cliff edge. a body hits the floor, the whistle starts, and &quot;the truth is out there&quot; appears over footage the viewer has just been shown to be true. the card was a receipt for the teaser. when *the erlenmeyer flask* swapped it for &quot;trust no one&quot; in may 1994, deans [registered](https://reactormag.com/reopening-the-x-files-qthe-erlenmeyer-flaskq/) the change as a loss of hope, because the tagline had always been reporting on what we had just seen. ## the exceptions the exceptions map onto the show&#x27;s most unusual hours. *beyond the sea* opens on scully and her parents; morgan and wong, who wanted a &quot;scully episode,&quot; decided according to [cinefantastique](https://www.eatthecorn.com/itw/1995/10/01/cinefantastique-3/) to have her father die before the teaser ended. *little green men* opens on mulder&#x27;s voice, narrating the voyager launch over the shuttered control room at arecibo, and its one secret is a bank of machines waking up on their own. *bad blood* opens with mulder chasing a pizza delivery boy into the woods and staking him, then scully pulling out the kid&#x27;s fake teeth. *monday* puts the agents in the bank before the bomb. *triangle* begins with mulder face down in the ocean. the audience is more or less level with the agents in all of them, and each turns out to be about the agents, their grief or their vanity. when the show wanted to look inward, it gave up its head start. mythology hours kept the head start but changed what it bought. *the erlenmeyer flask* opens on a police chase, a man who fights too well and bleeds green, a leap into the water. we are ahead again, but this knowledge will be taken from the agents by the end of the hour rather than reached. the gap that closes in a monster episode only widens here. then there is *jose chung&#x27;s*, where the teaser teaches you to distrust the teaser: the camera glides past what emily st. james [likened](https://www.avclub.com/the-x-files-hell-money-jose-chungs-from-outer-space-1798165717) to a star destroyer until it resolves into the undercarriage of a crane lift. carter&#x27;s &quot;special dispensation&quot; in 2015 says more than he probably meant it to. by then the pre-credits segment was something a network had to be talked into, and the streaming hour has largely abandoned the cut it depended on. without a title card there is no cliff, and without a cliff the three minutes of advance knowledge are just the first three minutes." style="--h:300;--fx:20%">
-  <div class="frame" aria-hidden="true"><span class="ph" style="background-image:url(images/frames/cold-open-contract.jpg)"></span><span class="n">16</span><span class="tc">16:24:58:16</span></div>
-  <div class="kick">Form</div>
-  <h3><a href="blog/cold-open-contract.html">Three Minutes Ahead of the Badge</a></h3><p>The X-Files teaser showed the audience the thing before the agents ever heard of it. That made every case an exercise in dramatic irony, and quietly rigged the show&#x27;s central argument in Mulder&#x27;s favor from the first scene.</p>
-  <div class="foot">October 26, 2026 · 7 min read</div>
-</article>
 <!--/BLOG-LATEST-->
       </div>
       <div class="more"><a class="btn ghost" href="blog/">All essays</a></div>
@@ -407,166 +92,39 @@
     </div>
   </section>
 
-  <!-- ============ VISUAL GRAMMAR ============ -->
-  <section id="grammar">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>How the show saw</h2>
-        <p>Network television in 1993 was mostly bright, flat and evenly lit so it would read on a small screen. The X-Files went the other way, and most of what people mean by its look comes down to six habits.</p>
-      </div>
-      <figure class="plate-band"><img src="images/frames/home-grammar.jpg" alt="Silhouetted pine forest under a starry night sky" width="1600" height="669" loading="lazy"></figure>
-      <div class="grammar">
-        <article>
-          <div class="k">DARKNESS</div>
-          <h3>Black as a working color</h3>
-          <p>Large parts of the frame are allowed to fall off into true black. The audience fills that space with dread, and the budget never has to show a monster it can't afford.</p>
-        </article>
-        <article>
-          <div class="k">THE BEAM</div>
-          <h3>The flashlight as a second camera</h3>
-          <p>Handheld flashlights are the key light in hundreds of scenes. Wherever an agent points the beam is wherever the audience gets to look, which makes the lighting plan and the point of view one and the same.</p>
-        </article>
-        <article>
-          <div class="k">ATMOSPHERE</div>
-          <h3>Haze and hard backlight</h3>
-          <p>Smoke in the air turns every light source into a visible shaft. Figures are often rimmed from behind and left unlit from the front, reading as silhouettes before they read as people.</p>
-        </article>
-        <article>
-          <div class="k">PLACE</div>
-          <h3>Weather as production design</h3>
-          <p>The Pacific Northwest supplied overcast skies, wet asphalt and forests that swallow light. The flat gray daylight became as recognizable as the night work.</p>
-        </article>
-        <article>
-          <div class="k">THE INSERT</div>
-          <h3>Evidence in close-up</h3>
-          <p>Slides, implants, bite marks, dental x-rays. The show cuts to objects the way a procedural cuts to clues, and the inserts carry a lot of the storytelling that dialogue doesn't.</p>
-        </article>
-        <article>
-          <div class="k">OFF-SCREEN</div>
-          <h3>Sound beyond the frame</h3>
-          <p>Mark Snow's synthesized drones and the sound design work in the space the image refuses to show. A low tone tells you something is in the room before the camera does.</p>
-        </article>
-      </div>
 
-      <div class="palette">
-        <figure>
-          <div class="strip" aria-hidden="true"><span style="background:#0b1410"></span><span style="background:#1f3229"></span><span style="background:#3c5246"></span><span style="background:#6f7f78"></span><span style="background:#a9b4ac"></span><span style="background:#c9d4ff"></span></div>
-          <figcaption><b>Vancouver, seasons 1 to 5</b>Wet greens, slate grays and cold flashlight blue. An illustrative palette, not sampled from any specific frame.</figcaption>
-        </figure>
-        <figure>
-          <div class="strip" aria-hidden="true"><span style="background:#17110b"></span><span style="background:#4a3420"></span><span style="background:#8a6237"></span><span style="background:#c8a160"></span><span style="background:#e6d3a3"></span><span style="background:#9fc2d6"></span></div>
-          <figcaption><b>Los Angeles, seasons 6 to 9</b>Desert ochre, sodium-lit streets and hard sun. Again illustrative, to show the direction the look moved in.</figcaption>
-        </figure>
-      </div>
+
+
+
+  <section id="explore">
+    <div class="wrap">
+      <h2 class="explore-h">Beyond the essays</h2>
+      <ul class="explore">
+        <li><a href="grammar.html">Visual grammar</a><p>The six lighting and sound habits that made the show look the way it did, with two palettes.</p></li>
+        <li><a href="filmmakers.html">Filmmakers</a><p>Profiles of the directors, writers, cinematographers and composer who shaped the show, with the cast.</p></li>
+        <li><a href="syllabus.html">Syllabus</a><p>Sixteen episodes worth studying for their structure, image or sound, from the Pilot to the Were-Monster.</p></li>
+        <li><a href="lineage.html">Lineage</a><p>A timeline from Kolchak and the 1970s paranoid thrillers through the show to what followed it.</p></li>
+      </ul>
     </div>
   </section>
 
-  <!-- ============ PEOPLE ============ -->
-  <section id="people">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Behind the camera</h2>
-        <p>Television gets remembered as a writer's medium. This show also belongs to a small group of directors, cinematographers and one composer, who between them gave it the feel of a feature film on a weekly schedule.</p>
-      </div>
-      <div class="people">
-        <article class="person"><div class="ph"><img src="images/frames/p-carter.jpg" alt="Chris Carter" width="640" height="800" loading="lazy"></div><h3>Chris Carter</h3><div class="role">Creator · writer · director</div><p>Created the series in 1993 and wrote much of its mythology. As a director he favored formal experiments: the black-and-white <em>Post-Modern Prometheus</em> and the long-take <em>Triangle</em>. He later directed the 2008 feature <em>I Want to Believe</em>.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-manners.jpg" alt="Pine forest silhouetted against a starry sky" width="640" height="800" loading="lazy"></div><h3>Kim Manners</h3><div class="role">Director · producer</div><p>The show's workhorse, with more than fifty episodes to his name, among them <em>Humbug</em>, <em>Home</em>, <em>Monday</em> and <em>Field Trip</em>. Known on set for pushing the scale of a television day as far as it would go. He died in January 2009.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-bowman.jpg" alt="Rob Bowman" width="640" height="800" loading="lazy"></div><h3>Rob Bowman</h3><div class="role">Director</div><p>Directed 33 episodes between 1994 and 2000, including <em>Paper Clip</em>, <em>Pusher</em>, <em>Jose Chung's From Outer Space</em>, <em>Kill Switch</em> and <em>Drive</em>, then took the series to cinemas with the 1998 feature.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-nutter.jpg" alt="David Nutter" width="640" height="800" loading="lazy"></div><h3>David Nutter</h3><div class="role">Director</div><p>Shaped the early seasons with <em>Ice</em>, <em>Beyond the Sea</em> and <em>Clyde Bruckman's Final Repose</em>. His gift for performance and tension in small spaces set the template for the standalone episode.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-gilligan.jpg" alt="Vince Gilligan" width="640" height="800" loading="lazy"></div><h3>Vince Gilligan</h3><div class="role">Writer · producer</div><p>Wrote <em>Pusher</em>, <em>Bad Blood</em>, <em>Drive</em> and <em>X-Cops</em>, and co-wrote <em>Monday</em>. Bryan Cranston's performance in <em>Drive</em> is the reason Gilligan cast him in <em>Breaking Bad</em>.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-dmorgan.jpg" alt="Darin Morgan" width="640" height="800" loading="lazy"></div><h3>Darin Morgan</h3><div class="role">Writer · director</div><p>Four scripts in the original run, <em>Humbug</em>, <em>Clyde Bruckman</em>, <em>War of the Coprophages</em> and <em>Jose Chung</em>, taught the show it could be funny and sad at once. He returned to write and direct <em>Mulder and Scully Meet the Were-Monster</em>.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-morganwong.jpg" alt="The J. Edgar Hoover FBI Building in Washington" width="640" height="800" loading="lazy"></div><h3>Glen Morgan &amp; James Wong</h3><div class="role">Writers · directors</div><p>The early-season team behind <em>Squeeze</em>, <em>Ice</em> and <em>Home</em>. Wong directed Morgan's <em>Musings of a Cigarette Smoking Man</em>; decades later Morgan directed the near-silent <em>Rm9sbG93ZXJz</em>.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-dps.jpg" alt="A strip of 35mm motion picture film" width="640" height="800" loading="lazy"></div><h3>The cinematographers</h3><div class="role">Thomas Del Ruth · John S. Bartley · Joel Ransom · Bill Roe</div><p>Del Ruth shot the pilot. Bartley, who died in 2025, defined the Vancouver look and won an Emmy for <em>Grotesque</em>. Ransom shot <em>The Post-Modern Prometheus</em>. Bill Roe took over in Los Angeles, won ASC awards for <em>Drive</em> and <em>Agua Mala</em>, and shot <em>I Want to Believe</em>.</p></article>
-        <article class="person"><div class="ph"><img src="images/frames/p-snow.jpg" alt="An Oberheim analog synthesizer" width="640" height="800" loading="lazy"></div><h3>Mark Snow</h3><div class="role">Composer</div><p>Scored the series across nine seasons and the revival, almost entirely with synthesizers, plus both films. His theme reached No. 2 on the UK singles chart in 1996, an unlikely place for a whistled melody and a delay pedal's worth of echo. He died in July 2025.</p></article>
-      </div>
-
-      <div class="cast">
-        <figure><a class="castlink" href="https://davidduchovny.com/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/mulder.jpg" alt="David Duchovny" width="640" height="800" loading="lazy"></div><figcaption><b>David Duchovny</b><span>Fox Mulder</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/name/nm0000096/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/scully.jpg" alt="Gillian Anderson" width="640" height="848" loading="lazy"></div><figcaption><b>Gillian Anderson</b><span>Dana Scully</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/name/nm0683379/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/skinner.jpg" alt="Mitch Pileggi" width="640" height="904" loading="lazy"></div><figcaption><b>Mitch Pileggi</b><span>Walter Skinner</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/name/nm0001598/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/doggett.jpg" alt="Robert Patrick" width="640" height="910" loading="lazy"></div><figcaption><b>Robert Patrick</b><span>John Doggett</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/name/nm0001272/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/reyes.jpg" alt="Annabeth Gish" width="640" height="862" loading="lazy"></div><figcaption><b>Annabeth Gish</b><span>Monica Reyes</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://williambdavis.com/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/smoking-man.jpg" alt="William B. Davis" width="640" height="829" loading="lazy"></div><figcaption><b>William B. Davis</b><span>The Smoking Man</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/name/nm0353750/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/langly.jpg" alt="Dean Haglund" width="640" height="822" loading="lazy"></div><figcaption><b>Dean Haglund</b><span>Ringo Langly</span></figcaption></a></figure>
-        <figure><a class="castlink" href="https://www.imdb.com/title/tt0243069/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/lone-gunmen.svg" alt="Illustration of a vintage television set, a stand-in for the Lone Gunmen" width="640" height="800" loading="lazy"></div><figcaption><b>Bruce Harwood &amp; Tom Braidwood</b><span>Byers &amp; Frohike</span></figcaption></a></figure>
-      </div>
-      <p class="cast-note">In front of the camera. Photos from Wikimedia Commons, credited below.</p>
-    </div>
-  </section>
-
-  <!-- ============ SYLLABUS ============ -->
-  <section id="syllabus">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Sixteen hours of television as cinema</h2>
-        <p>Less a "best of" list than a reading list for anyone who cares about form: the episodes that took a risk with structure, image or sound, and the director who carried each one.</p>
-      </div>
-      <div>
-        <table class="syllabus">
-          <thead><tr><th>Episode</th><th>Title</th><th>Director</th><th>Why it matters</th></tr></thead>
-          <tbody>
-            <tr><td class="code">1x01</td><td class="t">Pilot</td><td class="dir">Robert Mandel</td><td class="why">The visual rules arrive fully formed: night exteriors, flashlight keys, rain, photographed by Thomas Del Ruth.</td></tr>
-            <tr><td class="code">1x08</td><td class="t">Ice</td><td class="dir">David Nutter</td><td class="why">A single Arctic location and five people who can't trust each other. Paranoia staged entirely through blocking and eyelines.</td></tr>
-            <tr><td class="code">1x13</td><td class="t">Beyond the Sea</td><td class="dir">David Nutter</td><td class="why">The first episode built around Scully's interior life, and a lesson in letting a guest performance (Brad Dourif) carry the frame.</td></tr>
-            <tr><td class="code">2x05</td><td class="t">Duane Barry</td><td class="dir">Chris Carter</td><td class="why">An abduction rendered almost entirely in light and sound. The show working out how to film something it had no intention of showing.</td></tr>
-            <tr><td class="code">3x04</td><td class="t">Clyde Bruckman&#x27;s Final Repose</td><td class="dir">David Nutter</td><td class="why">Comedy and grief held in the same shot. Darin Morgan's script and Peter Boyle's performance are the textbook on tonal control.</td></tr>
-            <tr><td class="code">3x20</td><td class="t">Jose Chung&#x27;s From Outer Space</td><td class="dir">Rob Bowman</td><td class="why">Nested, contradictory flashbacks. A satire of how stories get told, told through the grammar it is mocking.</td></tr>
-            <tr><td class="code">4x02</td><td class="t">Home</td><td class="dir">Kim Manners</td><td class="why">Rural horror shot with the patience of a feature. The first episode of the series to carry a viewer discretion warning.</td></tr>
-            <tr><td class="code">4x07</td><td class="t">Musings of a Cigarette Smoking Man</td><td class="dir">James Wong</td><td class="why">A secret history of postwar America seen from behind the curtain. The villain gets an essay film of his own.</td></tr>
-            <tr><td class="code">5x05</td><td class="t">The Post-Modern Prometheus</td><td class="dir">Chris Carter</td><td class="why">Black-and-white, an open homage to James Whale's <em>Frankenstein</em>. Joel Ransom's photography was Emmy-nominated.</td></tr>
-            <tr><td class="code">5x12</td><td class="t">Bad Blood</td><td class="dir">Cliff Bole</td><td class="why">Two incompatible versions of the same night. Unreliable narration used for character comedy, with every detail shifting between tellings.</td></tr>
-            <tr><td class="code">6x02</td><td class="t">Drive</td><td class="dir">Rob Bowman</td><td class="why">A chamber piece in a moving car. Bill Roe won an ASC award for it, and Bryan Cranston's work here led to <em>Breaking Bad</em>.</td></tr>
-            <tr><td class="code">6x03</td><td class="t">Triangle</td><td class="dir">Chris Carter</td><td class="why">Built to play as four unbroken takes in the spirit of Hitchcock's <em>Rope</em>, with split-screen in the final acts.</td></tr>
-            <tr><td class="code">6x19</td><td class="t">The Unnatural</td><td class="dir">David Duchovny</td><td class="why">Duchovny's first episode as writer and director: a baseball fable set in 1947, and an Emmy-nominated showcase for Bill Roe.</td></tr>
-            <tr><td class="code">7x12</td><td class="t">X-Cops</td><td class="dir">Michael Watkins</td><td class="why">Shot entirely on videotape in the format of <em>COPS</em>. The monster is barely seen, because the format won't allow it.</td></tr>
-            <tr><td class="code">7x17</td><td class="t">all things</td><td class="dir">Gillian Anderson</td><td class="why">Anderson's only episode as writer and director: a slow, meditative Scully story about chance, faith and attention.</td></tr>
-            <tr><td class="code">10x03</td><td class="t">Mulder and Scully Meet the Were-Monster</td><td class="dir">Darin Morgan</td><td class="why">The revival's high point: a comedy about middle age and meaning that is also, quietly, about the original run.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LINEAGE ============ -->
-  <section id="lineage">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>What it inherited, what it passed on</h2>
-        <p>The X-Files sits between the paranoid thrillers of the 1970s and the prestige television that followed it. Scroll the line.</p>
-      </div>
-      <div class="timeline" style="--cols: 12">
-        <div class="tl"><div class="y">1974</div><h3>Kolchak: The Night Stalker</h3><span class="tag">Influence</span><p>A reporter who keeps finding monsters nobody believes in. Chris Carter has named it as a direct inspiration.</p></div>
-        <div class="tl"><div class="y">1974</div><h3>The Parallax View</h3><span class="tag">Influence</span><p>Alan J. Pakula's conspiracy thriller: institutions as a maze, and the hero swallowed by the architecture.</p></div>
-        <div class="tl"><div class="y">1976</div><h3>All the President&#x27;s Men</h3><span class="tag">Influence</span><p>Parking-garage informants in the dark. The show's Deep Throat takes his name from Watergate.</p></div>
-        <div class="tl"><div class="y">1977</div><h3>Close Encounters of the Third Kind</h3><span class="tag">Influence</span><p>Light as the sign of the alien. Every beam that floods a road at night owes it something.</p></div>
-        <div class="tl"><div class="y">1990</div><h3>Twin Peaks</h3><span class="tag">Influence</span><p>Proof that network TV could be strange. David Duchovny played DEA agent Denise Bryson.</p></div>
-        <div class="tl"><div class="y">1991</div><h3>The Silence of the Lambs</h3><span class="tag">Influence</span><p>A young woman in an FBI world of men. Carter has said Scully is partly modeled on Clarice Starling.</p></div>
-        <div class="tl core"><div class="y">1993</div><h3>The X-Files</h3><span class="tag">The show</span><p>A procedural with a serialized conspiracy underneath. Shot on 35mm, mostly at night, in the rain.</p></div>
-        <div class="tl"><div class="y">1996</div><h3>Millennium</h3><span class="tag">Sibling</span><p>Carter's darker companion series, about a former FBI profiler who sees what killers see.</p></div>
-        <div class="tl core"><div class="y">1998</div><h3>The X-Files (Fight the Future)</h3><span class="tag">The film</span><p>Rob Bowman's feature, cast with Martin Landau, Armin Mueller-Stahl and Blythe Danner, bridging seasons five and six.</p></div>
-        <div class="tl"><div class="y">2008</div><h3>Breaking Bad</h3><span class="tag">Descendant</span><p>Vince Gilligan's series, with the actor he found in <em>Drive</em>.</p></div>
-        <div class="tl"><div class="y">2008</div><h3>Fringe</h3><span class="tag">Descendant</span><p>An FBI team, a believer and a skeptic, and a weekly case laid over a long mythology.</p></div>
-        <div class="tl"><div class="y">2016</div><h3>Stranger Things</h3><span class="tag">Descendant</span><p>Government labs, small-town disappearances and flashlights in the woods, filtered through the 1980s.</p></div>
-      </div>
+  <section id="transmissions" class="mist" aria-label="Famous lines from The X-Files">
+    <div class="fog" aria-hidden="true"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+    <div class="wrap mist-wrap">
+      <div class="mist-kicker">Static on the line</div>
+      <p class="mist-dek">The lines that outlived the show, surfacing and dissolving the way they do in memory.</p>
+      <blockquote class="mist-quote" id="mistQuote" aria-hidden="true"><span class="mq-text"></span><cite class="mq-cite"></cite></blockquote>
+      <ul class="sr-only" id="mistList"></ul>
+      <button type="button" class="pause-btn" id="quotePause" aria-label="Pause the rotating quotes" aria-pressed="false">Pause</button>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="sig">The truth is out there.</div>
+    <!--SITE-FOOT--><div class="sig">The truth is out there.</div><p class="site-links"><a href="blog/">Journal</a><a href="syllabus.html">Syllabus</a><a href="filmmakers.html">Filmmakers</a><a href="reboot.html">Reboot</a><a href="glossary.html">Glossary</a><a href="grammar.html">Visual grammar</a><a href="lineage.html">Lineage</a><a href="credits.html">Image credits</a></p><!--/SITE-FOOT-->
     <div class="cols">
-      <p>Mulder, It's Me is an unofficial, non-commercial film journal. It is not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions. The X-Files and all related names are trademarks of their respective owners. Writing and illustrations on this site are original. <a href="credits.html" style="color:var(--soft)">Full image credits</a>.</p>
-      <p class="credits">Cast photos from Wikimedia Commons, resized and toned for this page:
-        <a href="https://commons.wikimedia.org/wiki/File:David_Duchovny_-_LATFOB_2026-02.jpg" rel="noopener">David Duchovny</a> by Kevin Paul (<a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Gillian_Anderson_at_Fan_Expo_Denver_2026_02.jpg" rel="noopener">Gillian Anderson</a> by SpiritedMichelle (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Mitch_Pileggi_Wellington_2013.jpg" rel="noopener">Mitch Pileggi</a> by DatarkNZ (<a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="noopener">CC BY-SA 2.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Robert_Patrick_2016.jpg" rel="noopener">Robert Patrick</a> by Gage Skidmore (<a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="noopener">CC BY-SA 2.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Annabeth_Gish_(46484543405)_(cropped).jpg" rel="noopener">Annabeth Gish</a> by Greg2600 (<a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="noopener">CC BY-SA 2.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Dean_Haglund_by_Gage_Skidmore.jpg" rel="noopener">Dean Haglund</a> by Gage Skidmore (<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>) ·
-        <a href="https://commons.wikimedia.org/wiki/File:Toulouse_Game_Show_2011_-_William_B_Davis_-_P1280944-CROP.jpg" rel="noopener">William B. Davis</a> by Yves Tennevin (<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>).
-        Forest photo: <a href="https://commons.wikimedia.org/wiki/File:Bladen_Lake_Forest_-_Milky_Way_-_Meteor.jpg" rel="noopener">Bladen Lake Forest</a> by Dennis Snipes (<a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>).
-        The adapted copies are shared under the same licenses.</p>
+      <!--SITE-LEGAL--><p>Mulder, It's Me is an unofficial, non-commercial film journal. It is not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions. The X-Files and all related names are trademarks of their respective owners. Writing and illustrations on this site are original. <a href="credits.html">Full image credits</a>.</p><!--/SITE-LEGAL-->
     </div>
   </div>
 </footer>
@@ -910,32 +468,6 @@ if (reduce) { composer.render(); } else { frame(); }
     clearTimeout(timer);
     if (paused) { el.classList.remove('out'); el.classList.add('in'); }
     else show();
-  });
-})();
-(() => {
-  const sec = document.getElementById('reboot');
-  if (!sec) return;
-  const track = sec.querySelector('.ticker-track'), detail = document.getElementById('tickerDetail');
-  if (!track || !detail) return;
-  const dS = detail.querySelector('.td-status'), dL = detail.querySelector('.td-label'), dT = detail.querySelector('.td-text');
-  const btns = [...sec.querySelectorAll('.tk')];
-  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-  let open = null;
-  function close() { detail.hidden = true; track.classList.remove('paused'); open = null; btns.forEach(b => b.setAttribute('aria-expanded', 'false')); }
-  function show(b) {
-    const key = b.dataset.label;
-    if (open === key) { close(); return; }
-    dS.textContent = cap(b.dataset.status); dS.className = 'td-status ' + b.dataset.status;
-    dL.textContent = b.dataset.label; dT.textContent = b.dataset.text;
-    detail.hidden = false; track.classList.add('paused'); open = key;
-    btns.forEach(x => x.setAttribute('aria-expanded', String(x.dataset.label === key)));
-  }
-  btns.forEach(b => b.addEventListener('click', () => show(b)));
-  detail.querySelector('.td-close').addEventListener('click', close);
-  const hold = document.getElementById('tickerPause');
-  if (hold) hold.addEventListener('click', () => {
-    const held = track.classList.toggle('held');
-    hold.setAttribute('aria-pressed', String(held));
   });
 })();
 </script>
