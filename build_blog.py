@@ -57,6 +57,12 @@ def credit_html(c):
             f'{lic_html}, via Wikimedia Commons')
 PUBLISHER = {"@type": "Organization", "@id": SITE_URL + "/#organization", "name": SITE_NAME, "url": SITE_URL + "/",
              "logo": {"@type": "ImageObject", "url": SITE_URL + "/images/logo.png", "width": 512, "height": 512}}
+# Byline for the essays: the Basement Desk, a team of AI research and writing
+# agents (see about.html). An Organization, never a Person, so it is not
+# presented as a human author.
+AUTHOR = {"@type": "Organization", "@id": SITE_URL + "/#basement-desk", "name": "The Basement Desk",
+          "url": SITE_URL + "/about.html", "description": "A team of AI research and writing agents.",
+          "parentOrganization": {"@id": SITE_URL + "/#organization"}}
 
 
 def crumbs(*trail):
@@ -266,7 +272,7 @@ STARS = """
 # destinations; the footer link row adds the section pages and credits.
 NAV_PAGES = [("blog/", "Journal"), ("syllabus.html", "Syllabus"), ("filmmakers.html", "Filmmakers"),
              ("reboot.html", "Reboot"), ("glossary.html", "Glossary")]
-MORE_PAGES = [("grammar.html", "Visual grammar"), ("lineage.html", "Lineage"), ("credits.html", "Image credits")]
+MORE_PAGES = [("grammar.html", "Visual grammar"), ("lineage.html", "Lineage"), ("about.html", "About"), ("credits.html", "Image credits")]
 NAV_LABELS = dict(NAV_PAGES + MORE_PAGES)
 
 # Hand-written section pages at the site root. build() refreshes their head
@@ -280,6 +286,8 @@ SECTION_PAGES = {
                       "Sixteen essential episodes of The X-Files, Pilot to Mulder and Scully Meet the Were-Monster, chosen for what each risked with form, image or sound."),
     "lineage.html": ("Lineage: Influences and Descendants",
                      "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe, Stranger Things and the Hulu series."),
+    "about.html": ("About This Journal",
+                   "Who makes Mulder, It's Me, how the X-Files essays are researched and sourced, and what this unofficial film journal is and is not."),
     "reboot.html": ("The Reboot: Coogler's X-Files at Hulu",
                     "Ryan Coogler's X-Files series at Hulu, tracked item by item: what is confirmed, what the trades have reported and what is still only talk."),
 }
@@ -426,14 +434,14 @@ def build():
         modified = p.get("updated", p["date"])
         article = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"], "description": p["summary"],
                    "datePublished": p["date"], "dateModified": modified, "articleSection": p["tag"],
-                   "wordCount": p["words"], "image": image, "inLanguage": "en", "author": PUBLISHER, "publisher": PUBLISHER,
+                   "wordCount": p["words"], "image": image, "inLanguage": "en", "author": AUTHOR, "publisher": PUBLISHER,
                    "mainEntityOfPage": SITE_URL + path, "url": SITE_URL + path,
                    "isPartOf": {"@type": "Blog", "name": SITE_NAME + " journal", "url": SITE_URL + "/blog/"},
                    "about": {"@type": "TVSeries", "name": "The X-Files"}}
         trail = crumbs(("Journal", "/blog/"), (p["title"], path))
         head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, trail), p["img"])
         head_tags += (f'\n<meta property="article:published_time" content="{p["date"]}"><meta property="article:modified_time" content="{modified}">'
-                      f'<meta property="article:section" content="{html.escape(p["tag"], quote=True)}">')
+                      f'<meta property="article:section" content="{html.escape(p["tag"], quote=True)}"><meta name="author" content="The Basement Desk">')
         preload = f'<link rel="preload" as="image" href="../{p["img"]}" fetchpriority="high">\n' if p["img"] else ""
         page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags,
                            preload=preload, fonts=FONTS, style=STYLE, nav=nav_html("../"))
@@ -503,9 +511,11 @@ def build():
         f = ROOT / name
         page = f.read_text(encoding="utf-8")
         short = NAV_LABELS.get(name, title.split(":")[0])
-        page_ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "description": desc, "url": f"{SITE_URL}/{name}",
+        page_ld = {"@context": "https://schema.org", "@type": "AboutPage" if name == "about.html" else "WebPage", "name": title, "description": desc, "url": f"{SITE_URL}/{name}",
                    "inLanguage": "en", "isPartOf": {"@type": "WebSite", "@id": SITE_URL + "/#website", "name": SITE_NAME, "url": SITE_URL + "/"},
                    "publisher": PUBLISHER, "about": {"@type": "TVSeries", "name": "The X-Files"}}
+        if name == "about.html":
+            page_ld["mainEntity"] = [{"@id": PUBLISHER["@id"]}, AUTHOR]
         head = (f"<title>{html.escape(title)} · {html.escape(SITE_NAME)}</title>\n"
                 f'<meta name="description" content="{html.escape(desc, quote=True)}">\n'
                 + seo(title, desc, "/" + name, "website", (page_ld, crumbs((short, "/" + name))), SECTION_IMAGES.get(name)))
