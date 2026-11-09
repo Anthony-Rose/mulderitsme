@@ -99,8 +99,14 @@
   .sec-head h2 { font: 300 clamp(36px, 5.6vw, 66px)/1.02 var(--serif); letter-spacing: -.015em; margin: 0 0 18px; color: #f3efe6; }
   .sec-head h2 em { font-style: italic; color: var(--green); }
   .sec-head p { margin: 0; color: var(--soft); font-size: 19px; max-width: 680px; }
-  .js .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
-  .js .reveal.in { opacity: 1; transform: none; }
+  /* one entrance, on the hero only; content is visible by default */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .hero-ui > * { animation: rise 320ms cubic-bezier(.23,1,.32,1) both; }
+    .js .hero-ui > :nth-child(2) { animation-delay: 60ms; }
+    .js .hero-ui > :nth-child(3) { animation-delay: 120ms; }
+    .js .hero-ui > :nth-child(4) { animation-delay: 180ms; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
   /* journal strip (generated cards) */
   .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -326,15 +332,15 @@
   <section id="transmissions" class="mist" aria-label="Famous lines from The X-Files">
     <div class="fog" aria-hidden="true"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
     <div class="wrap mist-wrap">
-      <div class="mist-kicker reveal">Static on the line</div>
-      <p class="mist-dek reveal">The lines that outlived the show, surfacing and dissolving the way they do in memory.</p>
+      <div class="mist-kicker">Static on the line</div>
+      <p class="mist-dek">The lines that outlived the show, surfacing and dissolving the way they do in memory.</p>
       <blockquote class="mist-quote" id="mistQuote" aria-hidden="true"><span class="mq-text"></span><cite class="mq-cite"></cite></blockquote>
       <ul class="sr-only" id="mistList"></ul>
     </div>
   </section>
 
   <section id="reboot">
-    <div class="wrap reboot-bar reveal">
+    <div class="wrap reboot-bar">
       <span class="num">01 · The Reboot</span>
       <span class="reboot-legend"><span class="k-conf">Confirmed</span><span class="k-rep">Reported</span><span class="k-rum">Rumored</span></span>
       <span class="reboot-meta"><!--REBOOT-UPDATED--><span class="updated">Updated 2026-10-22</span><!--/REBOOT-UPDATED--> · <a href="blog/hulu-coogler-series-order.html">Full story</a></span>
@@ -350,14 +356,14 @@
   <!-- ============ JOURNAL ============ -->
   <section id="journal">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head">
         <div class="num">02 · The Journal</div>
         <div>
           <h2>Essays on a show that <em>thought in images</em></h2>
           <p>Close readings of episodes, directors, cinematographers and composers. Written for people who notice where the camera is.</p>
         </div>
       </div>
-      <div class="posts reveal">
+      <div class="posts">
 <!--BLOG-LATEST-->
 <a class="card" href="blog/pusher-the-voice-is-the-edit.html" data-tag="Form" data-text="the voice is the edit robert modell has no makeup, no effect and no dark to hide in. his power is a man talking, filmed as ordinary coverage, which puts the viewer in the same chair as his victims. pusher is the hour where the x-files came closest to admitting what a cut does. form a man in a grocery store is surrounded by armed agents and says, &quot;let&#x27;s get this show on the road.&quot; in the car he talks to the officer at the wheel about a color, cerulean blue, and the car drifts into traffic and under a truck whose side reads cerulean hauling. by the title card the audience knows the whole method and the agents know none of it. zack handlen, at [the a.v. club](https://www.avclub.com/the-x-files-apocrypha-pusher-teso-dos-bichos-1798165645), called the villain &quot;a very human monster who manages to be both well-drawn and unsympathetic,&quot; and the word to hold onto is human. robert patrick modell has no stretch, no liver-colored skin, no ink in his eyes. he is a man in ordinary clothes who talks. that is the problem vince gilligan handed rob bowman early in 1996. the show&#x27;s grammar was built around a thing the camera declined to show: the flashlight found a shape and the cut arrived before the shape resolved. here there is nothing to withhold. modell&#x27;s power is speech, and speech cannot be kept at the edge of a frame. so the episode films persuasion the way television films any conversation, a face and then the other face, and lets the viewer hear every word of the suggestion, uncut, exactly as the victim hears it. the viewer sits where the victim sits. ## where the voice came from in a [fox online chat](https://eatthecorn.com/itw/2000/11/30/fox-chat-with-vince-gilligan/) in 2000 he said the teaser came first: &quot;i stole the idea for the teaser from the ending of an old movie script,&quot; one he had written the previous summer, in which the hero uses post-hypnotic suggestion on the villain. he never managed to fit that scene into the film, so he spent it here, with mind control added as the supernatural twist. chris carter had solicited *soft light* from him as a freelancer the season before and told cinefantastique that when gilligan&#x27;s agent called the following season to say he was ready for a staff job, &quot;i scooped him right up.&quot; *pusher* was his first script on staff. he gave the villain three names on purpose. in a 2026 interview with polygon, excerpted at the fan archive eatthecorn, he said the middle name is his brother&#x27;s and the surname just sounded right, but the rule was firm: &quot;a bad guy has got to have three names, like lee harvey oswald.&quot; he also offered a translation for the present: &quot;thirty years later, it&#x27;d be called &#x27;influencer&#x27; instead of &#x27;pusher.&#x27;&quot; ## casting a voice the casting history shows how exposed the design was. gilligan told [sci-fi tv](https://www.eatthecorn.com/itw/1998/12/01/sci-fi-tv-2/) in 1998 that carter had been interested in lance henriksen for modell, before *millennium*. the actor then cast in los angeles read well and withdrew at the eleventh hour for a television movie, and robert wisden, a vancouver actor, was hired at the last minute. &quot;we were going out on a limb, and it could have been an epic nightmare,&quot; gilligan said. in this hour the guest star is the effect. wisden got it. handlen credits him with &quot;a wonderful snarky contempt&quot;; cinefantastique&#x27;s third-season guide, which put the hour among the series&#x27; best, found that wisden &quot;makes you feel a bit sorry for him.&quot; within five years he was a gemini nominee for *the sheldon kennedy story*. what wisden plays is calm, and the calm is the only evidence the show offers that anything paranormal is happening. scully reads a brain tumor as the whole explanation, and the episode never contradicts her with a picture. ## persuasion in coverage walk through the pushes and count the effects. frank burst, the agent who brought the case to mulder and scully, dies of a heart attack on a telephone while modell talks to him about his cholesterol and mulder shouts at him to hang up. modell fixes his attention on a judge and the verdict comes back not guilty. he walks into the bureau&#x27;s records room, and holly, a records technician, pepper-sprays skinner and beats him on the floor. at a driving range an agent named collins sets himself on fire. a phone call, a courtroom, an office, a parking lot. the only images bowman adds are the ones the victims produce. the cause is a sentence, which a camera cannot photograph. mulder fights back with the same instrument. he tells modell his shoelace is untied, waits for the glance down, and says, &quot;made you look.&quot; cinefantastique&#x27;s reviewer observed that the taunt is what turns modell&#x27;s interest onto mulder and leads, two acts later, to the ending. the hero&#x27;s one move is to steer the villain&#x27;s eye with a phrase, which is what the villain does to everyone else and what an editor does to you. a cut is an instruction about where to look and when. modell gives the instruction out loud. ## the one big shot the showiest shot gilligan remembers is a picture of a consequence. he told polygon he asked how the shot of the truck hitting the camera was going to be done, &quot;because you want it to be really badass,&quot; and was told there was a way: a mirror on a wooden frame in the middle of the road, at 45 degrees to both camera and truck, the camera 30 feet off to the side, and a stunt driver who put a semi straight through the glass. the crash is the end of a sentence about a color. the hour&#x27;s spectacle went to the full stop. ## close-ups and a fire alarm the climax, in a hospital, is where the method pays. mulder goes in without his gun, leaving it with scully. modell takes him, and what follows is russian roulette: mulder puts a revolver to his own head and clicks on an empty chamber, then turns it on an unarmed scully. the cinefantastique guide described the construction. the sequence &quot;consists for the most part of a series of close-ups,&quot; and the struggle is so legible in the faces that &quot;the scene could have been done without even its sparse dialogue.&quot; bowman has three faces and a gun, and the suggestion lives in the looks. scully ends it with a noise. she pulls the fire alarm and mulder shoots modell. a voice is beaten by a louder sound rather than a picture. modell ends in a coma, and scully takes mulder&#x27;s hand, a gesture meghan deans at [reactor](https://reactormag.com/reopening-the-x-files-pusher/) read as a hint that he should let this one go. the [television academy&#x27;s index](https://interviews.televisionacademy.com/interviews/vince-gilligan) of gilligan&#x27;s 2011 oral history files the episode under his dealings with standards and practices and notes a limit on showing a gun held to a head during a game of russian roulette. ## the sequel that added pictures &quot;i&#x27;m really proud of pusher,&quot; gilligan told sci-fi tv; &quot;rob bowman really nailed it.&quot; then, with tim minear, he wrote *kitsunegari*, directed by daniel sackheim and aired january 4, 1998, and the sequel reveals the original&#x27;s design by abandoning it. modell escapes. a prosecutor turns up dead, covered in blue paint. a japanese ideogram meaning foxhunt is on the walls. a second pusher, modell&#x27;s sister, is behind it, and modell himself, in gilligan&#x27;s words, &quot;is actually a good guy in this episode.&quot; the writers &quot;tried to throw viewers a curve ball,&quot; he said, and it was not well received; the experience left him &quot;a little gunshy about sequels.&quot; handlen gave it a c+ and called it a &quot;disappointingly apt example of how sequels often fail.&quot; the reason sits in the paint. *pusher* had a villain who worked in words and left nothing behind but the damage. *kitsunegari* gives the power a signature, a color on a corpse and calligraphy on a wall, a clue to be photographed. once the push can be seen it is just another x-file, and the sequel&#x27;s modell, who kills nobody and dies when his sister pushes his heart to a stop, has lost what made him frightening: a plain voice and no evidence. ## the camera as pusher deans drew the line from modell to walter white. asked about it, gilligan said &quot;i guess there are similarities&quot; and that he is the last to notice such things. the resemblance is less the tumor than the method. his long project has been the ordinary man who makes other people act by talking, and this hour was the first time he found that one actor in close-up could carry it with no help from the effects department. the x-files had spent three seasons refusing to show its monsters. in *pusher* it had one that could not be shown, and a man telling you where to look turned out to be all it needed. in the office on the monday morning after the broadcast, gilligan told carter, as he remembers it, that this was the best he could do. carter, by gilligan&#x27;s account, looked at him seriously and said quietly that he shouldn&#x27;t say such things, &quot;because this job, for all of us, is about getting better with every script.&quot; gilligan was still quoting the line thirty years later. it worked on him." style="--h:185;--fx:55%">
   <div class="frame" aria-hidden="true"><span class="ph" style="background-image:url(images/frames/pusher-the-voice-is-the-edit.jpg)"></span><span class="n">19</span><span class="tc">19:25:09:13</span></div>
@@ -385,23 +391,23 @@
 </a>
 <!--/BLOG-LATEST-->
       </div>
-      <div class="more reveal"><a class="btn ghost" href="blog/">All essays</a></div>
-      <div class="browse reveal"><span class="browse-label">Browse by tag</span><!--BROWSE-TAGS--><a class="tagpill" href="blog/?tag=Cinematography">Cinematography</a><a class="tagpill" href="blog/?tag=Directors">Directors</a><a class="tagpill" href="blog/?tag=Form">Form</a><a class="tagpill" href="blog/?tag=Influence">Influence</a><a class="tagpill" href="blog/?tag=Legacy">Legacy</a><a class="tagpill" href="blog/?tag=News">News</a><a class="tagpill" href="blog/?tag=Sound">Sound</a><a class="tagpill" href="blog/?tag=The%20Films">The Films</a><!--/BROWSE-TAGS--></div>
+      <div class="more"><a class="btn ghost" href="blog/">All essays</a></div>
+      <div class="browse"><span class="browse-label">Browse by tag</span><!--BROWSE-TAGS--><a class="tagpill" href="blog/?tag=Cinematography">Cinematography</a><a class="tagpill" href="blog/?tag=Directors">Directors</a><a class="tagpill" href="blog/?tag=Form">Form</a><a class="tagpill" href="blog/?tag=Influence">Influence</a><a class="tagpill" href="blog/?tag=Legacy">Legacy</a><a class="tagpill" href="blog/?tag=News">News</a><a class="tagpill" href="blog/?tag=Sound">Sound</a><a class="tagpill" href="blog/?tag=The%20Films">The Films</a><!--/BROWSE-TAGS--></div>
     </div>
   </section>
 
   <!-- ============ VISUAL GRAMMAR ============ -->
   <section id="grammar">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head">
         <div class="num">03 · Visual grammar</div>
         <div>
           <h2>How the show <em>saw</em></h2>
           <p>Network television in 1993 was mostly bright, flat and evenly lit so it would read on a small screen. The X-Files went the other way, and most of what people mean by its look comes down to six habits.</p>
         </div>
       </div>
-      <figure class="plate-band reveal"><img src="images/frames/home-grammar.jpg" alt="Silhouetted pine forest under a starry night sky" width="1600" height="669" loading="lazy"><figcaption>Photo: Dennis Snipes, CC BY-SA 3.0</figcaption></figure>
-      <div class="grammar reveal">
+      <figure class="plate-band"><img src="images/frames/home-grammar.jpg" alt="Silhouetted pine forest under a starry night sky" width="1600" height="669" loading="lazy"><figcaption>Photo: Dennis Snipes, CC BY-SA 3.0</figcaption></figure>
+      <div class="grammar">
         <article>
           <div class="k">I · DARKNESS</div>
           <h3>Black as a working color</h3>
@@ -434,7 +440,7 @@
         </article>
       </div>
 
-      <div class="palette reveal">
+      <div class="palette">
         <figure>
           <div class="strip" aria-hidden="true"><span style="background:#0b1410"></span><span style="background:#1f3229"></span><span style="background:#3c5246"></span><span style="background:#6f7f78"></span><span style="background:#a9b4ac"></span><span style="background:#c9d4ff"></span></div>
           <figcaption><b>Vancouver, seasons 1 to 5</b>Wet greens, slate grays and cold flashlight blue. An illustrative palette, not sampled from any specific frame.</figcaption>
@@ -450,14 +456,14 @@
   <!-- ============ PEOPLE ============ -->
   <section id="people">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head">
         <div class="num">04 · Filmmakers</div>
         <div>
           <h2>Behind the camera</h2>
           <p>Television gets remembered as a writer's medium. This show also belongs to a small group of directors, cinematographers and one composer, who between them gave it the feel of a feature film on a weekly schedule.</p>
         </div>
       </div>
-      <div class="people reveal">
+      <div class="people">
         <article class="person"><div class="ph"><img src="images/frames/p-carter.jpg" alt="Chris Carter" width="640" height="800" loading="lazy"></div><h3>Chris Carter</h3><div class="role">Creator · writer · director</div><p>Created the series in 1993 and wrote much of its mythology. As a director he favored formal experiments: the black-and-white <em>Post-Modern Prometheus</em> and the long-take <em>Triangle</em>. He later directed the 2008 feature <em>I Want to Believe</em>.</p></article>
         <article class="person"><div class="ph"><img src="images/frames/p-manners.jpg" alt="Pine forest silhouetted against a starry sky" width="640" height="800" loading="lazy"></div><h3>Kim Manners</h3><div class="role">Director · producer</div><p>The show's workhorse, with more than fifty episodes to his name, among them <em>Humbug</em>, <em>Home</em>, <em>Monday</em> and <em>Field Trip</em>. Known on set for pushing the scale of a television day as far as it would go. He died in January 2009.</p></article>
         <article class="person"><div class="ph"><img src="images/frames/p-bowman.jpg" alt="Rob Bowman" width="640" height="800" loading="lazy"></div><h3>Rob Bowman</h3><div class="role">Director</div><p>Directed 33 episodes between 1994 and 2000, including <em>Paper Clip</em>, <em>Pusher</em>, <em>Jose Chung's From Outer Space</em>, <em>Kill Switch</em> and <em>Drive</em>, then took the series to cinemas with the 1998 feature.</p></article>
@@ -469,7 +475,7 @@
         <article class="person"><div class="ph"><img src="images/frames/p-snow.jpg" alt="An Oberheim analog synthesizer" width="640" height="800" loading="lazy"></div><h3>Mark Snow</h3><div class="role">Composer</div><p>Scored the series across nine seasons and the revival, almost entirely with synthesizers, plus both films. His theme reached No. 2 on the UK singles chart in 1996, an unlikely place for a whistled melody and a delay pedal's worth of echo. He died in July 2025.</p></article>
       </div>
 
-      <div class="cast reveal">
+      <div class="cast">
         <figure><a class="castlink" href="https://davidduchovny.com/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/mulder.jpg" alt="David Duchovny" width="640" height="800" loading="lazy"></div><figcaption><b>David Duchovny</b><span>Fox Mulder</span></figcaption></a></figure>
         <figure><a class="castlink" href="https://www.imdb.com/name/nm0000096/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/scully.jpg" alt="Gillian Anderson" width="640" height="848" loading="lazy"></div><figcaption><b>Gillian Anderson</b><span>Dana Scully</span></figcaption></a></figure>
         <figure><a class="castlink" href="https://www.imdb.com/name/nm0683379/" target="_blank" rel="noopener"><div class="ph"><img src="images/agents/skinner.jpg" alt="Mitch Pileggi" width="640" height="904" loading="lazy"></div><figcaption><b>Mitch Pileggi</b><span>Walter Skinner</span></figcaption></a></figure>
@@ -486,14 +492,14 @@
   <!-- ============ SYLLABUS ============ -->
   <section id="syllabus">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head">
         <div class="num">05 · Syllabus</div>
         <div>
           <h2>Sixteen hours of <em>television as cinema</em></h2>
           <p>Less a "best of" list than a reading list for anyone who cares about form: the episodes that took a risk with structure, image or sound, and the director who carried each one.</p>
         </div>
       </div>
-      <div class="reveal">
+      <div>
         <table class="syllabus">
           <thead><tr><th>Episode</th><th>Title</th><th>Director</th><th>Why it matters</th></tr></thead>
           <tbody>
@@ -522,14 +528,14 @@
   <!-- ============ LINEAGE ============ -->
   <section id="lineage">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head">
         <div class="num">06 · Lineage</div>
         <div>
           <h2>What it inherited, <em>what it passed on</em></h2>
           <p>The X-Files sits between the paranoid thrillers of the 1970s and the prestige television that followed it. Scroll the line.</p>
         </div>
       </div>
-      <div class="timeline reveal" style="--cols: 12">
+      <div class="timeline" style="--cols: 12">
         <div class="tl"><div class="y">1974</div><h4>Kolchak: The Night Stalker</h4><span class="tag">Influence</span><p>A reporter who keeps finding monsters nobody believes in. Chris Carter has named it as a direct inspiration.</p></div>
         <div class="tl"><div class="y">1974</div><h4>The Parallax View</h4><span class="tag">Influence</span><p>Alan J. Pakula's conspiracy thriller: institutions as a maze, and the hero swallowed by the architecture.</p></div>
         <div class="tl"><div class="y">1976</div><h4>All the President&#x27;s Men</h4><span class="tag">Influence</span><p>Parking-garage informants in the dark. The show's Deep Throat takes his name from Watergate.</p></div>
@@ -872,8 +878,6 @@ if (reduce) { composer.render(); } else { frame(); }
 (() => {
   const nav = document.getElementById('nav');
   addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > innerHeight * 0.6), { passive: true });
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 (() => {
   const el = document.getElementById('mistQuote');
