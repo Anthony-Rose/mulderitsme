@@ -118,6 +118,7 @@ section { padding: 120px 0; border-top: 1px solid var(--line); position: relativ
 .grammar .k { font: 500 .75rem var(--mono); letter-spacing: .12em; color: var(--green); }
 .grammar h2 { font: 400 25px/1.2 var(--serif); margin: 0; color: #f3efe6; }
 .grammar p { margin: 0; color: var(--soft); font-size: 16px; }
+.grammar .body p + p { margin-top: 14px; }
 .palette { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
 .palette figure { margin: 0; }
 .palette .strip { display: flex; height: 92px; border: 1px solid var(--line-2); }
