@@ -327,3 +327,7 @@ footer .cols a { color: var(--soft); }
 .ledger [data-status="reported"] .st { color: var(--amber); }
 .ledger p { margin: 0; color: var(--soft); font-size: 16px; line-height: 1.6; max-width: 720px; }
 @media (max-width: 760px) { .ledger li { grid-template-columns: 1fr; } }
+
+/* Links from section pages into the journal */
+.syllabus .t a, .person h2 a, .person p a { color: inherit; text-decoration: underline; text-decoration-color: rgba(109,255,138,.45); text-underline-offset: 3px; transition: text-decoration-color .2s; }
+.syllabus .t a:hover, .person h2 a:hover, .person p a:hover { text-decoration-color: var(--green); }

@@ -10,6 +10,8 @@ An unofficial film journal on The X-Files, served at https://mulderitsme.net fro
 - The nav and footer links are defined once, in `NAV_PAGES` and `MORE_PAGES` in `build_blog.py`.
 - `posts-src/*.txt` are the essays, one file each, named `NN-slug.txt`.
 - `build_blog.py` turns the essays into `blog/`. It also refreshes the homepage journal strip and SEO block, the section pages' shared parts, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
+- SEO plumbing lives in `build_blog.py`: `seo()` writes canonical, Open Graph, Twitter and icon tags plus JSON-LD (BlogPosting and BreadcrumbList on essays, WebPage on section pages, DefinedTermSet on the glossary, WebSite on the home page). Sitemap `lastmod` dates come from each page's last git commit, so a rebuild alone does not mark every page as changed. Each essay ends with up to three related essays, same tag first. A section page can get its own social image through `SECTION_IMAGES`.
+- `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` and `images/logo.png` (the publisher logo in structured data) are the site icons.
 - `images/agents/` holds the cast photos. `images/frames/` holds the essay and filmmaker images: an essay picks up `images/frames/<slug>.jpg` (1600x669, 2.39:1) automatically, for its card, its page header and its social preview. Every image is freely licensed or public domain from Wikimedia Commons, never a show still. Each one's credit lives in `images/frames/credits.json`, which `build_blog.py` uses to generate `credits.html`. `images/og.jpg` is the default social share image.
 
 ## Writing an essay
