@@ -4,9 +4,12 @@ An unofficial film journal on The X-Files, served at https://mulderitsme.net fro
 
 ## Layout
 
-- `index.html` is the homepage: the WebGL UFO hero (three.js from jsDelivr), the journal strip, visual grammar, filmmakers, the viewing syllabus and the lineage timeline.
+- `index.html` is the front page: the WebGL UFO hero (three.js from jsDelivr), a one-line reboot status, the latest three essays, links to the section pages and the rotating quotes.
+- `grammar.html`, `filmmakers.html`, `syllabus.html`, `lineage.html` and `reboot.html` are the section pages. Their bodies are edited by hand; `build_blog.py` fills their head tags, nav and footer between marker comments (`SEO`, `NAV`, `SITE-FOOT`, `SITE-LEGAL`), and the reboot ticker and ledger from `data_reboot.json`.
+- `site.css` holds the styles shared by the front page and the section pages. Essay pages and the glossary keep their own styles inside `build_blog.py`.
+- The nav and footer links are defined once, in `NAV_PAGES` and `MORE_PAGES` in `build_blog.py`.
 - `posts-src/*.txt` are the essays, one file each, named `NN-slug.txt`.
-- `build_blog.py` turns the essays into `blog/`. It also refreshes the homepage journal strip and SEO block, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
+- `build_blog.py` turns the essays into `blog/`. It also refreshes the homepage journal strip and SEO block, the section pages' shared parts, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
 - `images/agents/` holds the cast photos. `images/frames/` holds the essay and filmmaker images: an essay picks up `images/frames/<slug>.jpg` (1600x669, 2.39:1) automatically, for its card, its page header and its social preview. Every image is freely licensed or public domain from Wikimedia Commons, never a show still. Each one's credit lives in `images/frames/credits.json`, which `build_blog.py` uses to generate `credits.html`. `images/og.jpg` is the default social share image.
 
 ## Writing an essay

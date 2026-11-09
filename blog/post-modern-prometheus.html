@@ -84,7 +84,11 @@
   .search { margin-left:auto; background:transparent; border:0; border-bottom:1px solid var(--line-2); color:var(--text); font:17px var(--read); padding:6px 2px; width:260px; max-width:100%; outline:0; }
   .search:focus { border-color:var(--green); }
   .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:48px 30px; padding-bottom:120px; }
-  .card { display:flex; flex-direction:column; text-decoration:none; color:var(--text); }
+  .card { position:relative; display:flex; flex-direction:column; color:var(--text); }
+  .card :is(h2,h3) a { color:inherit; text-decoration:none; }
+  .card :is(h2,h3) a::after { content:""; position:absolute; inset:0; z-index:2; }
+  .card :is(h2,h3) a:focus-visible { outline:none; }
+  .card:focus-within { outline:2px solid var(--green); outline-offset:6px; }
   .card .frame { position:relative; aspect-ratio:2.39/1; overflow:hidden; border:1px solid var(--line-2); background:#040606; margin-bottom:18px; }
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
@@ -93,12 +97,12 @@
   .card:hover .frame .ph { transform:scale(1.07); filter:grayscale(0) contrast(1.05) brightness(.85); }
   .card .frame .n { z-index:1; text-shadow:0 4px 30px rgba(0,0,0,.6); position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
   .card:hover .frame .n { transform:translateX(6px); }
-  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
-  .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
-  .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
-  .card:hover h3 { color:var(--green); }
+  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 .75rem var(--mono); letter-spacing:.12em; color:rgba(243,239,230,.55); }
+  .card .kick { font:500 .75rem var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+  .card :is(h2,h3) { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
+  .card:hover :is(h2,h3) { color:var(--green); }
   .card p { margin:0 0 12px; color:var(--soft); font-size:16px; line-height:1.55; }
-  .card .foot { font:12px var(--sans); color:var(--muted); letter-spacing:.04em; margin-top:auto; }
+  .card .foot { font:12px var(--sans); color:#8f948f; letter-spacing:.04em; margin-top:auto; }
   .card[hidden] { display:none; }
   .empty { color:var(--muted); font:italic 20px var(--read); }
   footer { padding:60px 0 70px; border-top:1px solid var(--line); color:var(--muted); font:13px/1.7 var(--sans); }
@@ -111,12 +115,11 @@
 <body>
 <nav><div class="wrap">
   <a class="brand" href="../"><b>Mulder,</b> It's Me</a>
-  <a class="link" href="../#grammar">Visual grammar</a>
-  <a class="link" href="../#people">Filmmakers</a>
-  <a class="link" href="../#syllabus">Syllabus</a>
-  <a class="link" href="../#reboot">Reboot</a>
+  <a class="link" href="../blog/">Journal</a>
+  <a class="link" href="../syllabus.html">Syllabus</a>
+  <a class="link" href="../filmmakers.html">Filmmakers</a>
+  <a class="link" href="../reboot.html">Reboot</a>
   <a class="link" href="../glossary.html">Glossary</a>
-  <a class="link here" href="./">Journal</a>
 </div></nav>
 <div id="progress"></div>
 <header class="masthead has-plate" style="--h:0"><div class="plate" style="background-image:url(../images/frames/post-modern-prometheus.jpg)"></div><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">

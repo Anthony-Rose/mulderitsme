@@ -193,7 +193,11 @@ STYLE = """
   .search { margin-left:auto; background:transparent; border:0; border-bottom:1px solid var(--line-2); color:var(--text); font:17px var(--read); padding:6px 2px; width:260px; max-width:100%; outline:0; }
   .search:focus { border-color:var(--green); }
   .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:48px 30px; padding-bottom:120px; }
-  .card { display:flex; flex-direction:column; text-decoration:none; color:var(--text); }
+  .card { position:relative; display:flex; flex-direction:column; color:var(--text); }
+  .card :is(h2,h3) a { color:inherit; text-decoration:none; }
+  .card :is(h2,h3) a::after { content:""; position:absolute; inset:0; z-index:2; }
+  .card :is(h2,h3) a:focus-visible { outline:none; }
+  .card:focus-within { outline:2px solid var(--green); outline-offset:6px; }
   .card .frame { position:relative; aspect-ratio:2.39/1; overflow:hidden; border:1px solid var(--line-2); background:#040606; margin-bottom:18px; }
   .card .frame::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at var(--fx,50%) 120%, hsla(var(--h,140),80%,60%,.28), transparent 60%), radial-gradient(ellipse at 50% -40%, hsla(var(--h,140),60%,70%,.12), transparent 60%); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
   .card .frame::after { content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
@@ -202,12 +206,12 @@ STYLE = """
   .card:hover .frame .ph { transform:scale(1.07); filter:grayscale(0) contrast(1.05) brightness(.85); }
   .card .frame .n { z-index:1; text-shadow:0 4px 30px rgba(0,0,0,.6); position:absolute; left:18px; bottom:6px; font:italic 300 88px/1 var(--serif); color:rgba(243,239,230,.92); letter-spacing:-.03em; transition:transform .6s; }
   .card:hover .frame .n { transform:translateX(6px); }
-  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 11px var(--mono); letter-spacing:.14em; color:rgba(243,239,230,.55); }
-  .card .kick { font:500 11px var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
-  .card h3 { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
-  .card:hover h3 { color:var(--green); }
+  .card .frame .tc { z-index:1; position:absolute; right:14px; top:12px; font:500 .75rem var(--mono); letter-spacing:.12em; color:rgba(243,239,230,.55); }
+  .card .kick { font:500 .75rem var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+  .card :is(h2,h3) { font:400 25px/1.15 var(--serif); margin:0 0 10px; color:#f3efe6; transition:color .2s; }
+  .card:hover :is(h2,h3) { color:var(--green); }
   .card p { margin:0 0 12px; color:var(--soft); font-size:16px; line-height:1.55; }
-  .card .foot { font:12px var(--sans); color:var(--muted); letter-spacing:.04em; margin-top:auto; }
+  .card .foot { font:12px var(--sans); color:#8f948f; letter-spacing:.04em; margin-top:auto; }
   .card[hidden] { display:none; }
   .empty { color:var(--muted); font:italic 20px var(--read); }
   footer { padding:60px 0 70px; border-top:1px solid var(--line); color:var(--muted); font:13px/1.7 var(--sans); }
@@ -231,6 +235,55 @@ STARS = """
 })();
 """
 
+# Site navigation, shared by every page. The nav carries the five main
+# destinations; the footer link row adds the section pages and credits.
+NAV_PAGES = [("blog/", "Journal"), ("syllabus.html", "Syllabus"), ("filmmakers.html", "Filmmakers"),
+             ("reboot.html", "Reboot"), ("glossary.html", "Glossary")]
+MORE_PAGES = [("grammar.html", "Visual grammar"), ("lineage.html", "Lineage"), ("credits.html", "Image credits")]
+
+# Hand-written section pages at the site root. build() refreshes their head
+# tags, nav and footer between marker comments; their bodies are edited by hand.
+SECTION_PAGES = {
+    "grammar.html": ("Visual Grammar: How the Show Saw",
+                     "How The X-Files was lit and heard: six habits, from frames that fall off into true black to a flashlight doing the key light's job, with two palettes."),
+    "filmmakers.html": ("Filmmakers: Behind the Camera",
+                        "Profiles of the directors, writers, cinematographers and composer who gave The X-Files the feel of a feature film each week, Chris Carter to Mark Snow."),
+    "syllabus.html": ("Syllabus: Sixteen Essential Episodes",
+                      "Sixteen essential episodes of The X-Files, Pilot to Mulder and Scully Meet the Were-Monster, chosen for what each risked with form, image or sound."),
+    "lineage.html": ("Lineage: Influences and Descendants",
+                     "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe and Stranger Things."),
+    "reboot.html": ("The Reboot: Coogler's X-Files at Hulu",
+                    "Ryan Coogler's X-Files series at Hulu, tracked item by item: what is confirmed, what the trades have reported and what is still only talk."),
+}
+
+LEGAL = ("Mulder, It's Me is an unofficial, non-commercial film journal. It is not affiliated with or endorsed by 20th Century Studios, Fox, "
+         "or Ten Thirteen Productions. The X-Files and all related names are trademarks of their respective owners. "
+         "Writing and illustrations on this site are original.")
+
+
+def nav_html(prefix, here=None, attrs=""):
+    """The site nav. prefix is "" at the root and "../" under blog/; here is the current page's href."""
+    links = "".join(f'\n  <a class="link{" here" if h == here else ""}" href="{prefix}{h}"{" aria-current=\"page\"" if h == here else ""}>{t}</a>'
+                    for h, t in NAV_PAGES)
+    return f'<nav{attrs}><div class="wrap">\n  <a class="brand" href="{prefix or "./"}"><b>Mulder,</b> It\'s Me</a>{links}\n</div></nav>'
+
+
+def site_links(prefix=""):
+    return '<p class="site-links">' + "".join(f'<a href="{prefix}{h}">{t}</a>' for h, t in NAV_PAGES + MORE_PAGES) + "</p>"
+
+
+def fill(page, marker, content):
+    """Replace the text between <!--MARKER--> and <!--/MARKER--> in page."""
+    return re.sub(rf"(<!--{marker}-->).*?(<!--/{marker}-->)", lambda m: f"{m[1]}{content}{m[2]}", page, flags=re.S)
+
+
+def refresh_shell(page, here, solid=True):
+    """Nav and footer for a hand-written page at the site root."""
+    page = fill(page, "NAV", nav_html("", here, ' id="nav" class="solid"' if solid else ' id="nav"'))
+    page = fill(page, "SITE-FOOT", '<div class="sig">The truth is out there.</div>' + site_links())
+    return fill(page, "SITE-LEGAL", f'<p>{html.escape(LEGAL, quote=False)} <a href="credits.html">Full image credits</a>.</p>')
+
+
 HEAD = """<!doctype html>
 <html lang="en">
 <head>
@@ -244,15 +297,7 @@ HEAD = """<!doctype html>
 <style>{style}</style>
 </head>
 <body>
-<nav><div class="wrap">
-  <a class="brand" href="../"><b>Mulder,</b> It's Me</a>
-  <a class="link" href="../#grammar">Visual grammar</a>
-  <a class="link" href="../#people">Filmmakers</a>
-  <a class="link" href="../#syllabus">Syllabus</a>
-  <a class="link" href="../#reboot">Reboot</a>
-  <a class="link" href="../glossary.html">Glossary</a>
-  <a class="link here" href="./">Journal</a>
-</div></nav>
+{nav}
 """
 
 FOOT = """<footer><div class="wrap">
@@ -291,16 +336,16 @@ INDEX_JS = """<script>
 </script>"""
 
 
-def card(p, href, prefix=""):
+def card(p, href, prefix="", level=3):
     text = html.escape(" ".join([p["title"], p["summary"], p["tag"], re.sub(r"\s+", " ", p["body"])]).lower(), quote=True)
     tc = f"{p['num']:02d}:{(p['words'] // 60) % 60:02d}:{p['words'] % 60:02d}:{p['num'] * 7 % 24:02d}"
     fx = 20 + (int(p["hue"]) * 7) % 60
-    return f"""<a class="card" href="{href}" data-tag="{html.escape(p['tag'])}" data-text="{text}" style="--h:{p['hue']};--fx:{fx}%">
+    return f"""<article class="card" data-tag="{html.escape(p['tag'])}" data-text="{text}" style="--h:{p['hue']};--fx:{fx}%">
   <div class="frame" aria-hidden="true">{f'<span class="ph" style="background-image:url({prefix}{p["img"]})"></span>' if p.get("img") else ""}<span class="n">{p['num']:02d}</span><span class="tc">{tc}</span></div>
   <div class="kick">{html.escape(p['tag'])}</div>
-  <h3>{html.escape(p['title'])}</h3><p>{html.escape(p['summary'])}</p>
+  <h{level}><a href="{href}">{html.escape(p['title'])}</a></h{level}><p>{html.escape(p['summary'])}</p>
   <div class="foot">{p['pretty']} · {p['minutes']} min read</div>
-</a>"""
+</article>"""
 
 
 def build():
@@ -339,7 +384,7 @@ def build():
             {"@type": "ListItem", "position": 3, "name": p["title"], "item": SITE_URL + path}]}
         head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, crumbs), p["img"])
         head_tags += f'\n<meta property="article:published_time" content="{p["date"]}"><meta property="article:section" content="{html.escape(p["tag"], quote=True)}">'
-        page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags, fonts=FONTS, style=STYLE)
+        page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags, fonts=FONTS, style=STYLE, nav=nav_html("../"))
         page += f"""<div id="progress"></div>
 <header class="masthead{' has-plate' if p['img'] else ''}" style="--h:{p['hue']}">{f'<div class="plate" style="background-image:url(../{p["img"]})"></div>' if p['img'] else ''}<canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Essay No. {p['num']:02d} · {html.escape(p['tag'])}</div>
@@ -364,7 +409,7 @@ def build():
     blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": SITE_NAME + " journal", "url": SITE_URL + "/blog/", "publisher": PUBLISHER,
                "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": f"{SITE_URL}/blog/{p['slug']}.html", "datePublished": p["date"]} for p in newest]}
     index = HEAD.format(title="Journal: Essays on The X-Files · Mulder, It's Me", desc=html.escape(jdesc),
-                        seo=seo("Journal: Essays on The X-Files", jdesc, "/blog/", "website", (blog_ld,)), fonts=FONTS, style=STYLE)
+                        seo=seo("Journal: Essays on The X-Files", jdesc, "/blog/", "website", (blog_ld,)), fonts=FONTS, style=STYLE, nav=nav_html("../", "blog/"))
     index += f"""<header class="masthead"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">The Journal</div>
   <h1>Essays on The X-Files</h1>
@@ -373,7 +418,7 @@ def build():
 <main class="wrap">
   <div class="tools" role="group" aria-label="Filter essays">{chips}
     <input class="search" id="q" type="search" placeholder="Search the essays" aria-label="Search essays"></div>
-  <div class="grid">{"".join(card(p, p["slug"] + ".html", "../") for p in newest)}</div>
+  <div class="grid">{"".join(card(p, p["slug"] + ".html", "../", 2) for p in newest)}</div>
   <p class="empty" id="empty" hidden>Nothing matches. The truth is elsewhere.</p>
 </main>
 """
@@ -381,11 +426,11 @@ def build():
     (OUT / "index.html").write_text(index, encoding="utf-8")
 
     home = HOME.read_text(encoding="utf-8")
-    latest = "\n".join(card(p, "blog/" + p["slug"] + ".html") for p in newest[:4])
+    latest = "\n".join(card(p, "blog/" + p["slug"] + ".html") for p in newest[:3])
     home = re.sub(r"(<!--BLOG-LATEST-->).*?(<!--/BLOG-LATEST-->)", lambda m: f"{m[1]}\n{latest}\n{m[2]}", home, flags=re.S)
     browse = "".join(f'<a class="tagpill" href="blog/?tag={urllib.parse.quote(t)}">{html.escape(t)}</a>' for t in tags)
     home = re.sub(r"(<!--BROWSE-TAGS-->).*?(<!--/BROWSE-TAGS-->)", lambda m: f"{m[1]}{browse}{m[2]}", home, flags=re.S)
-    home = render_reboot(home)
+    home = refresh_shell(render_reboot(home), None, solid=False)
     try:
         qdata = json.loads((ROOT / "data_quotes.json").read_text(encoding="utf-8"))
         qarr = [{"q": it["quote"], "a": (f'{it["speaker"]} · {it["source"].split(",")[0]}' if it["speaker"] else it["source"])} for it in qdata]
@@ -400,6 +445,15 @@ def build():
     home_tags = seo(SITE_NAME + ": A Film Journal on The X-Files", hdesc, "/", "website", (site_ld,))
     home = re.sub(r"(<!--SEO-->).*?(<!--/SEO-->)", lambda m: f"{m[1]}\n{home_tags}\n{m[2]}", home, flags=re.S)
     HOME.write_text(home, encoding="utf-8")
+    for name, (title, desc) in SECTION_PAGES.items():
+        f = ROOT / name
+        page = f.read_text(encoding="utf-8")
+        head = (f"<title>{html.escape(title)} · {html.escape(SITE_NAME)}</title>\n"
+                f'<meta name="description" content="{html.escape(desc, quote=True)}">\n' + seo(title, desc, "/" + name))
+        page = refresh_shell(fill(page, "SEO", "\n" + head + "\n"), name)
+        if name == "reboot.html":
+            page = render_reboot(page)
+        f.write_text(page, encoding="utf-8")
     write_feeds(newest)
     write_credits()
     write_glossary()
@@ -413,18 +467,30 @@ def render_reboot(home):
         return home
     glyph = {"confirmed": "▲", "reported": "◆", "rumored": "▽"}
 
-    def tk(it, dup=False):
+    def tk(it):
+        # The ticker is a visual extra for pointer users; the ledger below it
+        # carries the same items for keyboard and screen reader users.
         g = glyph.get(it["status"], "●")
-        extra = ' aria-hidden="true" tabindex="-1"' if dup else ''
+        extra = ' tabindex="-1"'
         return (f'<button type="button" class="tk"{extra} aria-expanded="false" data-status="{html.escape(it["status"])}"'
                 f' data-label="{html.escape(it["label"], quote=True)}" data-text="{html.escape(it["text"], quote=True)}">'
                 f'<span class="tkg" aria-hidden="true">{g}</span>'
                 f'<span class="tkl">{html.escape(it["label"])}</span>'
                 f'<span class="tks">{html.escape(it["status"].capitalize())}</span></button>')
     its = data.get("items", [])
-    track = "".join(tk(it) for it in its) + "".join(tk(it, True) for it in its)
-    li = "".join(f'<li>{html.escape(it["label"])} ({html.escape(it["status"])}): {html.escape(it["text"])}</li>' for it in its)
+    track = "".join(tk(it) for it in its) * 2
+    order = {"confirmed": 0, "reported": 1, "rumored": 2}
+    li = "".join(f'<li data-status="{html.escape(it["status"])}"><b>{html.escape(it["label"])}</b>'
+                 f'<span class="st">{html.escape(it["status"].capitalize())}</span><p>{html.escape(it["text"])}</p></li>'
+                 for it in sorted(its, key=lambda it: order.get(it["status"], 3)))
     updated = f'<span class="updated">Updated {html.escape(data.get("updated", ""))}</span>'
+    counts = {s: sum(it["status"] == s for it in its) for s in ("confirmed", "reported", "rumored")}
+    line = ('<span class="rl-lead">The reboot ledger:</span> '
+            + ", ".join(f'<span class="rl-{s[:4]}">{n} {s}</span>' for s, n in counts.items() if n)
+            + f' <span class="rl-sep" aria-hidden="true">·</span> {updated} <span class="rl-sep" aria-hidden="true">·</span> '
+            '<a href="reboot.html">See every item</a>')
+    home = re.sub(r"(<!--REBOOT-LINE-->).*?(<!--/REBOOT-LINE-->)", lambda m: f"{m[1]}{line}{m[2]}", home, flags=re.S)
+    home = re.sub(r"(<!--REBOOT-DEK-->).*?(<!--/REBOOT-DEK-->)", lambda m: f"{m[1]}{html.escape(data.get('dek', ''))}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-TICK-->).*?(<!--/REBOOT-TICK-->)", lambda m: f"{m[1]}{track}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-LIST-->).*?(<!--/REBOOT-LIST-->)", lambda m: f"{m[1]}{li}{m[2]}", home, flags=re.S)
     home = re.sub(r"(<!--REBOOT-UPDATED-->).*?(<!--/REBOOT-UPDATED-->)", lambda m: f"{m[1]}{updated}{m[2]}", home, flags=re.S)
@@ -460,15 +526,7 @@ def write_glossary():
 <style>{STYLE}{gstyle}</style>
 </head>
 <body>
-<nav><div class="wrap">
-  <a class="brand" href="./"><b>Mulder,</b> It's Me</a>
-  <a class="link" href="./#grammar">Visual grammar</a>
-  <a class="link" href="./#people">Filmmakers</a>
-  <a class="link" href="./#syllabus">Syllabus</a>
-  <a class="link" href="./#reboot">Reboot</a>
-  <a class="link here" href="glossary.html">Glossary</a>
-  <a class="link pill" href="blog/">Journal</a>
-</div></nav>
+{nav_html("", "glossary.html")}
 <header class="masthead"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Field guide</div>
   <h1>A glossary of the mythology</h1>
@@ -508,6 +566,7 @@ li b{{display:block;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.16em
 def write_feeds(newest):
     today = datetime.date.today().isoformat()
     urls = [("/", today, "weekly", "1.0"), ("/blog/", newest[0]["date"] if newest else today, "weekly", "0.9")]
+    urls += [("/" + name, today, "monthly", "0.7") for name in SECTION_PAGES]
     urls += [(f"/blog/{p['slug']}.html", p.get("updated", p["date"]), "monthly", "0.8") for p in newest]
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
