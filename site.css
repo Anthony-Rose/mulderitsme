@@ -331,3 +331,11 @@ footer .cols a { color: var(--soft); }
 /* Links from section pages into the journal */
 .syllabus .t a, .person h2 a, .person p a { color: inherit; text-decoration: underline; text-decoration-color: rgba(109,255,138,.45); text-underline-offset: 3px; transition: text-decoration-color .2s; }
 .syllabus .t a:hover, .person h2 a:hover, .person p a:hover { text-decoration-color: var(--green); }
+
+/* Prose notes under section-page content (Lineage, Visual grammar, About) */
+.notes { max-width: 760px; margin: 72px auto 0; }
+.notes.first { margin-top: 0; }
+.notes h2 { font: 400 25px/1.2 var(--serif); margin: 40px 0 12px; color: #f3efe6; }
+.notes h2:first-child { margin-top: 0; }
+.notes p { margin: 0 0 18px; color: var(--soft); font-size: 17px; line-height: 1.65; }
+.notes a { color: var(--green); }

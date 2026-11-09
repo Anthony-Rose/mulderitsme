@@ -279,7 +279,7 @@ SECTION_PAGES = {
     "syllabus.html": ("Syllabus: Sixteen Essential Episodes",
                       "Sixteen essential episodes of The X-Files, Pilot to Mulder and Scully Meet the Were-Monster, chosen for what each risked with form, image or sound."),
     "lineage.html": ("Lineage: Influences and Descendants",
-                     "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe and Stranger Things."),
+                     "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe, Stranger Things and the Hulu series."),
     "reboot.html": ("The Reboot: Coogler's X-Files at Hulu",
                     "Ryan Coogler's X-Files series at Hulu, tracked item by item: what is confirmed, what the trades have reported and what is still only talk."),
 }
