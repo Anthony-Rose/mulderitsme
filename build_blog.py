@@ -55,7 +55,7 @@ def credit_html(c):
     lic_html = f'<a href="{LICENSES[lic]}" rel="noopener">{html.escape(lic)}</a>' if lic in LICENSES else html.escape(lic)
     return (f'<a href="{html.escape(c["source"])}" rel="noopener">{html.escape(c["title"])}</a> by {html.escape(c["author"])}, '
             f'{lic_html}, via Wikimedia Commons')
-PUBLISHER = {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/",
+PUBLISHER = {"@type": "Organization", "@id": SITE_URL + "/#organization", "name": SITE_NAME, "url": SITE_URL + "/",
              "logo": {"@type": "ImageObject", "url": SITE_URL + "/images/logo.png", "width": 512, "height": 512}}
 
 
@@ -482,17 +482,18 @@ def build():
         pass
     hdesc = ("A film journal on The X-Files: long-form essays on its direction, cinematography, form, music and legacy, "
              "with a viewing syllabus and filmmaker profiles.")
-    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
+    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_URL + "/#website", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
                "inLanguage": "en", "publisher": PUBLISHER}
     home_tags = seo(SITE_NAME + ": A Film Journal on The X-Files", hdesc, "/", "website", (site_ld,))
     home = re.sub(r"(<!--SEO-->).*?(<!--/SEO-->)", lambda m: f"{m[1]}\n{home_tags}\n{m[2]}", home, flags=re.S)
+    home = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{html.escape(hdesc, quote=True)}">', home, count=1)
     HOME.write_text(home, encoding="utf-8")
     for name, (title, desc) in SECTION_PAGES.items():
         f = ROOT / name
         page = f.read_text(encoding="utf-8")
         short = NAV_LABELS.get(name, title.split(":")[0])
         page_ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "description": desc, "url": f"{SITE_URL}/{name}",
-                   "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/"},
+                   "inLanguage": "en", "isPartOf": {"@type": "WebSite", "@id": SITE_URL + "/#website", "name": SITE_NAME, "url": SITE_URL + "/"},
                    "publisher": PUBLISHER, "about": {"@type": "TVSeries", "name": "The X-Files"}}
         head = (f"<title>{html.escape(title)} · {html.escape(SITE_NAME)}</title>\n"
                 f'<meta name="description" content="{html.escape(desc, quote=True)}">\n'
@@ -597,7 +598,7 @@ def write_glossary():
 
 
 def write_credits():
-    rows = "".join(f'<li><img src="{html.escape(c["file"])}" alt="" loading="lazy"><div><b>{html.escape(k.replace("cast-", "").replace("p-", "").replace("-", " ").title())}</b>{credit_html(c)}</div></li>'
+    rows = "".join(f'<li><img src="{html.escape(c["file"])}" alt="" width="120" height="68" loading="lazy" decoding="async"><div><b>{html.escape(k.replace("cast-", "").replace("p-", "").replace("-", " ").title())}</b>{credit_html(c)}</div></li>'
                    for k, c in sorted(CREDITS.items()))
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -628,8 +629,7 @@ def write_feeds(newest):
     urls += [(f"/blog/{p['slug']}.html", p.get("updated", p["date"]), "monthly", "0.8") for p in newest]
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{pr}</priority></url>\n"
-                  for u, m, c, pr in urls)
+        + "".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{m}</lastmod></url>\n" for u, m, *_ in urls)
         + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
 
