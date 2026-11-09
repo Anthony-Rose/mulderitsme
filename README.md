@@ -5,11 +5,14 @@ An unofficial film journal on The X-Files, served at https://mulderitsme.net fro
 ## Layout
 
 - `index.html` is the front page: the WebGL UFO hero (three.js from jsDelivr), a one-line reboot status, the latest three essays, links to the section pages and the rotating quotes.
-- `grammar.html`, `filmmakers.html`, `syllabus.html`, `lineage.html` and `reboot.html` are the section pages. Their bodies are edited by hand; `build_blog.py` fills their head tags, nav and footer between marker comments (`SEO`, `NAV`, `SITE-FOOT`, `SITE-LEGAL`), and the reboot ticker and ledger from `data_reboot.json`.
+- `grammar.html`, `filmmakers.html`, `syllabus.html`, `lineage.html`, `about.html` and `reboot.html` are the section pages. Their bodies are edited by hand; `build_blog.py` fills their head tags, nav and footer between marker comments (`SEO`, `NAV`, `SITE-FOOT`, `SITE-LEGAL`), and the reboot ticker and ledger from `data_reboot.json`.
 - `site.css` holds the styles shared by the front page and the section pages. Essay pages and the glossary keep their own styles inside `build_blog.py`.
 - The nav and footer links are defined once, in `NAV_PAGES` and `MORE_PAGES` in `build_blog.py`.
 - `posts-src/*.txt` are the essays, one file each, named `NN-slug.txt`.
 - `build_blog.py` turns the essays into `blog/`. It also refreshes the homepage journal strip and SEO block, the section pages' shared parts, plus `sitemap.xml`, `feed.xml` and `robots.txt`.
+- SEO plumbing lives in `build_blog.py`: `seo()` writes canonical, Open Graph, Twitter and icon tags plus JSON-LD (BlogPosting and BreadcrumbList on essays, WebPage on section pages and AboutPage on `about.html`, DefinedTermSet on the glossary, WebSite on the home page). Sitemap `lastmod` dates come from each page's last git commit, so a rebuild alone does not mark every page as changed. Each essay ends with up to three related essays, same tag first. A section page can get its own social image through `SECTION_IMAGES`.
+- Essays carry "The Basement Desk" (`AUTHOR` in `build_blog.py`) as their structured-data author: an Organization, the team of AI research and writing agents described on the About page, never a Person. `robots.txt` comes from the `ROBOTS` constant: AI training crawlers are disallowed, search engines and AI search or user-requested fetchers are allowed.
+- `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` and `images/logo.png` (the publisher logo in structured data) are the site icons.
 - `images/agents/` holds the cast photos. `images/frames/` holds the essay and filmmaker images: an essay picks up `images/frames/<slug>.jpg` (1600x669, 2.39:1) automatically, for its card, its page header and its social preview. Every image is freely licensed or public domain from Wikimedia Commons, never a show still. Each one's credit lives in `images/frames/credits.json`, which `build_blog.py` uses to generate `credits.html`. `images/og.jpg` is the default social share image.
 
 ## Writing an essay

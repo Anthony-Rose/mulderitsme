@@ -18,6 +18,7 @@ import html
 import json
 import pathlib
 import re
+import subprocess
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).parent
@@ -54,12 +55,39 @@ def credit_html(c):
     lic_html = f'<a href="{LICENSES[lic]}" rel="noopener">{html.escape(lic)}</a>' if lic in LICENSES else html.escape(lic)
     return (f'<a href="{html.escape(c["source"])}" rel="noopener">{html.escape(c["title"])}</a> by {html.escape(c["author"])}, '
             f'{lic_html}, via Wikimedia Commons')
-PUBLISHER = {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/",
-             "logo": {"@type": "ImageObject", "url": OG_IMAGE}}
+PUBLISHER = {"@type": "Organization", "@id": SITE_URL + "/#organization", "name": SITE_NAME, "url": SITE_URL + "/",
+             "logo": {"@type": "ImageObject", "url": SITE_URL + "/images/logo.png", "width": 512, "height": 512}}
+# Byline for the essays: the Basement Desk, a team of AI research and writing
+# agents (see about.html). An Organization, never a Person, so it is not
+# presented as a human author.
+AUTHOR = {"@type": "Organization", "@id": SITE_URL + "/#basement-desk", "name": "The Basement Desk",
+          "url": SITE_URL + "/about.html", "description": "A team of AI research and writing agents.",
+          "parentOrganization": {"@id": SITE_URL + "/#organization"}}
+
+
+def crumbs(*trail):
+    """BreadcrumbList JSON-LD from (name, path) pairs, starting at the home page."""
+    items = [(SITE_NAME, "/")] + list(trail)
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": SITE_URL + u} for i, (n, u) in enumerate(items, 1)]}
+
+
+ICONS = ('<link rel="icon" href="/favicon.ico" sizes="32x32">\n<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+         '<link rel="apple-touch-icon" href="/apple-touch-icon.png">')
+
+
+def git_date(*paths):
+    """Date (YYYY-MM-DD) of the last commit touching any of paths, or None outside git."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *map(str, paths)], cwd=ROOT,
+                             capture_output=True, text=True, timeout=10).stdout.strip()
+        return out or None
+    except (OSError, subprocess.SubprocessError):
+        return None
 
 
 def seo(title, desc, path, kind="website", extra_ld=(), image=None):
-    """Canonical, Open Graph, Twitter card and JSON-LD tags for one page."""
+    """Canonical, Open Graph, Twitter card, icon and JSON-LD tags for one page."""
     url = SITE_URL + path
     t, d = html.escape(title, quote=True), html.escape(desc, quote=True)
     img, iw, ih = (SITE_URL + "/" + image, 1600, 669) if image else (OG_IMAGE, 1200, 630)
@@ -71,12 +99,13 @@ def seo(title, desc, path, kind="website", extra_ld=(), image=None):
         f'<meta property="og:description" content="{d}">',
         f'<meta property="og:url" content="{url}">',
         f'<meta property="og:image" content="{img}">',
-        f'<meta property="og:image:width" content="{iw}"><meta property="og:image:height" content="{ih}">',
+        f'<meta property="og:image:width" content="{iw}"><meta property="og:image:height" content="{ih}"><meta property="og:image:alt" content="{t}">',
         '<meta property="og:locale" content="en_US">',
         '<meta name="twitter:card" content="summary_large_image">',
-        f'<meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{img}">',
+        f'<meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="{img}"><meta name="twitter:image:alt" content="{t}">',
         '<meta name="robots" content="index, follow, max-image-preview:large">',
         '<link rel="alternate" type="application/rss+xml" title="Mulder, It&#x27;s Me journal" href="/feed.xml">',
+        ICONS,
     ]
     for ld in extra_ld:
         tags.append('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>')
@@ -185,6 +214,8 @@ STYLE = """
   .pager small { display:block; font:500 11px var(--mono); letter-spacing:.22em; text-transform:uppercase; color:var(--green); margin-bottom:6px; }
   .pager b { font:400 22px/1.25 var(--serif); }
   .pager .next { text-align:right; grid-column:2; }
+  .related { padding-top:40px; } .related > h2 { font:500 11px var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--soft); margin:0 0 24px; }
+  .related .grid { padding-bottom:20px; }
 
   .tools { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:44px 0 40px; }
   .chip { background:transparent; border:1px solid var(--line-2); color:var(--soft); padding:7px 15px; font:500 12px var(--sans); letter-spacing:.08em; text-transform:uppercase; cursor:pointer; border-radius:999px; transition:.2s; }
@@ -216,6 +247,8 @@ STYLE = """
   .empty { color:var(--muted); font:italic 20px var(--read); }
   footer { padding:60px 0 70px; border-top:1px solid var(--line); color:var(--muted); font:13px/1.7 var(--sans); }
   footer .sig { font:italic 300 32px var(--serif); color:var(--text); margin-bottom:10px; }
+  footer .site-links { display:flex; flex-wrap:wrap; gap:8px 22px; margin:0 0 20px; font:500 .75rem var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+  footer .site-links a { color:var(--soft); text-decoration:none; } footer .site-links a:hover { color:var(--green); }
   @media (max-width:980px) { .grid { grid-template-columns:1fr 1fr; } article.post blockquote { margin:1.6em 0; } }
   @media (max-width:640px) { body { font-size:17.5px; } .grid { grid-template-columns:1fr; } .search { margin-left:0; width:100%; } .pager { grid-template-columns:1fr; } .pager .next { grid-column:1; text-align:left; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } }
@@ -239,7 +272,8 @@ STARS = """
 # destinations; the footer link row adds the section pages and credits.
 NAV_PAGES = [("blog/", "Journal"), ("syllabus.html", "Syllabus"), ("filmmakers.html", "Filmmakers"),
              ("reboot.html", "Reboot"), ("glossary.html", "Glossary")]
-MORE_PAGES = [("grammar.html", "Visual grammar"), ("lineage.html", "Lineage"), ("credits.html", "Image credits")]
+MORE_PAGES = [("grammar.html", "Visual grammar"), ("lineage.html", "Lineage"), ("about.html", "About"), ("credits.html", "Image credits")]
+NAV_LABELS = dict(NAV_PAGES + MORE_PAGES)
 
 # Hand-written section pages at the site root. build() refreshes their head
 # tags, nav and footer between marker comments; their bodies are edited by hand.
@@ -251,14 +285,29 @@ SECTION_PAGES = {
     "syllabus.html": ("Syllabus: Sixteen Essential Episodes",
                       "Sixteen essential episodes of The X-Files, Pilot to Mulder and Scully Meet the Were-Monster, chosen for what each risked with form, image or sound."),
     "lineage.html": ("Lineage: Influences and Descendants",
-                     "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe and Stranger Things."),
+                     "A timeline of what The X-Files inherited and what it passed on, from Kolchak and the paranoid thrillers of the 1970s to Fringe, Stranger Things and the Hulu series."),
+    "about.html": ("About This Journal",
+                   "Who makes Mulder, It's Me, how the X-Files essays are researched and sourced, and what this unofficial film journal is and is not."),
     "reboot.html": ("The Reboot: Coogler's X-Files at Hulu",
                     "Ryan Coogler's X-Files series at Hulu, tracked item by item: what is confirmed, what the trades have reported and what is still only talk."),
 }
+# Social preview image per section page (1600x669); pages not listed use images/og.jpg.
+SECTION_IMAGES = {"grammar.html": "images/frames/home-grammar.jpg"}
 
 LEGAL = ("Mulder, It's Me is an unofficial, non-commercial film journal. It is not affiliated with or endorsed by 20th Century Studios, Fox, "
          "or Ten Thirteen Productions. The X-Files and all related names are trademarks of their respective owners. "
          "Writing and illustrations on this site are original.")
+
+# robots.txt: crawlers that gather text to train AI models are asked to stay out;
+# search engines, AI search indexers and on-demand fetchers that answer a reader's
+# question stay allowed (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User,
+# PerplexityBot, Perplexity-User, meta-externalfetcher, DuckAssistBot, Googlebot,
+# Bingbot, Applebot all fall through to the catch-all Allow).
+TRAINING_CRAWLERS = ["GPTBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "Applebot-Extended",
+                     "CCBot", "Bytespider", "meta-externalagent", "Amazonbot"]
+ROBOTS = ("# Training crawlers\n" + "".join(f"User-agent: {b}\n" for b in TRAINING_CRAWLERS) + "Disallow: /\n\n"
+          "# Everyone else, including search engines and AI search or user-requested fetchers\n"
+          "User-agent: *\nAllow: /\n\n" f"Sitemap: {SITE_URL}/sitemap.xml\n")
 
 
 def nav_html(prefix, here=None, attrs=""):
@@ -293,7 +342,7 @@ HEAD = """<!doctype html>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#06090a">
 {seo}
-{fonts}
+{preload}{fonts}
 <style>{style}</style>
 </head>
 <body>
@@ -302,6 +351,7 @@ HEAD = """<!doctype html>
 
 FOOT = """<footer><div class="wrap">
   <div class="sig">The truth is out there.</div>
+  {links}
   <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
   The X-Files and all related names are trademarks of their respective owners. <a href="../credits.html" style="color:var(--soft)">Image credits</a>.</p>
 </div></footer>
@@ -366,6 +416,11 @@ def build():
         if next_p:
             pager += f'<a class="next" href="{next_p["slug"]}.html"><small>Next essay</small><b>{html.escape(next_p["title"])}</b></a>'
         pager += "</nav>"
+        near = {q["slug"] for q in (prev_p, next_p) if q} | {p["slug"]}
+        related = sorted((q for q in posts if q["slug"] not in near),
+                         key=lambda q: (q["tag"] != p["tag"], abs(q["num"] - p["num"])))[:3]
+        related_html = (f'<section class="related wrap" aria-labelledby="related-h"><h2 id="related-h">Related essays</h2>'
+                        f'<div class="grid">{"".join(card(q, q["slug"] + ".html", "../", 3) for q in related)}</div></section>') if related else ""
         sources = ""
         if p["sources"]:
             items = "".join(f"<li>{inline(l.strip()[2:] if l.strip().startswith('- ') else l.strip())}</li>"
@@ -374,17 +429,22 @@ def build():
         if p["img"] and p["slug"] in CREDITS:
             sources += f'<aside class="sources imgcredit"><h3>Header image</h3><p>{credit_html(CREDITS[p["slug"]])}.</p></aside>'
         path = f"/blog/{p['slug']}.html"
-        article = {"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "description": p["summary"],
-                   "datePublished": p["date"], "dateModified": p.get("updated", p["date"]), "articleSection": p["tag"],
-                   "wordCount": p["words"], "image": SITE_URL + "/" + p["img"] if p["img"] else OG_IMAGE, "inLanguage": "en", "author": PUBLISHER, "publisher": PUBLISHER,
-                   "mainEntityOfPage": SITE_URL + path, "about": {"@type": "TVSeries", "name": "The X-Files"}}
-        crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": SITE_NAME, "item": SITE_URL + "/"},
-            {"@type": "ListItem", "position": 2, "name": "Journal", "item": SITE_URL + "/blog/"},
-            {"@type": "ListItem", "position": 3, "name": p["title"], "item": SITE_URL + path}]}
-        head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, crumbs), p["img"])
-        head_tags += f'\n<meta property="article:published_time" content="{p["date"]}"><meta property="article:section" content="{html.escape(p["tag"], quote=True)}">'
-        page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags, fonts=FONTS, style=STYLE, nav=nav_html("../"))
+        image = ({"@type": "ImageObject", "url": SITE_URL + "/" + p["img"], "width": 1600, "height": 669} if p["img"]
+                 else {"@type": "ImageObject", "url": OG_IMAGE, "width": 1200, "height": 630})
+        modified = p.get("updated", p["date"])
+        article = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"], "description": p["summary"],
+                   "datePublished": p["date"], "dateModified": modified, "articleSection": p["tag"],
+                   "wordCount": p["words"], "image": image, "inLanguage": "en", "author": AUTHOR, "publisher": PUBLISHER,
+                   "mainEntityOfPage": SITE_URL + path, "url": SITE_URL + path,
+                   "isPartOf": {"@type": "Blog", "name": SITE_NAME + " journal", "url": SITE_URL + "/blog/"},
+                   "about": {"@type": "TVSeries", "name": "The X-Files"}}
+        trail = crumbs(("Journal", "/blog/"), (p["title"], path))
+        head_tags = seo(p["title"] + " · " + SITE_NAME, p["summary"], path, "article", (article, trail), p["img"])
+        head_tags += (f'\n<meta property="article:published_time" content="{p["date"]}"><meta property="article:modified_time" content="{modified}">'
+                      f'<meta property="article:section" content="{html.escape(p["tag"], quote=True)}"><meta name="author" content="The Basement Desk">')
+        preload = f'<link rel="preload" as="image" href="../{p["img"]}" fetchpriority="high">\n' if p["img"] else ""
+        page = HEAD.format(title=html.escape(p["title"]) + " · Mulder, It's Me", desc=html.escape(p["summary"]), seo=head_tags,
+                           preload=preload, fonts=FONTS, style=STYLE, nav=nav_html("../"))
         page += f"""<div id="progress"></div>
 <header class="masthead{' has-plate' if p['img'] else ''}" style="--h:{p['hue']}">{f'<div class="plate" style="background-image:url(../{p["img"]})"></div>' if p['img'] else ''}<canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">Essay No. {p['num']:02d} · {html.escape(p['tag'])}</div>
@@ -396,9 +456,10 @@ def build():
 {render_body(p['body'])}
 </article>
 {sources}
+{related_html}
 {pager}
 """
-        page += FOOT.format(stars=STARS, extra=PROGRESS)
+        page += FOOT.format(links=site_links("../"), stars=STARS, extra=PROGRESS)
         (OUT / f"{p['slug']}.html").write_text(page, encoding="utf-8")
 
     newest = list(reversed(posts))
@@ -409,7 +470,7 @@ def build():
     blog_ld = {"@context": "https://schema.org", "@type": "Blog", "name": SITE_NAME + " journal", "url": SITE_URL + "/blog/", "publisher": PUBLISHER,
                "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": f"{SITE_URL}/blog/{p['slug']}.html", "datePublished": p["date"]} for p in newest]}
     index = HEAD.format(title="Journal: Essays on The X-Files · Mulder, It's Me", desc=html.escape(jdesc),
-                        seo=seo("Journal: Essays on The X-Files", jdesc, "/blog/", "website", (blog_ld,)), fonts=FONTS, style=STYLE, nav=nav_html("../", "blog/"))
+                        seo=seo("Journal: Essays on The X-Files", jdesc, "/blog/", "website", (blog_ld, crumbs(("Journal", "/blog/")))), preload="", fonts=FONTS, style=STYLE, nav=nav_html("../", "blog/"))
     index += f"""<header class="masthead"><canvas id="stars" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">The Journal</div>
   <h1>Essays on The X-Files</h1>
@@ -422,7 +483,7 @@ def build():
   <p class="empty" id="empty" hidden>Nothing matches. The truth is elsewhere.</p>
 </main>
 """
-    index += FOOT.format(stars=STARS, extra=INDEX_JS)
+    index += FOOT.format(links=site_links("../"), stars=STARS, extra=INDEX_JS)
     (OUT / "index.html").write_text(index, encoding="utf-8")
 
     home = HOME.read_text(encoding="utf-8")
@@ -440,16 +501,24 @@ def build():
         pass
     hdesc = ("A film journal on The X-Files: long-form essays on its direction, cinematography, form, music and legacy, "
              "with a viewing syllabus and filmmaker profiles.")
-    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
+    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_URL + "/#website", "name": SITE_NAME, "url": SITE_URL + "/", "description": hdesc,
                "inLanguage": "en", "publisher": PUBLISHER}
     home_tags = seo(SITE_NAME + ": A Film Journal on The X-Files", hdesc, "/", "website", (site_ld,))
     home = re.sub(r"(<!--SEO-->).*?(<!--/SEO-->)", lambda m: f"{m[1]}\n{home_tags}\n{m[2]}", home, flags=re.S)
+    home = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{html.escape(hdesc, quote=True)}">', home, count=1)
     HOME.write_text(home, encoding="utf-8")
     for name, (title, desc) in SECTION_PAGES.items():
         f = ROOT / name
         page = f.read_text(encoding="utf-8")
+        short = NAV_LABELS.get(name, title.split(":")[0])
+        page_ld = {"@context": "https://schema.org", "@type": "AboutPage" if name == "about.html" else "WebPage", "name": title, "description": desc, "url": f"{SITE_URL}/{name}",
+                   "inLanguage": "en", "isPartOf": {"@type": "WebSite", "@id": SITE_URL + "/#website", "name": SITE_NAME, "url": SITE_URL + "/"},
+                   "publisher": PUBLISHER, "about": {"@type": "TVSeries", "name": "The X-Files"}}
+        if name == "about.html":
+            page_ld["mainEntity"] = [{"@id": PUBLISHER["@id"]}, AUTHOR]
         head = (f"<title>{html.escape(title)} · {html.escape(SITE_NAME)}</title>\n"
-                f'<meta name="description" content="{html.escape(desc, quote=True)}">\n' + seo(title, desc, "/" + name))
+                f'<meta name="description" content="{html.escape(desc, quote=True)}">\n'
+                + seo(title, desc, "/" + name, "website", (page_ld, crumbs((short, "/" + name))), SECTION_IMAGES.get(name)))
         page = refresh_shell(fill(page, "SEO", "\n" + head + "\n"), name)
         if name == "reboot.html":
             page = render_reboot(page)
@@ -512,13 +581,16 @@ def write_glossary():
         "  .gterm dt { font: 400 22px/1.25 var(--serif); color: #f3efe6; }\n"
         "  .gterm dd { margin: 0; color: var(--soft); font: 16px/1.65 var(--read); }\n"
         "  @media (max-width: 680px) { .gterm { grid-template-columns: 1fr; gap: 6px; } }\n")
-    seo_tags = seo("Glossary: The Mythology of The X-Files", gdesc, "/glossary.html")
+    gtitle = "Glossary: The Mythology of The X-Files"
+    terms = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": gtitle, "description": gdesc, "url": SITE_URL + "/glossary.html",
+             "hasDefinedTerm": [{"@type": "DefinedTerm", "name": e["term"], "description": e["def"]} for e in data]}
+    seo_tags = seo(gtitle, gdesc, "/glossary.html", "website", (terms, crumbs(("Glossary", "/glossary.html"))))
     page = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Glossary · {html.escape(SITE_NAME)}</title>
+<title>{html.escape(gtitle)} · {html.escape(SITE_NAME)}</title>
 <meta name="description" content="{html.escape(gdesc, quote=True)}">
 <meta name="theme-color" content="#06090a">
 {seo_tags}
@@ -535,6 +607,7 @@ def write_glossary():
 <main class="glossary"><dl>{rows}</dl></main>
 <footer><div class="wrap">
   <div class="sig">The truth is out there.</div>
+  {site_links()}
   <p>Mulder, It's Me is an unofficial, non-commercial film journal, not affiliated with or endorsed by 20th Century Studios, Fox, or Ten Thirteen Productions.
   The X-Files and all related names are trademarks of their respective owners. <a href="credits.html" style="color:var(--soft)">Image credits</a>.</p>
 </div></footer>
@@ -546,11 +619,12 @@ def write_glossary():
 
 
 def write_credits():
-    rows = "".join(f'<li><img src="{html.escape(c["file"])}" alt="" loading="lazy"><div><b>{html.escape(k.replace("cast-", "").replace("p-", "").replace("-", " ").title())}</b>{credit_html(c)}</div></li>'
+    rows = "".join(f'<li><img src="{html.escape(c["file"])}" alt="" width="120" height="68" loading="lazy" decoding="async"><div><b>{html.escape(k.replace("cast-", "").replace("p-", "").replace("-", " ").title())}</b>{credit_html(c)}</div></li>'
                    for k, c in sorted(CREDITS.items()))
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Image credits · {html.escape(SITE_NAME)}</title><meta name="robots" content="noindex, follow"><link rel="canonical" href="{SITE_URL}/credits.html">
+{ICONS}
 {FONTS}
 <style>body{{margin:0;background:#06090a;color:#e6e2d8;font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}} .w{{max-width:900px;margin:0 auto;padding:60px 16px 90px}}
 h1{{font:300 48px/1.1 "Fraunces",Georgia,serif;margin:0 0 10px}} p.l{{color:#b9b5aa;margin:0 0 36px}} a{{color:#b9b5aa}} ul{{list-style:none;padding:0;margin:0;display:grid;gap:14px}}
@@ -565,15 +639,20 @@ li b{{display:block;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.16em
 
 def write_feeds(newest):
     today = datetime.date.today().isoformat()
-    urls = [("/", today, "weekly", "1.0"), ("/blog/", newest[0]["date"] if newest else today, "weekly", "0.9")]
-    urls += [("/" + name, today, "monthly", "0.7") for name in SECTION_PAGES]
+    latest = max((p.get("updated", p["date"]) for p in newest), default=today)
+    # lastmod comes from the last commit that touched each page's source, so a rebuild alone does not
+    # make every page look freshly changed.
+    urls = [("/", max(latest, git_date("index.html", "data_reboot.json") or latest), "weekly", "1.0"),
+            ("/blog/", latest, "weekly", "0.9")]
+    urls += [("/" + name, git_date(name, *(["data_reboot.json"] if name == "reboot.html" else [])) or today, "monthly", "0.7")
+             for name in SECTION_PAGES]
+    urls += [("/glossary.html", git_date("data_glossary.json") or today, "monthly", "0.6")]
     urls += [(f"/blog/{p['slug']}.html", p.get("updated", p["date"]), "monthly", "0.8") for p in newest]
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{pr}</priority></url>\n"
-                  for u, m, c, pr in urls)
+        + "".join(f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{m}</lastmod></url>\n" for u, m, *_ in urls)
         + "</urlset>\n", encoding="utf-8")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(ROBOTS, encoding="utf-8")
 
     def rfc822(d):
         return datetime.datetime.combine(datetime.date.fromisoformat(d), datetime.time(12)).strftime("%a, %d %b %Y %H:%M:%S +0000")
@@ -583,9 +662,11 @@ def write_feeds(newest):
         f"<category>{html.escape(p['tag'])}</category><description>{html.escape(p['summary'])}</description></item>\n"
         for p in newest[:30])
     (ROOT / "feed.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n'
+        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n'
         f"  <title>{html.escape(SITE_NAME)}</title><link>{SITE_URL}/</link>"
-        "<description>Essays on The X-Files as film and television craft.</description><language>en</language>\n"
+        f'<atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>'
+        "<description>Essays on The X-Files as film and television craft.</description><language>en</language>"
+        f"<lastBuildDate>{rfc822(newest[0]['date']) if newest else ''}</lastBuildDate>\n"
         + items + "</channel></rss>\n", encoding="utf-8")
 
 
