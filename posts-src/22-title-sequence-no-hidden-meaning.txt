@@ -1,0 +1,48 @@
+title: Ten Pictures and a Sentence
+date: 2026-11-16
+tag: Form
+hue: 262
+summary: The X-Files titles were assembled from the designers' own bodies, an office hallway and stock footage, with two images ordered by Chris Carter, one of which he never explained. For years the pictures barely moved while the line of type at the end kept changing, and that arrangement taught the audience how to watch the show.
+---
+Sometime in the two months or so before *The X-Files* went on the air, Carol Johnsen lay on the floor of her own office in a paper painter's suit, moving "in kind of a rhythmic way" for the camera. A client from another job walked in on them. Her partner Bruce Bryant, telling the story to [Empire](https://www.empireonline.com/movies/features/making-x-files-titles/) in 2013, could not say whether the client went ahead with the job. In post-production the two of them made the writhing figure fall, and behind it they laid a hand, part of it red.
+
+That falling body ran in the titles week after week, and Bryant allowed that fans might have theories about it. Johnsen's explanation of the hand: "We were just looking for a good background." Bryant's was that there is "really no hidden meaning" in it or in the red, though "we can gen something up if you give us a minute."
+
+I believe them, and the crack about a minute describes the sequence better than any reading of the hand could. What Castle/Bryant/Johnsen delivered is a case file with nobody assigned to it: the ten pictures Empire walked the designers through and a glimpse of the agents, which have no story in common, plus two captions and one sentence at the end. The pictures were left alone for years. The sentence was rewritten whenever the writers had something to say. A regular viewer was being trained to build a pattern out of unrelated exhibits, and then to take whatever conclusion was typed underneath.
+
+## Castle/Bryant/Johnsen, 1993
+
+Bryant put the company's output at "a couple of hundred other opens," many of them for Twentieth Century Fox, and around the same time it designed the opening of *Frasier*. He, Johnsen and their partner James Castle had also made documentaries about UFOs, so they arrived, as Bryant put it, "with the right vocabulary." Chris Carter handed them a finished logo. Mark Snow's theme turned up halfway through. The deadline, Johnsen remembered, was "maybe a couple of months."
+
+On that schedule the pictures came from whatever was within reach. The flying saucer is a bald twilight sky photographed from the ground in New Mexico, with the saucer added afterward, and the silhouette pointing at it is Bryant. The tracking chart imitates the kind of plot NORAD keeps. They shot the Van de Graaff generator themselves. The ghost in the corridor is Bryant again, in a negative effect, in a hallway of the firm's office. The eye is Johnsen's. The storm was footage already on hand: "We didn't have to head into the desert." Even the signatures on the two FBI badges are theirs, Johnsen's handwriting for Scully and a partner's for Mulder.
+
+Two images were Carter's orders. He asked for a "stretchy face," and the designers filmed a number of people from the post-production house in their building until they found the one who "had the best face for it." He asked for the germinating seeds, which are stock footage doubled into a mirror image. "He never told us exactly why he wanted it," Bryant said. The brief, so far as either designer could reconstruct it twenty years on, was a mood. Carter wanted "the mystery of the world he was creating reflected in the open."
+
+## Saucer, face, seed, eye
+
+Run the sequence with that inventory in mind and its odd manners make sense. Nearly every picture is a single object centered in the frame, composed for the 4:3 set that [The Frame Had a Ceiling](https://mulderitsme.net/blog/four-by-three.html) describes, the way a Polaroid is composed for an evidence folder. One exception, which fan write-ups describe and Empire's walk-through skips, is a stuttering glimpse of the two agents coming through a door. No shot shares a room with the one before it, so no cut can be read as "then" or "because," which are the two things a cut most often says. David Duchovny and Gillian Anderson receive their credits over ID cards, photographs of photographs, signed by title designers.
+
+The words on screen behave the same way. Maria Lewis, in an essay for the Australian museum [ACMI](https://www.acmi.net.au/stories-and-ideas/the-x-files-the-truth-is-out-there/), names them: "paranormal activity" and "government denies knowledge" flash up among "distorted images and archived photos." Both are headline fragments. Which government, and knowledge of what? Neither caption is attached to an event.
+
+Film students learn early that an audience will supply the connection between two shots that have none. Bryant's remark about the stretched face, "It makes you feel a bit edgy," describes that labor being done by the viewer, a feeling arriving with no information attached. Mulder usually stands in the same spot, with a blurred photograph, a chart on which, in Bryant's gloss, a technician has picked something up and "doesn't know what it is," and a conviction that the two belong together. The titles put the audience in his chair before the first act, with no Scully in the room to object.
+
+And the first exhibit is a fake. The saucer photograph is a composite made by the two people who staged it, and they say so cheerfully. A program about how badly people want a blurry picture to be true led off its titles each week with a blurry picture manufactured to order.
+
+## The end line
+
+Johnsen told Empire, "We changed the line you see at the end two or three times," and it had not always been the familiar motto. Bryant added that once the sequence was locked he did not believe it changed at all, "apart from the end line." His memory is a little generous. Lorna Wallace, surveying altered title sequences for [Reactor](https://reactormag.com/six-tv-shows-that-brilliantly-change-up-their-opening-credits/), notes that cast changes moved actors in and out of the credits and that the imagery was occasionally updated. But the line is where the changes mattered. Wallace dates the first substitution to the first-season finale, *The Erlenmeyer Flask*, whose titles ended on "Trust No One." Later variants included the usual motto spelled right to left and "I Want to Believe, I Want to Lie."
+
+The substitution I learn the most from is *Gethsemane*, the hour that closed the fourth season. In Meghan Deans's [recap](https://reactormag.com/reopening-the-x-files-qgethsemaneq/) for the same site, a man named Kritschgau, who says he ran Defense Department propaganda for ten years, tells Scully that the alien material in the X-Files, Mulder's newest find included, is "part of a campaign of disinformation." The titles of that episode ended, as Deans noted, on "Believe the lie." Everything ahead of those three words was the footage viewers knew: the saucer over New Mexico, the seeds, Bryant in his hallway. For most of four years those pictures had led up to a promise that the truth existed. Now they led up to the charge that they had been planted, and nobody had to recut a frame.
+
+The episodes share the habit. A case tends to close with the physical evidence burned or confiscated and a paragraph left behind, often a field report read in voice-over, and the next case lays a different paragraph over the same kind of wreckage. The titles had the order down already, exhibits first and then somebody's sentence.
+
+In 1994 the [Television Academy](https://www.televisionacademy.com/awards/nominees-winners/1994/outstanding-main-title-design) gave the sequence its award for individual achievement in graphic design and title sequences, naming Bryant, Castle and Johnsen. Johnsen called it the show's "very first Emmy." Bryant's summary of the craft was that a title sequence is "a signature for a show," and he added, "You see it and you know what you're getting."
+
+In the eleventh season, in 2018, *The Lost Art of Forehead Sweat* took up collective false memory. A stranger named Reggie Something, played by Brian Huskey, insists that he worked beside Mulder and Scully all along. Halfway through the hour the titles run a second time, and Wallace reports what is in them: a version of the intro "now featuring Reggie."
+
+Sources:
+- [Empire: The Making Of The X-Files Title Sequence (Nick de Semlyen, 2013, updated September 8, 2023)](https://www.empireonline.com/movies/features/making-x-files-titles/)
+- [Television Academy: 1994 nominees and winners, graphic design and title sequences](https://www.televisionacademy.com/awards/nominees-winners/1994/outstanding-main-title-design)
+- [ACMI: The X-Files, "The truth is out there" (Maria Lewis, December 4, 2020)](https://www.acmi.net.au/stories-and-ideas/the-x-files-the-truth-is-out-there/)
+- [Reactor: Six TV Shows That Brilliantly Change Up Their Opening Credits (Lorna Wallace, September 14, 2023)](https://reactormag.com/six-tv-shows-that-brilliantly-change-up-their-opening-credits/)
+- [Reactor: Reopening The X-Files, "Gethsemane" (Meghan Deans, July 26, 2012)](https://reactormag.com/reopening-the-x-files-qgethsemaneq/)
