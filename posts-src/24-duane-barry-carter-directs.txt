@@ -1,0 +1,56 @@
+title: Leading the Witness
+date: 2026-11-23
+tag: Directors
+hue: 232
+summary: Chris Carter's first hour as a director puts Mulder in a room with a man who says he was abducted, and cuts to the man's bedroom when Mulder asks for it. One detail the x-rays later support comes from Barry unprompted.
+---
+On a blackboard in an FBI command post in downtown Richmond, somebody has chalked four words: honesty, containment, conciliation, resolution. Lucy Kazdin (CCH Pounder), the negotiations commander, puts Fox Mulder in front of it with a headset and a notepad of instructions, and when he needs the hostages' names she points to them on the board so he can read them aloud. Across the street an escaped psychiatric patient named Duane Barry is holding his doctor and three travel agency employees at gunpoint. He picks up the phone, hears Mulder out, and says, "I know the routine." Then he lists three of the four words. Barry is a former agent, out of the Bureau since 1982.
+
+*Duane Barry* went out on Fox on October 14, 1994, the fifth episode of the second season. Chris Carter wrote it, and it was the first thing he directed. Talking to Paula Vitaris for [Cinefantastique's October 1995 X-Files issue](https://archive.org/download/cinefantastique_1970-2002/Cinefantastique%20Vol%2026%20No%206-Vol%2027%20No%201%20%28Oct%201995%29.pdf), he sounded surprised at his own choice of debut: "You have to create energy out of stasis." (Dialogue here comes from the unofficial fan transcript at [Inside the X](https://insidethex.co.uk/transcrp/scrp205.htm), typed from the broadcast, and the order of images follows its scene directions.)
+
+Carter's way through the stasis was to turn a negotiation into an interview and film the answers. Inside the travel agency the first three flashbacks are of Barry's bedroom, each after a prompt from Mulder, and the dental drill comes from Barry himself. Then Barry is shot, Mulder admits he believed him, and the physical proof goes to Kazdin and Scully, who told Mulder to stop.
+
+## The command post
+
+Carter told Vitaris that the premise began with a man who had been taken and whom nobody believed, and that it led him to a second question: "And if someone were to believe him, why not Mulder?" The Bureau in the episode wants Mulder for a narrower reason: this abduction business, Kazdin tells him, is something he knows about. She calls Barry a psycho and tells her negotiator to make up what he likes about spacemen and "just keep him on the phone."
+
+By his own description Carter prepared "to the point of complete neurotic behavior." A director on the show got seven days to prep and eight to shoot. He met at length beforehand with the cinematographer, John Bartley, and David Nutter coached him on blocking. The command post and the travel agency were both built on soundstages, a fact the phone scenes have to hide, because they turn on Barry parting the blinds and finding Mulder in a facing window. "You never believed for a second that they weren't across the street," Carter said. Of the long two-hander that follows: "It's like a stage play, even though I never shot it like a play."
+
+For Barry he wanted Steve Railsback and, he said, had nobody else in mind. Zack Handlen, at [The A.V. Club](https://www.avclub.com/the-x-files-sleepless-duane-barry-ascension-1798204822) in 2008, credited whatever doubt the hour sustains "almost entirely" to the actor, and asked, "Would you trust a guy who twitches so much?"
+
+## Mulder's questions
+
+The power fails up and down the block, a glare fills the windows, Barry fires in the dark, and a hostage is hit. Mulder goes in dressed as a paramedic, wired, beside an agent trained as a medic.
+
+The teaser has already shown an abduction: a house in Pulaski, Virginia, dated June 3, 1985, a television going to static, figures pressing against plastic sheeting. After that the bedroom waits for Mulder. He asks whether the light was them, and Barry says, "Don't try and B.S. Duane Barry." He says they lost time when the power went and asks if that is what happens, and in the transcript's scene directions Barry flashes back to himself screaming on the bed. "You're making it up," Barry says. Then he trades the wounded man for Mulder and ties him to a chair. From the chair Mulder asks whether the beings are tall or small and supplies "diminutive" himself; the directions read, "Aliens pound against his walls." He asks about a ship, and by the same directions Barry floats up off the mattress. He gives Barry the abductees' word for how the visitors talk, "mindscan." When Barry wants his psychiatrist told what the visitors do, he has Mulder say it: "Tell him."
+
+Kazdin, listening on the wire, says Mulder is "feeding into his psychosis," and she has described the editing. A therapist who ran a hypnotic regression this way would be accused of leading. Vitaris wrote in her episode guide that the two men "slip into a shared fantasy," and then asked whether it was one. In the transcript's scene directions two later images follow Barry's own words: the drill, and two men in black in the doorway once he says the government is there "in the room when they come." The first three pictures each have two possible sources, a man remembering and a man prompting, and the cut never says which.
+
+## Bartley's strobes
+
+Bartley told Vitaris the aliens were a case where "we want to see something" without any detail, so he overexposed the film and used strobe lights "to blow it all out," and post-production blew it out further. The grays were a rotating group of children aged six to ten, with finger extensions glued to the gloves by Toby Lindala's makeup crew. Their eyes were Lexan heat-formed over a pool ball. Mat Beck, the visual effects supervisor, gave Vitaris the principle behind the glowing ship: "Sometimes you obscure things with darkness, sometimes you obscure them with light."
+
+The overhead shot of Barry lifted from his bed was a fiberglass pan, cast from Railsback's body and slipped under his pajamas, raised by a forklift. Dave Gauthier, who supervised the physical effects, pointed out that the sequence never shows the whole body. The American Society of Cinematographers nominated Bartley for the episode.
+
+## The drill
+
+Kazdin demands "a clear picture of what's going on in there." Mulder has said only that the visitors take people aboard for "the tests" when Barry shouts, "They drilled holes in my damn teeth!" On the alien table a red laser fires into his open mouth, and the following shot is an FBI technician boring through the travel agency wall. Carter called the link between laser and drill "a nice visual element." Gauthier got the spray off the teeth after watching a dentist fill his son's cavity: a clear manifold in Railsback's mouth, blowing mineral water and air. "It sold the shot," he said.
+
+The technicians feed a camera through the hole. By the transcript's description the monitor shows Mulder's back, the doctor and two women, and the tactical commander has to infer the rest: Barry "must be" along the wall they cannot see. The Bureau drills for its picture of Duane Barry and gets a frame without him in it.
+
+## Kazdin's x-rays
+
+Scully arrives with a file. Barry was shot in 1982, the bullet passing through both frontal lobes, and she cites a precedent: a man named Gage, "almost a hundred years ago," left a liar given to delusions. Phineas Gage's tamping iron went through his head on September 13, 1848, 146 years before the broadcast, and Malcolm Macmillan wrote in [The Psychologist](https://www.bps.org.uk/psychologist/phineas-gage-unravelling-myth) in 2008 that much of what has been written about him "is completely wrong." Scully gets on the wire anyway and tells Mulder that Barry "is not what you think he is." Mulder asks Barry whether he is making any of it up, and when Barry erupts, sends him to lock the door, where a sniper has a line. Outside, afterward, he says: "I believed him."
+
+The evidence starts arriving after that, and Mulder finds none of it. Kazdin calls him to the hospital to report what the x-rays show: metal in Barry's gums, sinus cavity and abdomen, where he had told Mulder the implants were, and tiny holes in two rear molars that a dentist said current equipment could not have drilled. Scully proposes shrapnel from Vietnam and takes the abdominal piece to ballistics, where an examiner shows her fine tooled markings under magnification. At a supermarket checkout she passes it over the scanner and the register runs wild. The result goes to Mulder's answering machine, in a message that begins "Mulder, it's me" and breaks off in shattering glass, Barry having reached her window while she was still wondering who would "catalogue" a man.
+
+Carter told Vitaris the story had appealed to him as "a way to take Scully away in an interesting manner," in a season being written around Gillian Anderson's pregnancy. The Television Academy's [nominations for 1995](https://www.televisionacademy.com/shows/x-files) include Pounder, for Kazdin, and Carter, for writing.
+
+*Ascension* aired a week later, on October 21, written by Paul Brown and directed by Michael Lange. On top of Skyland Mountain Barry says they took her. Vitaris recorded what each party is given at that moment: Mulder "sees only a helicopter," and the audience "sees only bright light."
+
+Sources:
+- [Cinefantastique, Vol. 26 No. 6 / Vol. 27 No. 1, October 1995, X-Files double issue by Paula Vitaris, via the Internet Archive](https://archive.org/download/cinefantastique_1970-2002/Cinefantastique%20Vol%2026%20No%206-Vol%2027%20No%201%20%28Oct%201995%29.pdf)
+- [Inside the X, "Duane Barry" fan transcript (unofficial)](https://insidethex.co.uk/transcrp/scrp205.htm)
+- [Zack Handlen, "Sleepless / Duane Barry / Ascension," The A.V. Club, August 22, 2008](https://www.avclub.com/the-x-files-sleepless-duane-barry-ascension-1798204822)
+- [Malcolm Macmillan, "Phineas Gage: Unravelling the myth," The Psychologist, British Psychological Society, September 3, 2008](https://www.bps.org.uk/psychologist/phineas-gage-unravelling-myth)
+- [Television Academy, The X-Files: awards and nominations](https://www.televisionacademy.com/shows/x-files)
